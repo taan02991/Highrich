@@ -33,7 +33,7 @@ public class StartScene extends Scene{
 	
 	private void buttonEventHandler() {
 		startButton.setOnMouseClicked( e-> {
-			Main.getStage().setScene(Main.getGameScene());;
+			Main.gameScene();
 		});
 		startButton.setOnMouseEntered( e-> {
 			startButton.setImage( Images.startButtonHover );
