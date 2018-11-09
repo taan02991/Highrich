@@ -1,10 +1,8 @@
 package UI;
 
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.scene.Parent;
+import application.Main;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
@@ -35,13 +33,15 @@ public class StartScene extends Scene{
 	
 	private void buttonEventHandler() {
 		startButton.setOnMouseClicked( e-> {
-			
+			Main.getStage().setScene(Main.getGameScene());;
 		});
 		startButton.setOnMouseEntered( e-> {
 			startButton.setImage( Images.startButtonHover );
+			root.setCursor( Cursor.HAND );
 		});
 		startButton.setOnMouseExited( e-> {
 			startButton.setImage( Images.startButton );
+			root.setCursor( Cursor.MOVE );
 		});
 	}
 
