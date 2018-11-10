@@ -26,7 +26,7 @@ public class Welcome extends Scene {
         
         //Prepare Image
         Sprite background = new Sprite(Images.floor, 0, 0, 0, 0);
-        Player player = new Player(Images.playerHorizontal);
+        Player player = new Player(Images.playerR);
         Sprite obstacle0 = new Sprite(Images.obstacles[0] , 0, 251, 0, 0);
         Sprite obstacle1 = new Sprite(Images.obstacles[1] , 165, 251, 0, 0);
         Sprite obstacle2 = new Sprite(Images.obstacles[2] , 165, 375, 0, 0);
