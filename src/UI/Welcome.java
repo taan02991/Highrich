@@ -27,7 +27,9 @@ public class Welcome extends Scene {
         //Prepare Image
         Sprite background = new Sprite(Images.floor, 0, 0, 0, 0);
         Player player = new Player(Images.playerHorizontal);
-        Sprite obstacle = new Sprite(Images.startButton, 100, 100, 0, 0);
+        Sprite obstacle0 = new Sprite(Images.obstacles[0] , 0, 251, 0, 0);
+        Sprite obstacle1 = new Sprite(Images.obstacles[1] , 165, 251, 0, 0);
+        Sprite obstacle2 = new Sprite(Images.obstacles[2] , 165, 375, 0, 0);
  
     	//To read input from keyBoard
         KeyInput.setKeyHandler(this);
@@ -52,11 +54,13 @@ public class Welcome extends Scene {
                 	player.update();                		                		
                 	player.isOutOfBound();
                 	background.render(gc);
-                	if(player.intersects(obstacle)) {
+                	if(player.intersects(obstacle0) || player.intersects(obstacle1) || player.intersects(obstacle2)) {
                 		player.positionX -= player.velocityX;
                 		player.positionY -= player.velocityY;
                 	}
-                	obstacle.render(gc);
+                	obstacle0.render(gc);
+                	obstacle1.render(gc);
+                	obstacle2.render(gc);
                 	player.render(gc);
                 }
             });
