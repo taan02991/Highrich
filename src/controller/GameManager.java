@@ -13,6 +13,7 @@ public class GameManager {
 	private Player player;
 	private ArrayList<Map> maps;
 	private Map currentMap;
+	private long gameTick = 0;
 	
 	public GameManager() {
 		this.maps = new ArrayList<Map>();
@@ -29,6 +30,11 @@ public class GameManager {
 	}
 	
 	public void update() {
+		//test add Receptionist
+		gameTick = (gameTick+1)%100000;
+		if(this.currentMap instanceof MapWelcome && gameTick%1000 == 0) {
+			((MapWelcome) this.currentMap).addReceptionist(1);
+		}
 		// test warp
 		if(this.currentMap.warpUp != null && this.currentMap.warpUp.intersects(player)) {
 			this.currentMap = this.maps.get(this.maps.indexOf(this.currentMap) + 1);
