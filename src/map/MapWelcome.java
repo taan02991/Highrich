@@ -4,6 +4,7 @@ import UI.Images;
 import UI.Rectangle;
 import character.Npc;
 import character.Receptionist;
+import javafx.scene.canvas.GraphicsContext;
 
 public class MapWelcome extends Map{
 	private static final int maxNumberOfReceptionist = 4;
@@ -34,6 +35,5 @@ public class MapWelcome extends Map{
 		}
 		return n;
 	}
-	
 	
 }

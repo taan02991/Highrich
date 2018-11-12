@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import UI.Images;
 import UI.Rectangle;
+import character.Npc;
+import javafx.scene.canvas.GraphicsContext;
 import map.RoomConstruction;
 
 public class MapUpStair extends Map{
@@ -40,7 +42,19 @@ public class MapUpStair extends Map{
 					break;
 				}
 			}
-		}
-		
+		}	
 	}
+	
+	@Override
+	public void render(GraphicsContext gc) {
+		super.getBackground().render(gc);
+		warpUp.render(gc);
+		warpDown.render(gc);
+		for(Rectangle r: super.getStructList()) r.render(gc);
+		for(Npc npc: npcList) npc.render(gc);
+		
+		/* add more */
+		for(Room o : roomsList) o.render(gc);
+	}
+	
 }

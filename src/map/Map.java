@@ -9,12 +9,12 @@ import character.Player;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class Map {
+public class Map{
 	protected Rectangle background;
 	private ArrayList<Rectangle> structList;
 	protected ArrayList<Npc> npcList;
 	public Rectangle warpUp, warpDown;
-
+	
 	public Map(){
 		this.warpUp = null;
 		this.warpDown = null;
@@ -22,9 +22,8 @@ public class Map {
 		this.npcList = new ArrayList<Npc>();
 	}
 	
-	
 	public void render(GraphicsContext gc) {
-		background.render(gc);
+		this.background.render(gc);
 		if(this.warpUp != null) warpUp.render(gc);
 		if(this.warpDown != null) warpDown.render(gc);
 		for(Rectangle r: structList) r.render(gc);
@@ -36,6 +35,10 @@ public class Map {
 		for(Npc npc: npcList) {
 			npc.update();
 		}
+	}
+	
+	public Rectangle getBackground() {
+		return this.background;
 	}
 	
 	public void setBackground(Image i) {
