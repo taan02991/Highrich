@@ -1,7 +1,7 @@
 package application;
 	
 import UI.StartScene;
-import UI.Welcome;
+import UI.GameScene;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -16,7 +16,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		stage = primaryStage;
 		startScene = new StartScene();
-		gameScene = new Welcome();
+		gameScene = new GameScene();
 		stage.setScene(startScene);
 		stage.show();
 	}

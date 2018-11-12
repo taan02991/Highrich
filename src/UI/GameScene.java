@@ -15,11 +15,11 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import map.MapWelcome;
 
-public class Welcome extends Scene {
+public class GameScene extends Scene {
 
 	private VBox root;
 	
-	public Welcome() {
+	public GameScene() {
 		super(new VBox() ,500 ,700);
 		root = (VBox) getRoot();
 		

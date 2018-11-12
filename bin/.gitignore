@@ -1,8 +1,6 @@
+/.DS_Store
 /UI/
-/Input/
-/Character/
-/Controller/
+/application/
 /character/
 /controller/
-/input/
 /map/
