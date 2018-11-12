@@ -21,6 +21,8 @@ public class Images {
 		public static final Image sofa = new Image(ClassLoader.getSystemResource("images/Sofa.png").toString());
 		public static final Image warp = new Image(ClassLoader.getSystemResource("images/Warp.png").toString());
 		
+		public static final Image constructionRoom = new Image(ClassLoader.getSystemResource("images/ConstructionRoom.png").toString());
+		
 		static {
 			
 		}

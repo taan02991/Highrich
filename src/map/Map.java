@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
 
 public class Map {
 	protected Rectangle background;
-	protected ArrayList<Rectangle> structList;
+	private ArrayList<Rectangle> structList;
 	protected ArrayList<Npc> npcList;
 	public Rectangle warpUp, warpDown;
 
