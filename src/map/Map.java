@@ -10,10 +10,10 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class Map{
-	protected Rectangle background;
+	private Rectangle background;
 	private ArrayList<Rectangle> structList;
-	protected ArrayList<Npc> npcList;
-	public Rectangle warpUp, warpDown;
+	private ArrayList<Npc> npcList;
+	private Rectangle warpUp, warpDown;
 	
 	public Map(){
 		this.warpUp = null;
@@ -37,6 +37,14 @@ public class Map{
 		}
 	}
 	
+	public void addStruct(Rectangle rectangle) {
+		this.structList.add(rectangle);
+	}
+	
+	public void addNpc(Npc npc) {
+		this.npcList.add(npc);
+	}
+	
 	public Rectangle getBackground() {
 		return this.background;
 	}
@@ -45,13 +53,6 @@ public class Map{
 		this.background = new Rectangle(i, 0, 0);
 	}
 	
-	public void addStruct(Rectangle rectangle) {
-		this.structList.add(rectangle);
-	}
-	
-	public void addNpc(Npc npc) {
-		this.npcList.add(npc);
-	}
 
 	public ArrayList<Rectangle> getStructList() {
 		return structList;
@@ -59,6 +60,22 @@ public class Map{
 
 	public ArrayList<Npc> getNpcList() {
 		return npcList;
+	}
+	
+	public void setWarpUp(Rectangle warpUp) {
+		this.warpUp = warpUp;
+	}
+	
+	public Rectangle getWarpUp() {
+		return warpUp;
+	}
+
+	public void setWarpDown(Rectangle warpDown) {
+		this.warpDown = warpDown;
+	}
+
+	public Rectangle getWarpDown() {
+		return warpDown;
 	}
 	
 	

@@ -86,6 +86,10 @@ public class AnimatedImage extends Rectangle
     	this.map = map;
     }
     
+    public Map getMap() {
+    	return this.map;
+    }
+    
     public void setFrame(Image[] frames)
     {
     	this.frames = frames;

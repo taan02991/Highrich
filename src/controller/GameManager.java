@@ -32,22 +32,13 @@ public class GameManager {
 	public void update() {
 		//test add Receptionist
 		gameTick = (gameTick+1)%100000;
-		if(this.currentMap instanceof MapWelcome && gameTick%1000 == 0) {
+		if(this.currentMap instanceof MapWelcome && gameTick%300 == 0) {
 			((MapWelcome) this.currentMap).addReceptionist(1);
 		}
-		// test warp
-		if(this.currentMap.warpUp != null && this.currentMap.warpUp.intersects(player)) {
-			this.currentMap = this.maps.get(this.maps.indexOf(this.currentMap) + 1);
-			player.setPosition(100, 100);
-		}
-		else if(this.currentMap.warpDown != null && 
-				this.currentMap.warpDown.intersects(player)) {
-			this.currentMap = this.maps.get(this.maps.indexOf(this.currentMap) - 1);
-			player.setPosition(100, 100);
-		}
+		// Change current map if player is on warp position
+		this.currentMap = this.maps.get((this.maps.indexOf(this.currentMap) + player.warp()) % this.maps.size());
 		//Change map player is at
-		player.setMap(this.currentMap);
-		//
+		this.player.setMap(this.currentMap);
 		this.currentMap.updateNpc();
 		this.player.update();
 	}

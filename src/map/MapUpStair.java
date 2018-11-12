@@ -15,8 +15,8 @@ public class MapUpStair extends Map{
 		super();
 		this.roomsList = new ArrayList<Room>();
 		initRoom();
-		this.warpUp = new Rectangle(Images.warp, 190, 0);
-		this.warpDown = new Rectangle(Images.warp, 190, 480);
+		this.setWarpUp(new Rectangle(Images.warp, 190, 0));
+		this.setWarpDown(new Rectangle(Images.warp, 190, 480));
 		this.setBackground(Images.floor);
 	}
 	
@@ -48,10 +48,10 @@ public class MapUpStair extends Map{
 	@Override
 	public void render(GraphicsContext gc) {
 		super.getBackground().render(gc);
-		this.warpUp.render(gc);
-		this.warpDown.render(gc);
+		this.getWarpUp().render(gc);
+		this.getWarpDown().render(gc);
 		for(Rectangle r: super.getStructList()) r.render(gc);
-		for(Npc npc: npcList) npc.render(gc);
+		for(Npc npc: this.getNpcList()) npc.render(gc);
 		for(Room o : roomsList) o.render(gc);
 	}
 	
