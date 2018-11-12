@@ -11,16 +11,18 @@ public class Images {
 		public static final Image startButton = new Image(ClassLoader.getSystemResource("images/StartButton.png").toString());
 		public static final Image startButtonHover = new Image(ClassLoader.getSystemResource("images/StartButtonHover.png").toString());
 		public static final Image floor = new Image(ClassLoader.getSystemResource("images/floor.png").toString());
+		//Add Player PIC later
 		public static final Image[] playerL = {new Image(ClassLoader.getSystemResource("Images/PlayerL.png").toString())};
 		public static final Image[] playerR = {new Image(ClassLoader.getSystemResource("Images/PlayerR.png").toString())};
 		public static final Image[] playerU = {new Image(ClassLoader.getSystemResource("Images/PlayerU.png").toString())};
 		public static final Image[] playerD = {new Image(ClassLoader.getSystemResource("Images/PlayerD.png").toString())};
-		public static final Image[] obstacles = new Image[3];
+		//
+		public static final Image tree = new Image(ClassLoader.getSystemResource("images/Tree.png").toString());
+		public static final Image sofa = new Image(ClassLoader.getSystemResource("images/Sofa.png").toString());
+		public static final Image warp = new Image(ClassLoader.getSystemResource("images/Warp.png").toString());
 		
 		static {
-			for(int i = 0; i < 3; i++) {
-				obstacles[i] = new Image(ClassLoader.getSystemResource("images/obstacle" + i + ".png").toString());
-			}
+			
 		}
 
 }

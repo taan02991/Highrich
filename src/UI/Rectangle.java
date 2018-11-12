@@ -4,28 +4,27 @@ import javafx.scene.image.Image;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.geometry.Rectangle2D;
 
-public class Sprite
+public class Rectangle
 {
     protected Image image;
     protected double positionX;
     protected double positionY;    
-    protected double velocityX;
-    protected double velocityY;
     protected double width;
     protected double height;
 
-    public Sprite()
+    public Rectangle()
     {
         positionX = 0;
         positionY = 0;    
-        velocityX = 0;
-        velocityY = 0;
     }
     
-    public Sprite(Image i, double positionX, double positionY, double velocityX, double velocityY) {
+    public Rectangle(Image i, double positionX, double positionY) {
     	this.setImage(i);
     	this.setPosition(positionX , positionY);
-    	this.setVelocity(velocityX, velocityY);
+    }
+    
+    public Rectangle(double positionX, double positionY) {
+    	this.setPosition(positionX , positionY);
     }
 
     public void setImage(Image i)
@@ -35,35 +34,12 @@ public class Sprite
         height = i.getHeight();
     }
 
-    public void setImage(String filename)
-    {
-        Image i = new Image(filename);
-        setImage(i);
-    }
-
     public void setPosition(double x, double y)
     {
         positionX = x;
         positionY = y;
     }
 
-    public void setVelocity(double x, double y)
-    {
-        velocityX = x;
-        velocityY = y;
-    }
-
-    public void addVelocity(double x, double y)
-    {
-        velocityX += x;
-        velocityY += y;
-    }
-
-    public void update()
-    {
-        positionX += velocityX;
-        positionY += velocityY;
-    }
 
     public void render(GraphicsContext gc)
     {
@@ -75,16 +51,11 @@ public class Sprite
         return new Rectangle2D(positionX,positionY,width,height);
     }
 
-    public boolean intersects(Sprite s)
+    public boolean intersects(Rectangle s)
     {
         return s.getBoundary().intersects( this.getBoundary() );
     }
     
-    public String toString()
-    {
-        return " Position: [" + positionX + "," + positionY + "]" 
-        + " Velocity: [" + velocityX + "," + velocityY + "]";
-    }
     
     
 }

@@ -1,6 +1,8 @@
 package UI;
 
+
 import character.Player;
+import controller.GameManager;
 import controller.KeyInput;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -11,10 +13,12 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import map.MapWelcome;
 
 public class Welcome extends Scene {
 
 	private VBox root;
+	
 	public Welcome() {
 		super(new VBox() ,500 ,700);
 		root = (VBox) getRoot();
@@ -25,12 +29,10 @@ public class Welcome extends Scene {
 		GraphicsContext gc = canvas.getGraphicsContext2D();
         
         //Prepare Image
-        Sprite background = new Sprite(Images.floor, 0, 0, 0, 0);
-        Player player = new Player(Images.playerR);
-        Sprite obstacle0 = new Sprite(Images.obstacles[0] , 0, 251, 0, 0);
-        Sprite obstacle1 = new Sprite(Images.obstacles[1] , 165, 251, 0, 0);
-        Sprite obstacle2 = new Sprite(Images.obstacles[2] , 165, 375, 0, 0);
- 
+		GameManager gameManager = new GameManager();
+
+        
+        
     	//To read input from keyBoard
         KeyInput.setKeyHandler(this);
         
@@ -45,23 +47,8 @@ public class Welcome extends Scene {
             {
                 public void handle(ActionEvent ae)
                 {
-                	player.setVelocity(0, 0);
-                	if(KeyInput.contains("RIGHT")) player.addVelocity(10, 0);
-                	if(KeyInput.contains("LEFT")) player.addVelocity(-10, 0);
-                	if(KeyInput.contains("UP")) player.addVelocity(0, -10);
-                	if(KeyInput.contains("DOWN")) player.addVelocity(0, 10);
-                	player.setFacing();
-                	player.update();                		                		
-                	player.isOutOfBound();
-                	background.render(gc);
-                	if(player.intersects(obstacle0) || player.intersects(obstacle1) || player.intersects(obstacle2)) {
-                		player.positionX -= player.velocityX;
-                		player.positionY -= player.velocityY;
-                	}
-                	obstacle0.render(gc);
-                	obstacle1.render(gc);
-                	obstacle2.render(gc);
-                	player.render(gc);
+                	gameManager.update();
+                	gameManager.render(gc);
                 }
             });
         
