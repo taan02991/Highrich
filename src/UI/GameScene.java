@@ -30,17 +30,14 @@ public class GameScene extends Scene {
         
         //Prepare Image
 		GameManager gameManager = new GameManager();
-
-        
-        
+		
     	//To read input from keyBoard
         KeyInput.setKeyHandler(this);
         
         //Loop to update()
 		Timeline gameLoop = new Timeline();
         gameLoop.setCycleCount( Timeline.INDEFINITE );
-        
-        
+
         KeyFrame kf = new KeyFrame(
             Duration.seconds(0.016),                // 60 FPS
             new EventHandler<ActionEvent>()
@@ -51,7 +48,6 @@ public class GameScene extends Scene {
                 	gameManager.render(gc);
                 }
             });
-        
         
         gameLoop.getKeyFrames().add( kf );
         gameLoop.play();
