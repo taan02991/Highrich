@@ -23,12 +23,7 @@ public class Npc extends AnimatedImage{
 		this.npcD = npcD;
 	}
 	
-	public void setFacing() {
-		if(this.velocityX < 0) this.setFrame(npcL);
-		else if(this.velocityX > 0) this.setFrame(npcR);
-		else if(this.velocityY > 0) this.setFrame(npcD);
-		else if(this.velocityY < 0) this.setFrame(npcU);
-	}
+
 	
 	//test talk
 	public void talk() {
