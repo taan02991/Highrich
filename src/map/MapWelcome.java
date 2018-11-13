@@ -13,12 +13,12 @@ public class MapWelcome extends Map{
 	
 	public MapWelcome(){
 		super();
-		this.setWarpUp(new Rectangle(Images.warp, 190, 0));
-		this.setBackground(Images.floor);
-		this.addStruct(new Rectangle(Images.tree, 140, 442));
-		this.addStruct(new Rectangle(Images.tree, 288, 442));
-		this.addStruct(new Rectangle(Images.sofa, 431, 118));
-		this.addNpc(new Visitor(Images.playerL, Images.playerR, Images.playerU, Images.playerD, this));
+		super.setWarpUp(new Rectangle(Images.warp, 190, 0));
+		super.setBackground(Images.floor);
+		super.addStruct(new Rectangle(Images.tree, 140, 442));
+		super.addStruct(new Rectangle(Images.tree, 288, 442));
+		super.addStruct(new Rectangle(Images.sofa, 431, 118));
+		super.addNpc(new Visitor(Images.playerL, Images.playerR, Images.playerU, Images.playerD, this));
 	}
 	
 	public int addReceptionist(int n){
@@ -38,4 +38,11 @@ public class MapWelcome extends Map{
 		return n;
 	}
 	
+	@Override
+	public void render(GraphicsContext gc) {
+		super.getBackground().render(gc);
+		super.getWarpUp().render(gc);
+		for(Rectangle r: super.getStructList()) r.render(gc);
+		for(Npc npc: super.getNpcList()) npc.render(gc);
+	}
 }

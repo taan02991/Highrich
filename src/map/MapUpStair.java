@@ -48,8 +48,8 @@ public class MapUpStair extends Map{
 	@Override
 	public void render(GraphicsContext gc) {
 		super.getBackground().render(gc);
-		this.getWarpUp().render(gc);
-		this.getWarpDown().render(gc);
+		super.getWarpUp().render(gc);
+		super.getWarpDown().render(gc);
 		for(Rectangle r: super.getStructList()) r.render(gc);
 		for(Npc npc: this.getNpcList()) npc.render(gc);
 		for(Room o : roomsList) o.render(gc);

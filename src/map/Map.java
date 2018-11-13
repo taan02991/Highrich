@@ -9,7 +9,7 @@ import character.Player;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class Map{
+public abstract class Map{
 	private Rectangle background;
 	private ArrayList<Rectangle> structList;
 	private ArrayList<Npc> npcList;
@@ -22,13 +22,7 @@ public class Map{
 		this.npcList = new ArrayList<Npc>();
 	}
 	
-	public void render(GraphicsContext gc) {
-		this.background.render(gc);
-		if(this.warpUp != null) warpUp.render(gc);
-		if(this.warpDown != null) warpDown.render(gc);
-		for(Rectangle r: structList) r.render(gc);
-		for(Npc npc: npcList) npc.render(gc);
-	}
+	public abstract void render(GraphicsContext gc);
 	
 	// test updateNpc
 	public void updateNpc() {
