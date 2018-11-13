@@ -1,11 +1,14 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
+import UI.GameScene;
 import UI.Images;
 import character.Player;
 import character.Visitor;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.ChoiceDialog;
 import map.Map;
 import map.MapUpStair;
 import map.MapWelcome;
@@ -27,7 +30,7 @@ public class GameManager {
 	public void generateMap() {
 		maps.add(new MapWelcome());
 		for(int i = 0; i < 6; i++) {
-			maps.add(new MapUpStair());
+			maps.add(new MapUpStair(i));
 		}
 	}
 	
@@ -53,7 +56,27 @@ public class GameManager {
 		if(this.currentMap instanceof MapUpStair) {
 			for(Room o : ((MapUpStair) this.currentMap).getRoomsList()) {
 				if( player.intersects(o.getTractor()) ) {
-					System.out.println("bump");
+					System.out.println("xxx");
+					/*ArrayList<String> choices = new ArrayList<>();
+					choices.add("a");
+					choices.add("b");
+					choices.add("c");
+
+					ChoiceDialog<String> dialog = new ChoiceDialog<>("b", choices);
+					dialog.setTitle("Choice Dialog");
+					dialog.setHeaderText("Look, a Choice Dialog");
+					dialog.setContentText("Choose your letter:");
+
+					// Traditional way to get the response value.
+					Optional<String> result = dialog.showAndWait();
+					if (result.isPresent()){
+					    System.out.println("Your choice: " + result.get());
+					}
+
+					// The Java 8 way to get the response value (with lambda expression).
+					result.ifPresent(letter -> System.out.println("Your choice: " + letter));
+					((MapUpStair) this.currentMap).setRoom(o.getPosition());*/
+
 				}
 			}
 		}

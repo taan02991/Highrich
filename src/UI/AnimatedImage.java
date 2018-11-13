@@ -2,9 +2,12 @@ package UI;
 
 import character.Player;
 import controller.GameManager;
+import controller.KeyInput;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import map.Map;
+import map.MapUpStair;
+import map.Room;
 
 public class AnimatedImage extends Rectangle
 {
@@ -24,10 +27,9 @@ public class AnimatedImage extends Rectangle
     	this.moveTick = 0;
     	this.lastPositionX = super.getPositionX();
     	this.lastPositionY = super.getPositionY();
-    	
     }
     
-	public void fixOutOfBound() {
+	private void fixOutOfBound() {
 		if(super.getPositionX() < 0) {
 			super.setPositionX(0);
 		}
@@ -42,31 +44,90 @@ public class AnimatedImage extends Rectangle
 		}
 	}
 	
-	public void fixCollide() {
+	private void fixCollide() {
 		
-		//******if npc,have to check collide with player
-		
+		/* if npc,have to check collide with player */
 		for(Rectangle s: map.getStructList()) {
 			this.fixCollideWith(s);
 		}
 		for(Rectangle s: map.getNpcList()) {
 			this.fixCollideWith(s);
 		}
+		
+		//check bump tractor
+		if( map instanceof MapUpStair && this instanceof Player ) {
+			for(Room o: ((MapUpStair) map).getRoomsList()) {
+				
+				/*this.tractorTab[0] = KeyInput.contains("ENTER") && this.intersects(o.getTractor());
+				if( this.tractorTab[0] == true && this.tractorTab[1] == false ) {
+					System.out.println("ppp");
+				}
+				this.tractorTab[1] = this.tractorTab[0];*/
+				fixCollideWithTractor(o.getTractor());
+			}
+		}
 	}
 	
-	public void fixCollideWith(Rectangle s) {
+	private void fixCollideWithTractor(Rectangle s) {
 		if(s != this && this.intersects(s)) {
+			
 			super.setPositionX(this.lastPositionX);
 			super.setPositionY(this.lastPositionY);
-			if(this.lastPositionX + super.getWidth() < s.getPositionX() || this.lastPositionX > s.getPositionX() +s.getWidth()) {
-				if(this.velocityX > 0) super.setPositionX(s.getPositionX() - super.getWidth());
-				else if(this.velocityX < 0) super.setPositionX(s.getPositionX() + s.getWidth());
+			
+			if(this.lastPositionX + super.getWidth() < s.getPositionX()
+					|| this.lastPositionX > s.getPositionX() +s.getWidth()) {
+				if(this.velocityX > 0) {
+					super.setPositionX(s.getPositionX() - super.getWidth());
+				}else{
+					if(this.velocityX < 0) {
+						super.setPositionX(s.getPositionX() + s.getWidth());
+					}
+				}
 			}
-			if(this.lastPositionY + super.getHeight() < s.getPositionY() || this.lastPositionY > s.getPositionY() + s.getHeight());{
-				if(this.velocityY > 0) super.setPositionY(s.getPositionY() - super.getHeight());
-				else if(this.velocityY < 0) super.setPositionY(s.getPositionY() + s.getHeight());
+			
+			if(this.lastPositionY + super.getHeight() < s.getPositionY()
+					|| this.lastPositionY > s.getPositionY() + s.getHeight());{
+				if(this.velocityY > 0) {
+					super.setPositionY(s.getPositionY() - super.getHeight());
+				}else {
+					if(this.velocityY < 0) {
+						super.setPositionY(s.getPositionY() + s.getHeight());
+					}
+				}
 			}
+					
 		}	
+	}
+	
+	private void fixCollideWith(Rectangle s) {
+		if(s != this && this.intersects(s)) {
+			
+			super.setPositionX(this.lastPositionX);
+			super.setPositionY(this.lastPositionY);
+			
+			if(this.lastPositionX + super.getWidth() < s.getPositionX()
+					|| this.lastPositionX > s.getPositionX() +s.getWidth()) {
+				if(this.velocityX > 0) {
+					super.setPositionX(s.getPositionX() - super.getWidth());
+				}else{
+					if(this.velocityX < 0) {
+						super.setPositionX(s.getPositionX() + s.getWidth());
+					}
+				}
+			}
+			
+			if(this.lastPositionY + super.getHeight() < s.getPositionY()
+					|| this.lastPositionY > s.getPositionY() + s.getHeight());{
+				if(this.velocityY > 0) {
+					super.setPositionY(s.getPositionY() - super.getHeight());
+				}else {
+					if(this.velocityY < 0) {
+						super.setPositionY(s.getPositionY() + s.getHeight());
+					}
+				}
+			}
+					
+		}
 	}
     
     @Override
