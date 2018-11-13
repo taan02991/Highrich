@@ -18,7 +18,9 @@ public class Visitor extends Npc implements Walkable{
 	}
 	
 	public void walkToReception() {
-		//if(super)
+		for(Npc npc: super.getMap().getNpcList()) {
+			if(npc instanceof Receptionist)
+		}
 		
 	}
 	

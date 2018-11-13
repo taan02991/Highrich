@@ -81,7 +81,7 @@ public class AnimatedImage extends Rectangle
     	this.lastPositionX = super.getPositionX();
     	this.lastPositionY = super.getPositionY();
         super.setPositionX(super.getPositionX() + this.velocityX);
-        super.setPositionY(this.getPositionY() + this.velocityY);
+        super.setPositionY(super.getPositionY() + this.velocityY);
         this.fixOutOfBound();
         this.fixCollide();
         if(this.velocityX != 0 || this.velocityY != 0) {
