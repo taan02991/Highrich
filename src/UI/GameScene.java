@@ -19,6 +19,9 @@ public class GameScene extends Scene {
 
 	private VBox root;
 	
+	public static Timeline gameLoop;
+	public static KeyFrame kf;
+	
 	public GameScene() {
 		super(new VBox() ,500 ,700);
 		root = (VBox) getRoot();
@@ -50,9 +53,8 @@ public class GameScene extends Scene {
             });
         
         gameLoop.getKeyFrames().add( kf );
-        gameLoop.play();
-
-		
+        gameLoop.play();		
 	}
+	
 
 }

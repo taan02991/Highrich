@@ -10,9 +10,11 @@ import map.RoomConstruction;
 
 public class MapUpStair extends Map{
 	private ArrayList<Room> roomsList;
+	private int floor;
 	
-	public MapUpStair() {
+	public MapUpStair(int floor) {
 		super();
+		this.floor = floor;
 		this.roomsList = new ArrayList<Room>();
 		initRoom();
 		this.setWarpUp(new Rectangle(Images.WARP, 190, 0));
