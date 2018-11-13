@@ -22,16 +22,24 @@ public class AnimatedImage extends Rectangle
     	this.frames = frames;
     	this.map = map;
     	this.moveTick = 0;
-    	this.lastPositionX = this.positionX;
-    	this.lastPositionY = this.positionY;
+    	this.lastPositionX = super.getPositionX();
+    	this.lastPositionY = super.getPositionY();
     	
     }
     
 	public void fixOutOfBound() {
-		if(this.positionX < 0) this.positionX = 0;
-		if(this.positionX + this.width > 500) this.positionX = 500 - this.width; 
-		if(this.positionY < 0) this.positionY = 0;
-		if(this.positionY + this.height > 500) this.positionY = 500 - this.height;
+		if(super.getPositionX() < 0) {
+			super.setPositionX(0);
+		}
+		if(super.getPositionX() + super.getWidth() > 500) {
+			super.setPositionX(500 - super.getWidth()); 
+		}
+		if(super.getPositionY() < 0) {
+			super.setPositionY(0);
+		}
+		if(super.getPositionY() + super.getHeight() > 500) {
+			super.setPositionY(500 - super.getHeight());
+		}
 	}
 	
 	public void fixCollide() {
@@ -48,15 +56,15 @@ public class AnimatedImage extends Rectangle
 	
 	public void fixCollideWith(Rectangle s) {
 		if(s != this && this.intersects(s)) {
-			this.positionX = this.lastPositionX;
-			this.positionY = this.lastPositionY;
-			if(this.lastPositionX + this.width < s.positionX || this.lastPositionX > s.positionX +s.width) {
-				if(this.velocityX > 0) this.positionX = s.positionX - this.width;
-				else if(this.velocityX < 0) this.positionX = s.positionX + s.width;
+			super.setPositionX(this.lastPositionX);
+			super.setPositionY(this.lastPositionY);
+			if(this.lastPositionX + super.getWidth() < s.getPositionX() || this.lastPositionX > s.getPositionX() +s.getWidth()) {
+				if(this.velocityX > 0) super.setPositionX(s.getPositionX() - super.getWidth());
+				else if(this.velocityX < 0) super.setPositionX(s.getPositionX() + s.getWidth());
 			}
-			if(this.lastPositionY + this.height < s.positionY || this.lastPositionY > s.positionY + s.height);{
-				if(this.velocityY > 0) this.positionY = s.positionY - this.height;
-				else if(this.velocityY < 0) this.positionY = s.positionY + s.height;
+			if(this.lastPositionY + super.getHeight() < s.getPositionY() || this.lastPositionY > s.getPositionY() + s.getHeight());{
+				if(this.velocityY > 0) super.setPositionY(s.getPositionY() - super.getHeight());
+				else if(this.velocityY < 0) super.setPositionY(s.getPositionY() + s.getHeight());
 			}
 		}	
 	}
@@ -65,15 +73,15 @@ public class AnimatedImage extends Rectangle
     public void render(GraphicsContext gc)
     {  	
     	this.setImage(this.getFrame(moveTick));
-        gc.drawImage(this.image , positionX, positionY );
+        gc.drawImage(super.getImage() , super.getPositionX(), super.getPositionY() );
     }
     
     public void update()
     {
-    	this.lastPositionX = this.positionX;
-    	this.lastPositionY = this.positionY;
-        this.positionX += this.velocityX;
-        this.positionY += this.velocityY;
+    	this.lastPositionX = super.getPositionX();
+    	this.lastPositionY = super.getPositionY();
+        super.setPositionX(super.getPositionX() + this.velocityX);
+        super.setPositionY(this.getPositionY() + this.velocityY);
         this.fixOutOfBound();
         this.fixCollide();
         if(this.velocityX != 0 || this.velocityY != 0) {

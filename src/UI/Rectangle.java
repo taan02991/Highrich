@@ -6,11 +6,11 @@ import javafx.geometry.Rectangle2D;
 
 public class Rectangle
 {
-    protected Image image;
-    protected double positionX;
-    protected double positionY;    
-    protected double width;
-    protected double height;
+    private Image image;
+    private double positionX;
+    private double positionY;    
+    private double width;
+    private double height;
 
     public Rectangle()
     {
@@ -55,6 +55,46 @@ public class Rectangle
     {
         return s.getBoundary().intersects( this.getBoundary() );
     }
+    
+    public void setPositionX(double positionX) {
+    	this.positionX = positionX;
+    }
+
+	public double getPositionX() {
+		return positionX;
+	}
+	
+	public void setPositionY(double positionY) {
+		this.positionY = positionY;
+	}
+
+	public double getPositionY() {
+		return positionY;
+	}
+
+	public double getWidth() {
+		return width;
+	}
+
+	public void setWidth(double width) {
+		this.width = width;
+	}
+
+	public double getHeight() {
+		return height;
+	}
+
+	public void setHeight(double height) {
+		this.height = height;
+	}
+
+	public Image getImage() {
+		return image;
+	}
+	
+	
+    
+    
     
     
     

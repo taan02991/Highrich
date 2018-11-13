@@ -8,7 +8,6 @@ public class Visitor extends Npc implements Walkable{
 	public Visitor(Image[] npcL, Image[] npcR, Image[] npcU, Image[] npcD, Map map) {
 		super(npcL, npcR, npcU, npcD, map, 250, 480, 0, 0);
 		super.setFacing("UP");
-		super.setVelocity(0, -1);
 	}
 	
 	@Override
