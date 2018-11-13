@@ -39,7 +39,9 @@ public class GameManager {
 		this.currentMap = this.maps.get((this.maps.indexOf(this.currentMap) + player.warp()) % this.maps.size());
 		//Change map player is at
 		this.player.setMap(this.currentMap);
-		this.currentMap.updateNpc();
+		for(Map map: maps) {
+			map.updateNpc();
+		}
 		this.player.update();
 	}
 	
