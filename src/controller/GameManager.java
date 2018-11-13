@@ -21,12 +21,16 @@ public class GameManager {
 	//for test
 	private long gameTick = 0;
 	private int stage = 0;
+	private boolean[] isBumpTractor;
 	
 	public GameManager() {
 		this.maps = new ArrayList<Map>();
 		this.generateMap();
 		this.currentMap = maps.get(0);
 		player = new Player(Images.PLAYERU, this.currentMap, 0, 0, 0, 0);
+		this.isBumpTractor = new boolean[2];
+		this.isBumpTractor[0] = false;
+		this.isBumpTractor[1] = false;
 	}
 	
 	public void generateMap() {
@@ -64,8 +68,13 @@ public class GameManager {
 		*/
 		if(this.currentMap instanceof MapUpStair) {
 			for(Room o : ((MapUpStair) this.currentMap).getRoomsList()) {
-				if( player.intersects(o.getTractor()) ) {
-					System.out.println("xxx");
+				
+				this.isBumpTractor[0] = player.intersects(o.getTractor());
+				
+				if(this.isBumpTractor[0] == true && this.isBumpTractor[1] == false) {
+					
+					System.out.println(this.isBumpTractor[0]+" "+this.isBumpTractor[1]);
+					
 					/*ArrayList<String> choices = new ArrayList<>();
 					choices.add("a");
 					choices.add("b");
@@ -85,8 +94,9 @@ public class GameManager {
 					// The Java 8 way to get the response value (with lambda expression).
 					result.ifPresent(letter -> System.out.println("Your choice: " + letter));
 					((MapUpStair) this.currentMap).setRoom(o.getPosition());*/
-
 				}
+				this.isBumpTractor[1] = this.isBumpTractor[0];
+				
 			}
 		}
 	}

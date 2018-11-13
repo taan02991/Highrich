@@ -54,49 +54,6 @@ public class AnimatedImage extends Rectangle
 			this.fixCollideWith(s);
 		}
 		
-		//check bump tractor
-		if( map instanceof MapUpStair && this instanceof Player ) {
-			for(Room o: ((MapUpStair) map).getRoomsList()) {
-				
-				/*this.tractorTab[0] = KeyInput.contains("ENTER") && this.intersects(o.getTractor());
-				if( this.tractorTab[0] == true && this.tractorTab[1] == false ) {
-					System.out.println("ppp");
-				}
-				this.tractorTab[1] = this.tractorTab[0];*/
-				fixCollideWithTractor(o.getTractor());
-			}
-		}
-	}
-	
-	private void fixCollideWithTractor(Rectangle s) {
-		if(s != this && this.intersects(s)) {
-			
-			super.setPositionX(this.lastPositionX);
-			super.setPositionY(this.lastPositionY);
-			
-			if(this.lastPositionX + super.getWidth() < s.getPositionX()
-					|| this.lastPositionX > s.getPositionX() +s.getWidth()) {
-				if(this.velocityX > 0) {
-					super.setPositionX(s.getPositionX() - super.getWidth());
-				}else{
-					if(this.velocityX < 0) {
-						super.setPositionX(s.getPositionX() + s.getWidth());
-					}
-				}
-			}
-			
-			if(this.lastPositionY + super.getHeight() < s.getPositionY()
-					|| this.lastPositionY > s.getPositionY() + s.getHeight());{
-				if(this.velocityY > 0) {
-					super.setPositionY(s.getPositionY() - super.getHeight());
-				}else {
-					if(this.velocityY < 0) {
-						super.setPositionY(s.getPositionY() + s.getHeight());
-					}
-				}
-			}
-					
-		}	
 	}
 	
 	private void fixCollideWith(Rectangle s) {
