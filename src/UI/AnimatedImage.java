@@ -1,6 +1,7 @@
 package UI;
 
 import character.Player;
+import controller.GameManager;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import map.Map;
@@ -36,7 +37,6 @@ public class AnimatedImage extends Rectangle
 	public void fixCollide() {
 		
 		//******if npc,have to check collide with player
-		
 		
 		for(Rectangle s: map.getStructList()) {
 			this.fixCollideWith(s);

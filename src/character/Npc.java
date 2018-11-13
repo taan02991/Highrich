@@ -12,15 +12,24 @@ public class Npc extends AnimatedImage{
 	private Image[] npcU;
 	private Image[] npcD;
 
-	public Npc(Image[] frames,Map map, double positionX, double positionY, double velocityX, double velocityY) {
-		super(frames, map, positionX, positionY, velocityX, velocityY);
+	public Npc(Image[] npcL, Image[] npcR, Image[] npcU, Image[] npcD, Map map,
+			double positionX, double positionY, double velocityX, double velocityY) {
+		super(npcR, map, positionX, positionY, velocityX, velocityY);
+		this.setNpcImage(npcL, npcR, npcU, npcD);
 	}
 	
-	public void setFrames(Image[] npcL, Image[] npcR, Image[] npcU, Image[] npcD) {
+	public void setNpcImage(Image[] npcL, Image[] npcR, Image[] npcU, Image[] npcD) {
 		this.npcL = npcL;
 		this.npcR = npcR;
 		this.npcU = npcU;
 		this.npcD = npcD;
+	}
+	
+	public void setFacing(String s) {
+		if(s.equals("LEFT")) this.setFrame(npcL);
+		else if(s.equals("RIGHT")) this.setFrame(npcR);
+		else if(s.equals("UP")) this.setFrame(npcU);
+		else if(s.equals("DOWN")) this.setFrame(npcD);
 	}
 	
 

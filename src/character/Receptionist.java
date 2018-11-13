@@ -6,10 +6,9 @@ import map.Map;
 
 public class Receptionist extends Npc{
 	
-	public Receptionist(Image[] frames, Map map, double positionX, double positionY) {
-		super(frames , map, positionX, positionY, 0, 0);
+	public Receptionist(Image[] npcL, Image[] npcR, Image[] npcU, Image[] npcD, Map map, double positionX, double positionY) {
+		super(npcL, npcR, npcU, npcD, map, positionX, positionY, 0, 0);
 		//Have to change to Receptionist pic later
-		this.setFrames(Images.playerL, Images.playerR, Images.playerU, Images.playerD);
 	}
 
 }
