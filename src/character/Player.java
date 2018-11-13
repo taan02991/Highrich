@@ -7,7 +7,7 @@ import controller.KeyInput;
 import javafx.scene.image.Image;
 import map.Map;
 
-public class Player extends AnimatedImage{
+public class Player extends AnimatedImage implements Walkable{
 	private static final Image[] PLAYERL = Images.PLAYERL;
 	private static final Image[] PLAYERR = Images.PLAYERR;
 	private static final Image[] PLAYERU = Images.PLAYERU;
@@ -50,22 +50,25 @@ public class Player extends AnimatedImage{
 	
 	public int warp() {
 		if(super.getMap().getWarpUp() != null &&
-				super.getMap().getWarpUp().intersects(this)) {
-			
+				super.getMap().getWarpUp().intersects(this)) {	
 			//set position after warp later
 			super.setPosition(100, 100);
-			
 			return 1;
 		}
 		else if(super.getMap().getWarpDown() != null && 
 				super.getMap().getWarpDown().intersects(this)) {
-			
 			//set position after warp later
 			this.setPosition(100, 100);
-
 			return -1;
 		}
 		return 0;
+	}
+	
+	
+	@Override
+	public void walk() {
+		this.setVelocityOnKeyPressed();
+		this.setFacing();	
 	}
 	
 	//test talk

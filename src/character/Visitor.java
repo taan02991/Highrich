@@ -3,7 +3,7 @@ package character;
 import javafx.scene.image.Image;
 import map.Map;
 
-public class Visitor extends Npc{
+public class Visitor extends Npc implements Walkable{
 
 	public Visitor(Image[] npcL, Image[] npcR, Image[] npcU, Image[] npcD, Map map) {
 		super(npcL, npcR, npcU, npcD, map, 250, 480, 0, 0);
@@ -11,6 +11,7 @@ public class Visitor extends Npc{
 		super.setVelocity(0, -1);
 	}
 	
+	@Override
 	public void walk() {
 		this.walkToReception();
 		this.talkWithReceptionist();
@@ -18,6 +19,7 @@ public class Visitor extends Npc{
 	}
 	
 	public void walkToReception() {
+		
 	}
 	
 	public void talkWithReceptionist() {
@@ -25,8 +27,7 @@ public class Visitor extends Npc{
 	}
 	
 	public void walkToWarpUp() {
-		
 		super.getMap().getNpcList().remove(this);
 	}
-	
+
 }

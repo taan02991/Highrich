@@ -10,7 +10,7 @@ public class AnimatedImage extends Rectangle
 {
     private Image[] frames;
     private double moveTick;
-    protected Map map;
+    private Map map;
     private double velocityX;
     private double velocityY;
     private double lastPositionX;
