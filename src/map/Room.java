@@ -1,5 +1,6 @@
 package map;
 
+import UI.Images;
 import UI.Rectangle;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -8,11 +9,29 @@ public class Room {
 	protected boolean isAvailable;
 	protected int position;
 	protected Image image;
+	protected Rectangle tractor;
 	
 	public Room(Image image, int position) {
 		this.isAvailable = true;
 		this.position = position;
 		this.image = image;
+		initTractor();
+	}
+
+	private void initTractor() {
+		if( this.position < 3 ) {
+			this.tractor = new Rectangle(Images.TRACTOR, 78, 166*(this.position) + 65);
+		}else {
+			this.tractor = new Rectangle(Images.TRACTOR, 378, 166*(this.position-3) + 65);
+		}
+	}
+	
+	public Rectangle getTractor() {
+		return tractor;
+	}
+
+	public void setTractor(Rectangle tractor) {
+		this.tractor = tractor;
 	}
 
 	public boolean isAvailable() {
@@ -28,11 +47,11 @@ public class Room {
 	}
 	
     public void render(GraphicsContext gc){
-    	if( position < 3 ) {
-    		gc.drawImage(image, 0, 166*(position) );	
-    	}else {
-    		gc.drawImage(image, 300, 166*(position-3) );
+    	if( this.position < 3 ) {
+    		gc.drawImage(this.image, 0, 166*(this.position) );
+    	}else{
+    		gc.drawImage(this.image, 300, 166*(this.position-3) );
     	}
-
+    	this.tractor.render(gc);
     }
 }
