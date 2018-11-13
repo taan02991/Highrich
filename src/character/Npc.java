@@ -26,10 +26,18 @@ public class Npc extends AnimatedImage{
 	}
 	
 	public void setFacing(String s) {
-		if(s.equals("LEFT")) this.setFrame(npcL);
-		else if(s.equals("RIGHT")) this.setFrame(npcR);
-		else if(s.equals("UP")) this.setFrame(npcU);
-		else if(s.equals("DOWN")) this.setFrame(npcD);
+		if(s.equals("LEFT")) {
+			super.setFrame(npcL);
+		}
+		else if(s.equals("RIGHT")) {
+			super.setFrame(npcR);
+		}
+		else if(s.equals("UP")) {
+			super.setFrame(npcU);
+		}
+		else if(s.equals("DOWN")) {
+			super.setFrame(npcD);
+		}
 	}
 	
 

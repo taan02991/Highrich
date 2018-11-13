@@ -18,29 +18,47 @@ public class Player extends AnimatedImage{
 	}
 	
 	public void setFacing() {
-		if(this.velocityX < 0) this.setFrame(PLAYERL);
-		else if(this.velocityX > 0) this.setFrame(PLAYERR);
-		else if(this.velocityY > 0) this.setFrame(PLAYERD);
-		else if(this.velocityY < 0) this.setFrame(PLAYERU);
+		if(super.getVelocityX() < 0) {
+			super.setFrame(PLAYERL);
+		}
+		else if(super.getVelocityX() > 0) {
+			super.setFrame(PLAYERR);
+		}
+		else if(super.getVelocityY() > 0) {
+			super.setFrame(PLAYERD);
+		}
+		else if(super.getVelocityY() < 0) {
+			super.setFrame(PLAYERU);
+		}
 	}
 	
 	public void setVelocityOnKeyPressed() {
 		super.setVelocity(0, 0);
-    	if(KeyInput.contains("RIGHT")) super.setVelocity(5, 0);
-    	if(KeyInput.contains("LEFT")) super.setVelocity(-5, 0);
-    	if(KeyInput.contains("UP")) super.setVelocity(0, -5);
-    	if(KeyInput.contains("DOWN")) super.setVelocity(0, 5);
+    	if(KeyInput.contains("RIGHT")) {
+    		super.setVelocity(5, 0);
+    	}
+    	if(KeyInput.contains("LEFT")) {
+    		super.setVelocity(-5, 0);
+    	}
+    	if(KeyInput.contains("UP")) {
+    		super.setVelocity(0, -5);
+    	}
+    	if(KeyInput.contains("DOWN")) {
+    		super.setVelocity(0, 5);
+    	}
 	}
 	
 	public int warp() {
-		if(this.getMap().getWarpUp() != null && this.getMap().getWarpUp().intersects(this)) {
+		if(super.getMap().getWarpUp() != null &&
+				super.getMap().getWarpUp().intersects(this)) {
 			
 			//set position after warp later
-			this.setPosition(100, 100);
+			super.setPosition(100, 100);
 			
 			return 1;
 		}
-		else if(this.getMap().getWarpDown() != null && this.getMap().getWarpDown().intersects(this)) {
+		else if(super.getMap().getWarpDown() != null && 
+				super.getMap().getWarpDown().intersects(this)) {
 			
 			//set position after warp later
 			this.setPosition(100, 100);
@@ -54,8 +72,8 @@ public class Player extends AnimatedImage{
 	public void talkWith() {
 		if(KeyInput.contains("SPACE")) {
 			System.out.println("Space");
-			for(Npc npc: this.map.getNpcList()) {
-				if(this.intersects(npc)) {
+			for(Npc npc: super.getMap().getNpcList()) {
+				if(super.intersects(npc)) {
 					npc.talk();
 				}
 			}

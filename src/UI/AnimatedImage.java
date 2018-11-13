@@ -11,10 +11,10 @@ public class AnimatedImage extends Rectangle
     private Image[] frames;
     private double moveTick;
     protected Map map;
-    protected double velocityX;
-    protected double velocityY;
-    protected double lastPositionX;
-    protected double lastPositionY; 
+    private double velocityX;
+    private double velocityY;
+    private double lastPositionX;
+    private double lastPositionY; 
     
     public AnimatedImage(Image[] frames,Map map, double positionX, double positionY, double velocityX, double velocityY) {
     	super(positionX, positionY);
@@ -106,6 +106,13 @@ public class AnimatedImage extends Rectangle
         this.velocityX = x;
         this.velocityY = y;
     }
-    
+
+	public double getVelocityX() {
+		return velocityX;
+	}
+
+	public double getVelocityY() {
+		return velocityY;
+	}  
     
 }
