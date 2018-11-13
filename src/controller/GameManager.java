@@ -15,7 +15,9 @@ public class GameManager {
 	private static Player player;
 	private ArrayList<Map> maps;
 	private Map currentMap;
+	//for test
 	private long gameTick = 0;
+	private int stage = 0;
 	
 	public GameManager() {
 		this.maps = new ArrayList<Map>();
@@ -35,8 +37,15 @@ public class GameManager {
 		//test add Receptionist
 		gameTick = (gameTick+1)%100000;
 		if(this.currentMap instanceof MapWelcome && gameTick%300 == 0) {
-			((MapWelcome) this.currentMap).addReceptionist(1);
-			((MapWelcome) this.currentMap).addNpc(new Visitor(Images.PLAYERL, Images.PLAYERR, Images.PLAYERU, Images.PLAYERD, this.currentMap));
+			((MapWelcome) this.currentMap).addReceptionist();
+			
+		}
+		if(KeyInput.contains("SPACE") && this.stage == 0) {
+			this.stage = 1;
+			System.out.println(((MapWelcome) this.currentMap).addVisitor());
+		}
+		else if(!KeyInput.contains("SPACE")){
+			this.stage = 0;
 		}
 		// Change current map if player is on warp position
 		this.currentMap = this.maps.get((this.maps.indexOf(this.currentMap) + player.warp()) % this.maps.size());

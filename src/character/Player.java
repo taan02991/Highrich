@@ -71,21 +71,8 @@ public class Player extends AnimatedImage implements Walkable{
 		this.setFacing();	
 	}
 	
-	//test talk
-	public void talkWith() {
-		if(KeyInput.contains("SPACE")) {
-			System.out.println("Space");
-			for(Npc npc: super.getMap().getNpcList()) {
-				if(super.intersects(npc)) {
-					npc.talk();
-				}
-			}
-		}
-	}
-	
 	@Override 
 	public void update() {
-		this.talkWith();
     	this.walk();
     	super.update();                		                		
 	}

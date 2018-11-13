@@ -4,84 +4,102 @@ import javafx.scene.image.Image;
 import map.Map;
 
 public class Visitor extends Npc implements Walkable{
-	private double targetX;
-	private double targetY;
 	private int stage;
-	private boolean taskComplete;
+	private int talkTick;
+	private Receptionist contactPerson;
 	
 	public Visitor(Image[] npcL, Image[] npcR, Image[] npcU, Image[] npcD, Map map) {
-		super(npcL, npcR, npcU, npcD, map, 250, 480, 0, 0);
+		super(npcL, npcR, npcU, npcD, map, 250, 450, 0, 0);
 		super.setFacing("UP");
 		this.stage = 0;
-		this.taskComplete = true;
+		this.talkTick = 0;
+		this.contactPerson = null;
 	}
 	
 	@Override
 	public void walk() {
 		if(this.stage == 0) {
-			this.walkToReception();
-			this.taskComplete = false;
+			this.findContactPerson();
 		}
-		else if(stage == 1) {
-			this.talkWithReceptionist();
-			this.taskComplete = false;
+		else if(this.stage == 1) {
+			this.walkToContactPerson();
 		}
-		else if(stage == 2) {
+		else if(this.stage == 2) {
+			this.talkWithContactPerson();;
+		}
+		else if(this.stage == 3) {
 			this.walkToWarpUp();
-			this.taskComplete = false;
 		}
+
 	}
 	
-	public boolean walkToReception() {
+	public void findContactPerson(){
 		for(Npc npc: super.getMap().getNpcList()) {
 			if(npc instanceof Receptionist) {
-				Receptionist receptionist = (Receptionist) npc;
-				if(!receptionist.isBusy()) {
-					this.targetX = receptionist.getPositionX() + 25;
-					this.targetY = receptionist.getPositionY();
-					receptionist.setBusy(true);
-					return true;
+				if(!((Receptionist) npc).isBusy()) {
+					this.contactPerson = (Receptionist) npc;
+					this.contactPerson.setBusy(true);
+					stage = 1;
+					return;
 				}
 			}
 		}
-		return false;
+		if(super.getPositionY() != 450) {
+			super.setVelocity(0, 1);
+			super.setFacing("DOWN");
+		}
+		else {
+			super.setActive(false);
+		}
+	}
+	
+	public void walkToContactPerson(){
+		if(this.contactPerson != null) {
+			if(this.contactPerson.getPositionY() != this.getPositionY()) {
+				super.setVelocity(0, -1);
+				super.setFacing("UP");
+			}
+			else if(this.contactPerson.getPositionX() + 50 != this.getPositionX()) {
+				super.setVelocity(-1, 0);
+				super.setFacing("LEFT");
+			}
+			else {
+				super.setVelocity(0, 0);
+				this.stage = 2;
+			}
+		}
 		
 	}
 	
-	public void talkWithReceptionist() {
-		
+	public void talkWithContactPerson() {
+		super.setFacing("RIGHT");
+		this.talkTick++;
+		if(talkTick == 1000) {
+			this.contactPerson.setBusy(false);
+			this.stage = 3;
+		}	
 	}
 	
 	public void walkToWarpUp() {
-		this.targetX = 0;
-		this.targetY = 250;
-		super.getMap().getNpcList().remove(this);
+		if(super.getPositionX() != 250) {
+			super.setVelocity(1, 0);
+			super.setFacing("RIGHT");
+		}
+		else if(super.getPositionY() != 50) {
+			super.setVelocity(0, -1);
+			super.setFacing("UP");
+		}
+		else {
+			this.stage = 4;
+			super.setActive(false);
+		}
 	}
 	
-	public void walkTo(double targetX, double targetY) {
-		this.targetX = targetX;
-		this.targetY = targetY;
-		this.setVelocity(1, 1);
-		if(this.targetX == super.getVelocityX() && this.targetY == super.getPositionY()) {
-			this.setVelocity(0, 0);
-			this.stage++;
-			this.taskComplete = true;
-		}
-		if(this.targetY != super.getPositionY()) {
-			if(this.targetY - super.getPositionY() < 0) this.setVelocity(0, -1);
-			else this.setVelocity(0, 1);
-		}
-		else if(this.targetX != super.getPositionX()) {
-			if(this.targetX - super.getPositionX() < 0) this.setVelocity(-1, 0);
-			else this.setVelocity(1, 0);
-		}
-	}
-
+	@Override
 	public void update() {
-		if(taskComplete) {
-			this.walk();
-		}
-		this.walkTo(targetX, targetY);
+		walk();
 		super.update();
 	}
+	
+	
 }

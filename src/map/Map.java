@@ -26,10 +26,17 @@ public abstract class Map{
 	
 	// test updateNpc
 	public void updateNpc() {
-		for(Npc npc: npcList) {
+		ArrayList<Npc> inActive = new ArrayList<Npc>();
+		for(Npc npc: this.getNpcList()) {
 			npc.update();
+			if(!npc.isActive()) {
+				inActive.add(npc);
+			}
 		}
+		this.getNpcList().removeAll(inActive);
+		
 	}
+	
 	
 	public void addStruct(Rectangle rectangle) {
 		this.structList.add(rectangle);

@@ -11,11 +11,13 @@ public class Npc extends AnimatedImage{
 	private Image[] npcL;
 	private Image[] npcU;
 	private Image[] npcD;
+	private boolean isActive;
 
 	public Npc(Image[] npcL, Image[] npcR, Image[] npcU, Image[] npcD, Map map,
 			double positionX, double positionY, double velocityX, double velocityY) {
 		super(npcR, map, positionX, positionY, velocityX, velocityY);
 		this.setNpcImage(npcL, npcR, npcU, npcD);
+		this.isActive = true;
 	}
 	
 	public void setNpcImage(Image[] npcL, Image[] npcR, Image[] npcU, Image[] npcD) {
@@ -40,11 +42,13 @@ public class Npc extends AnimatedImage{
 		}
 	}
 	
-
 	
-	//test talk
-	public void talk() {
-		System.out.println("talk");
+	public boolean isActive() {
+		return isActive;
+	}
+
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
 	}
 	
 }

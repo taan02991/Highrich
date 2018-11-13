@@ -20,29 +20,36 @@ public class MapWelcome extends Map{
 		super.addStruct(new Rectangle(Images.SOFA, 431, 118));
 	}
 	
-	public int addReceptionist(int n){
+	public boolean addVisitor() {
+		for(Npc npc: super.getNpcList()) {
+			if(npc instanceof Receptionist) {
+				Receptionist recep = (Receptionist) npc;
+				if(!recep.isBusy()) {
+					super.getNpcList().add(new Visitor(Images.PLAYERL, Images.PLAYERR, Images.PLAYERU, Images.PLAYERD, this));
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public boolean addReceptionist(){
 		if(this.numberOfReceptionist == this.MAXRECEPTIONIST) {
-			n = 0;
+			return false;
 //			throw new Exception or may be pop up message ("Can't add more receptionist");
 		}
-		else if(this.numberOfReceptionist + n > this.MAXRECEPTIONIST) {
-			n = this.MAXRECEPTIONIST - this.numberOfReceptionist;
+		double x = 40;
+		double y = 250;
+		this.numberOfReceptionist += 1;
+		if(this.numberOfReceptionist%2 == 0) {
+			y = 250 + this.numberOfReceptionist/2 * 32;				
 		}
-		for(int i = 0; i < n; i++) {
-			double x = 40;
-			double y = 250;
-			if(this.numberOfReceptionist%2 == 0) {
-				y = 250 + this.numberOfReceptionist/2 * 32;				
-			}
-			else{
-				y = 250 - this.numberOfReceptionist/2 * 32;				
-			}
-			this.numberOfReceptionist += 1;
-			Npc receptionist = new Receptionist(Images.PLAYERL, Images.PLAYERR, Images.PLAYERU, Images.PLAYERD, this, x, y);
-			super.getNpcList().add(receptionist);
+		else{
+			y = 250 - this.numberOfReceptionist/2 * 32;				
 		}
-		//this function return number of receptionists have been added
-		return n;
+		Npc receptionist = new Receptionist(Images.PLAYERL, Images.PLAYERR, Images.PLAYERU, Images.PLAYERD, this, x, y);
+		super.getNpcList().add(receptionist);
+		return true;
 	}
 	
 	@Override
