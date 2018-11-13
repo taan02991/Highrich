@@ -8,9 +8,10 @@ import javafx.scene.canvas.GraphicsContext;
 import map.Map;
 import map.MapUpStair;
 import map.MapWelcome;
+import map.Room;
 
 public class GameManager {
-	private Player player;
+	private static Player player;
 	private ArrayList<Map> maps;
 	private Map currentMap;
 	private long gameTick = 0;
@@ -38,16 +39,27 @@ public class GameManager {
 		// Change current map if player is on warp position
 		this.currentMap = this.maps.get((this.maps.indexOf(this.currentMap) + player.warp()) % this.maps.size());
 		//Change map player is at
-		this.player.setMap(this.currentMap);
+		player.setMap(this.currentMap);
 		for(Map map: maps) {
 			map.updateNpc();
 		}
-		this.player.update();
+		player.update();
+		
+		/*map up stair
+		*check player intersects with tractor
+		*/
+		if(this.currentMap instanceof MapUpStair) {
+			for(Room o : ((MapUpStair) this.currentMap).getRoomsList()) {
+				if( player.intersects(o.getTractor()) ) {
+					System.out.println("bump");
+				}
+			}
+		}
 	}
 	
 	public void render(GraphicsContext gc) {
 		this.currentMap.render(gc);
-		this.player.render(gc);
+		player.render(gc);
 	}
 	
 	

@@ -21,10 +21,11 @@ public class Images {
 		public static final Image SOFA = new Image(ClassLoader.getSystemResource("images/Sofa.png").toString());
 		public static final Image WARP = new Image(ClassLoader.getSystemResource("images/Warp.png").toString());
 		
-		public static final Image CONSTRUCTIONROOM = new Image(ClassLoader.getSystemResource("images/ConstructionRoom.png").toString());
+		public static final Image TRACTOR = new Image(ClassLoader.getSystemResource("images/Tractor.png").toString());
 		
-		static {
-			
-		}
+		public static final Image CONSTRUCTIONROOM = new Image(ClassLoader.getSystemResource("images/ConstructionRoom.png").toString());
+		public static final Image STANDARDROOM = new Image(ClassLoader.getSystemResource("images/StandardRoom.png").toString());
+		public static final Image EXECUTIVEROOM = new Image(ClassLoader.getSystemResource("images/ExecutiveRoom.png").toString());
+		public static final Image PRESIDENTIALROOM = new Image(ClassLoader.getSystemResource("images/PresidentialRoom.png").toString());
 
 }

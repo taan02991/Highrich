@@ -25,14 +25,18 @@ public class MapUpStair extends Map{
 			roomsList.add(new RoomConstruction(i));
 		}
 	}
-	
+
+	public ArrayList<Room> getRoomsList() {
+		return roomsList;
+	}
+
 	public void addRoom(Room o) {
 /* not sure		if(roomsList.size() == 6) throw new Exception("Full Room"); */
 		roomsList.add(o);
 	}
 	
 	public void removeRoom(int position) {
-		boolean check = false;
+//ต้องเช็คว่ามีลูกค้าป่าวด้ย, เป็นห้องที่ก่อสร้างแล้ว
 		for(int i = 0; i < 6; i++) {
 			if(this.roomsList.get(i).position == position) {
 				if(this.roomsList.get(i) instanceof RoomConstruction) {
@@ -42,7 +46,12 @@ public class MapUpStair extends Map{
 					break;
 				}
 			}
-		}	
+		}
+	}
+	
+	public void setRoom(int position) {
+		//เช็คว่ามีลูกค้าป่าว, เป็นห้องที่ต้องยังไม่ก่อสร้าง
+		this.roomsList.set(position, new RoomExecutive(position));
 	}
 	
 	@Override
@@ -50,9 +59,15 @@ public class MapUpStair extends Map{
 		super.getBackground().render(gc);
 		super.getWarpUp().render(gc);
 		super.getWarpDown().render(gc);
-		for(Rectangle r: super.getStructList()) r.render(gc);
-		for(Npc npc: this.getNpcList()) npc.render(gc);
-		for(Room o : roomsList) o.render(gc);
+		for(Rectangle o: super.getStructList()) {
+			o.render(gc);
+		}
+		for(Npc o: this.getNpcList()) {
+			o.render(gc);
+		}
+		for(Room o : roomsList) {
+			o.render(gc);
+		}
 	}
 	
 }
