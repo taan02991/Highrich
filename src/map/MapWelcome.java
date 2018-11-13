@@ -8,7 +8,7 @@ import character.Visitor;
 import javafx.scene.canvas.GraphicsContext;
 
 public class MapWelcome extends Map{
-	private static final int MAXRECEPTIONIST = 4;
+	private static final int MAXRECEPTIONIST = 10;
 	private int numberOfReceptionist;
 	
 	public MapWelcome(){
@@ -26,10 +26,18 @@ public class MapWelcome extends Map{
 			n = 0;
 //			throw new Exception or may be pop up message ("Can't add more receptionist");
 		}
-		else if(this.numberOfReceptionist + n > this.MAXRECEPTIONIST) n = this.MAXRECEPTIONIST - this.numberOfReceptionist;
+		else if(this.numberOfReceptionist + n > this.MAXRECEPTIONIST) {
+			n = this.MAXRECEPTIONIST - this.numberOfReceptionist;
+		}
 		for(int i = 0; i < n; i++) {
-			double x = 10;
-			double y = 100 + this.numberOfReceptionist * 20;
+			double x = 40;
+			double y = 250;
+			if(this.numberOfReceptionist%2 == 0) {
+				y = 250 + this.numberOfReceptionist/2 * 30;				
+			}
+			else{
+				y = 250 - this.numberOfReceptionist/2 * 30;				
+			}
 			this.numberOfReceptionist += 1;
 			Npc receptionist = new Receptionist(Images.PLAYERL, Images.PLAYERR, Images.PLAYERU, Images.PLAYERD, this, x, y);
 			super.getNpcList().add(receptionist);

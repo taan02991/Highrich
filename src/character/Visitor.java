@@ -18,6 +18,7 @@ public class Visitor extends Npc implements Walkable{
 	}
 	
 	public void walkToReception() {
+		//if(super)
 		
 	}
 	

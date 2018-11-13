@@ -86,8 +86,7 @@ public class Player extends AnimatedImage implements Walkable{
 	@Override 
 	public void update() {
 		this.talkWith();
-    	this.setVelocityOnKeyPressed();
-		this.setFacing();
+    	this.walk();
     	super.update();                		                		
 	}
 
