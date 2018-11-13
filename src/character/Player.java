@@ -35,16 +35,16 @@ public class Player extends AnimatedImage{
 	public void setVelocityOnKeyPressed() {
 		super.setVelocity(0, 0);
     	if(KeyInput.contains("RIGHT")) {
-    		super.setVelocity(5, 0);
+    		super.setVelocity(2, 0);
     	}
     	if(KeyInput.contains("LEFT")) {
-    		super.setVelocity(-5, 0);
+    		super.setVelocity(-2, 0);
     	}
     	if(KeyInput.contains("UP")) {
-    		super.setVelocity(0, -5);
+    		super.setVelocity(0, -2);
     	}
     	if(KeyInput.contains("DOWN")) {
-    		super.setVelocity(0, 5);
+    		super.setVelocity(0, 2);
     	}
 	}
 	
