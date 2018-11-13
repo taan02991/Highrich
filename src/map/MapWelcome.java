@@ -13,12 +13,12 @@ public class MapWelcome extends Map{
 	
 	public MapWelcome(){
 		super();
-		super.setWarpUp(new Rectangle(Images.warp, 190, 0));
-		super.setBackground(Images.floor);
-		super.addStruct(new Rectangle(Images.tree, 140, 442));
-		super.addStruct(new Rectangle(Images.tree, 288, 442));
-		super.addStruct(new Rectangle(Images.sofa, 431, 118));
-		super.addNpc(new Visitor(Images.playerL, Images.playerR, Images.playerU, Images.playerD, this));
+		super.setWarpUp(new Rectangle(Images.WARP, 190, 0));
+		super.setBackground(Images.FLOOR);
+		super.addStruct(new Rectangle(Images.TREE, 140, 442));
+		super.addStruct(new Rectangle(Images.TREE, 288, 442));
+		super.addStruct(new Rectangle(Images.SOFA, 431, 118));
+		super.addNpc(new Visitor(Images.PLAYERL, Images.PLAYERR, Images.PLAYERU, Images.PLAYERD, this));
 	}
 	
 	public int addReceptionist(int n){
@@ -31,7 +31,7 @@ public class MapWelcome extends Map{
 			double x = 10;
 			double y = 100 + this.numberOfReceptionist * 20;
 			this.numberOfReceptionist += 1;
-			Npc receptionist = new Receptionist(Images.playerL, Images.playerR, Images.playerU, Images.playerD, this, x, y);
+			Npc receptionist = new Receptionist(Images.PLAYERL, Images.PLAYERR, Images.PLAYERU, Images.PLAYERD, this, x, y);
 			this.getNpcList().add(receptionist);
 		}
 		//this function return number of receptionists have been added

@@ -8,20 +8,20 @@ import javafx.scene.image.Image;
 import map.Map;
 
 public class Player extends AnimatedImage{
-	private static final Image[] playerL = Images.playerL;
-	private static final Image[] playerR = Images.playerR;
-	private static final Image[] playerU = Images.playerU;
-	private static final Image[] playerD = Images.playerD;
+	private static final Image[] PLAYERL = Images.PLAYERL;
+	private static final Image[] PLAYERR = Images.PLAYERR;
+	private static final Image[] PLAYERU = Images.PLAYERU;
+	private static final Image[] PLAYERD = Images.PLAYERD;
 	
 	public Player(Image[] frames, Map map, double positionX, double positionY, double velocityX, double velocityY) {
 		super(frames, map, positionX, positionY, velocityX, velocityY);
 	}
 	
 	public void setFacing() {
-		if(this.velocityX < 0) this.setFrame(playerL);
-		else if(this.velocityX > 0) this.setFrame(playerR);
-		else if(this.velocityY > 0) this.setFrame(playerD);
-		else if(this.velocityY < 0) this.setFrame(playerU);
+		if(this.velocityX < 0) this.setFrame(PLAYERL);
+		else if(this.velocityX > 0) this.setFrame(PLAYERR);
+		else if(this.velocityY > 0) this.setFrame(PLAYERD);
+		else if(this.velocityY < 0) this.setFrame(PLAYERU);
 	}
 	
 	public void setVelocityOnKeyPressed() {

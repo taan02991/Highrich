@@ -18,14 +18,14 @@ public class StartScene extends Scene{
 		root = (Pane) getRoot();
 		
 		background = new ImageView();
-		background.setImage( Images.startBackground );
+		background.setImage( Images.STARTBACKGROUND );
 		background.setPreserveRatio( true );
 		background.setFitWidth( 500 );
 		
 		startButton = new ImageView();
 		startButton.setLayoutX(138);
 		startButton.setLayoutY(251);
-		startButton.setImage( Images.startButton );
+		startButton.setImage( Images.STARTBUTTON );
 		buttonEventHandler();
 		
 		root.getChildren().addAll( background, startButton);
@@ -36,11 +36,11 @@ public class StartScene extends Scene{
 			Main.gameScene();
 		});
 		startButton.setOnMouseEntered( e-> {
-			startButton.setImage( Images.startButtonHover );
+			startButton.setImage( Images.STARTBUTTONHOVER );
 			root.setCursor( Cursor.HAND );
 		});
 		startButton.setOnMouseExited( e-> {
-			startButton.setImage( Images.startButton );
+			startButton.setImage( Images.STARTBUTTON );
 			root.setCursor( Cursor.MOVE );
 		});
 	}
