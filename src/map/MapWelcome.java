@@ -18,7 +18,6 @@ public class MapWelcome extends Map{
 		super.addStruct(new Rectangle(Images.TREE, 140, 442));
 		super.addStruct(new Rectangle(Images.TREE, 288, 442));
 		super.addStruct(new Rectangle(Images.SOFA, 431, 118));
-		super.addNpc(new Visitor(Images.PLAYERL, Images.PLAYERR, Images.PLAYERU, Images.PLAYERD, this));
 	}
 	
 	public int addReceptionist(int n){
@@ -33,10 +32,10 @@ public class MapWelcome extends Map{
 			double x = 40;
 			double y = 250;
 			if(this.numberOfReceptionist%2 == 0) {
-				y = 250 + this.numberOfReceptionist/2 * 30;				
+				y = 250 + this.numberOfReceptionist/2 * 32;				
 			}
 			else{
-				y = 250 - this.numberOfReceptionist/2 * 30;				
+				y = 250 - this.numberOfReceptionist/2 * 32;				
 			}
 			this.numberOfReceptionist += 1;
 			Npc receptionist = new Receptionist(Images.PLAYERL, Images.PLAYERR, Images.PLAYERU, Images.PLAYERD, this, x, y);

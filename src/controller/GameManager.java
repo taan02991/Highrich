@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import UI.Images;
 import character.Player;
+import character.Visitor;
 import javafx.scene.canvas.GraphicsContext;
 import map.Map;
 import map.MapUpStair;
@@ -34,6 +35,7 @@ public class GameManager {
 		gameTick = (gameTick+1)%100000;
 		if(this.currentMap instanceof MapWelcome && gameTick%300 == 0) {
 			((MapWelcome) this.currentMap).addReceptionist(1);
+			((MapWelcome) this.currentMap).addNpc(new Visitor(Images.PLAYERL, Images.PLAYERR, Images.PLAYERU, Images.PLAYERD, this.currentMap));
 		}
 		// Change current map if player is on warp position
 		this.currentMap = this.maps.get((this.maps.indexOf(this.currentMap) + player.warp()) % this.maps.size());

@@ -19,7 +19,11 @@ public class Receptionist extends Npc{
 	}
 
 	public void setBusy(boolean isBusy) {
-		this.isBusy = isBusy;
+		this.isBusy = true;
+	}
+	
+	public void setAvailable() {
+		this.isBusy = false;
 	}
 	
 	
