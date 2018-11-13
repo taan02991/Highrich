@@ -19,7 +19,7 @@ public class GameManager {
 		this.maps = new ArrayList<Map>();
 		this.generateMap();
 		this.currentMap = maps.get(0);
-		player = new Player(Images.playerU, this.currentMap, 0, 0, 0, 0);
+		player = new Player(Images.PLAYERU, this.currentMap, 0, 0, 0, 0);
 	}
 	
 	public void generateMap() {
