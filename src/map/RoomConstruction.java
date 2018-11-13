@@ -5,6 +5,6 @@ import UI.Images;
 public class RoomConstruction extends Room{
 
 	public RoomConstruction(int position) {
-		super(Images.constructionRoom, position);
+		super(Images.CONSTRUCTIONROOM, position);
 	}
 }
