@@ -63,12 +63,12 @@ public class AnimatedImage extends Rectangle
 					System.out.println("ppp");
 				}
 				this.tractorTab[1] = this.tractorTab[0];*/
-				fixCollideWithTractor(o.getTractor());
+				/*fixCollideWithTractor(o.getTractor());*/
 			}
 		}
 	}
 	
-	private void fixCollideWithTractor(Rectangle s) {
+	/*private void fixCollideWithTractor(Rectangle s) {
 		if(s != this && this.intersects(s)) {
 			
 			super.setPositionX(this.lastPositionX);
@@ -97,7 +97,7 @@ public class AnimatedImage extends Rectangle
 			}
 					
 		}	
-	}
+	}*/
 	
 	private void fixCollideWith(Rectangle s) {
 		if(s != this && this.intersects(s)) {
