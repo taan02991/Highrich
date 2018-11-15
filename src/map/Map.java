@@ -22,6 +22,7 @@ public abstract class Map{
 		this.npcList = new ArrayList<Npc>();
 	}
 	
+	public abstract void setRoom(int position, int level);
 	public abstract void render(GraphicsContext gc);
 	
 	// test updateNpc

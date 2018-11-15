@@ -63,4 +63,7 @@ public class MapWelcome extends Map{
 			npc.render(gc);
 		}
 	}
+	
+	@Override
+	public void setRoom(int position, int level) {}
 }

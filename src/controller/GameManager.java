@@ -72,63 +72,12 @@ public class GameManager {
 			*/
 			if(this.currentMap instanceof MapUpStair) {
 				for(Room o : ((MapUpStair) this.currentMap).getRoomsList()) {
-					
 					if(player.intersects(o.getTractor()) && KeyInput.contains("ENTER")) {
-						
-						//if room is construction , the first pay change to Standard
-						if( o instanceof RoomConstruction) {
-							player.payMoney(5000);
-							((MapUpStair) this.currentMap).setRoom(o.getPosition(), 1);
-							System.out.println("change to Standard");
-						}else if( o instanceof RoomStandard) {
-							player.payMoney(10000);
-							((MapUpStair) this.currentMap).setRoom(o.getPosition(), 2);
-							System.out.println("change to Excecutive");
-						}else if( o instanceof RoomExecutive) {
-							player.payMoney(20000);
-							((MapUpStair) this.currentMap).setRoom(o.getPosition(), 3);
-							System.out.println("change to Presidential");
-						}else if( o instanceof RoomPresidential) {
-							System.out.println("aleary Presidential");
-						}
+						player.buyRoom(o);
 						System.out.println(Player.getMoney());
 						this.gamePausing = true;
 					}
-
-	//				if(this.isBumpTractor[0] == true && this.isBumpTractor[1] == false) {
-	//					
-	//					this.isBumpTractor[1] = true;
-	//					System.out.println("1 " + this.isBumpTractor[0]+" "+this.isBumpTractor[1]);
-	//					
-						/*ArrayList<String> choices = new ArrayList<>();
-						choices.add("a");
-						choices.add("b");
-						choices.add("c");
-	
-						ChoiceDialog<String> dialog = new ChoiceDialog<>("b", choices);
-						dialog.setTitle("Choice Dialog");
-						dialog.setHeaderText("Look, a Choice Dialog");
-						dialog.setContentText("Choose your letter:");
-	
-						// Traditional way to get the response value.
-						Optional<String> result = dialog.showAndWait();
-						if (result.isPresent()){
-						    System.out.println("Your choice: " + result.get());
-						}
-	
-						// The Java 8 way to get the response value (with lambda expression).
-						result.ifPresent(letter -> System.out.println("Your choice: " + letter));
-						((MapUpStair) this.currentMap).setRoom(o.getPosition());*/
-	//				}
-	//				else {
-	//					this.isBumpTractor[1] = false;
-	//				}
-					
 				}
-				
-				//update current money
-				
-				
 				
 			}
 		}

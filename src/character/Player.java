@@ -6,6 +6,11 @@ import UI.Rectangle;
 import controller.KeyInput;
 import javafx.scene.image.Image;
 import map.Map;
+import map.Room;
+import map.RoomConstruction;
+import map.RoomExecutive;
+import map.RoomPresidential;
+import map.RoomStandard;
 
 public class Player extends AnimatedImage implements Walkable{
 	private static final Image[] PLAYERL = Images.PLAYERL;
@@ -29,6 +34,33 @@ public class Player extends AnimatedImage implements Walkable{
 //throw exception
 		}
 		Money = Money - o;
+	}
+	
+	public void buyRoom(Room room) {
+		if( room instanceof RoomConstruction) {
+			payMoney(5000);
+			super.getMap().setRoom(room.getPosition(), 1);
+			System.out.println("change to Standard");
+			
+		}else if( room instanceof RoomStandard) {
+			payMoney(10000);
+			super.getMap().setRoom(room.getPosition(), 2);
+			System.out.println("change to Executive");
+			
+		}else if( room instanceof RoomExecutive) {
+			payMoney(20000);
+			super.getMap().setRoom(room.getPosition(), 3);
+			System.out.println("change to Presidential");
+			
+		}else if( room instanceof RoomPresidential) {
+			System.out.println("aleary Presidential");
+		}
+		
+		/*switch(level) {
+		case 1:payMoney(5000);super.getMap().setRoom(position, 1);break;
+		case 2:payMoney(10000);super.getMap().setRoom(position, 2);break;
+		case 3:payMoney(20000);super.getMap().setRoom(position, 3);break;
+		}*/
 	}
 
 	public void setFacing() {
