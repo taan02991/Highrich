@@ -25,8 +25,6 @@ public class GameManager {
 	private Map currentMap;
 	//for test
 	private long gameTick = 0;
-	private int stage = 0;
-	private int visitorStage = 0;
 	private boolean gamePausing;
 	
 	public GameManager() {
@@ -49,15 +47,10 @@ public class GameManager {
 		if(!this.gamePausing) {
 			gameTick = (gameTick+1)%100000;
 			if(this.currentMap instanceof MapWelcome && gameTick%300 == 0) {
-				((MapWelcome) this.currentMap).addReceptionist();
-				
+				((MapWelcome) this.currentMap).addReceptionist();	
 			}
-			if(KeyInput.contains("SPACE") && this.visitorStage == 1) {
-				this.visitorStage = 0;
+			if(KeyInput.contains("SPACE")) {
 				System.out.println(((MapWelcome) this.currentMap).addVisitor());
-			}
-			else if(!KeyInput.contains("SPACE")){
-				this.visitorStage = 1;
 			}
 			// Change current map if player is on warp position
 			this.currentMap = this.maps.get((this.maps.indexOf(this.currentMap) + player.warp()) % this.maps.size());
@@ -74,7 +67,7 @@ public class GameManager {
 			if(this.currentMap instanceof MapUpStair) {
 				for(Room o : ((MapUpStair) this.currentMap).getRoomsList()) {
 					
-					if(player.intersects(o.getTractor()) && KeyInput.contains("ENTER") && this.stage == 0) {
+					if(player.intersects(o.getTractor()) && KeyInput.contains("ENTER")) {
 						
 						//if room is construction , the first pay change to Standard
 						if( o instanceof RoomConstruction) {
@@ -96,12 +89,7 @@ public class GameManager {
 						}
 						
 						this.gamePausing = true;
-						this.stage = 1;
-						
-						
-					}
-					else if(!KeyInput.contains("ENTER")){
-						this.stage = 0;
+											
 					}
 				
 					
@@ -138,12 +126,8 @@ public class GameManager {
 			}
 		}
 		else {
-			if(KeyInput.contains("ENTER") && this.stage == 0) {
+			if(KeyInput.contains("ENTER")) {
 				this.gamePausing = false;
-				this.stage = 1;
-			}
-			else if(!KeyInput.contains("ENTER")) {
-				this.stage = 0;
 			}
 		}
 		
