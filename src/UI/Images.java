@@ -27,5 +27,8 @@ public class Images {
 		public static final Image STANDARDROOM = new Image(ClassLoader.getSystemResource("images/StandardRoom.png").toString());
 		public static final Image EXECUTIVEROOM = new Image(ClassLoader.getSystemResource("images/ExecutiveRoom.png").toString());
 		public static final Image PRESIDENTIALROOM = new Image(ClassLoader.getSystemResource("images/PresidentialRoom.png").toString());
+		
+		public static final Image HORIZONTALWALL = new Image(ClassLoader.getSystemResource("images/HorizontalWall.png").toString());
+		public static final Image VERTICALWALL = new Image(ClassLoader.getSystemResource("images/VerticalWall.png").toString());
 
 }

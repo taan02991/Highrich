@@ -21,11 +21,17 @@ import map.RoomStandard;
 
 public class GameManager {
 	private static Player player;
-	private ArrayList<Map> maps;
-	private Map currentMap;
+	private static ArrayList<Map> maps;
+	private static Map currentMap;
+	private static boolean gamePausing;
+	private static boolean isGameOver;
+	private static int Customer;
+	private static int AvailableRoom;
+	private static int TotalRoom;
+	private static int floor;
+	
 	//for test
 	private long gameTick = 0;
-	private boolean gamePausing;
 	
 	public GameManager() {
 		this.maps = new ArrayList<Map>();
