@@ -51,9 +51,14 @@ public class MapUpStair extends Map{
 		}
 	}
 	
-	public void setRoom(int position) {
-		//เช็คว่ามีลูกค้าป่าว, เป็นห้องที่ต้องยังไม่ก่อสร้าง
-		this.roomsList.set(position, new RoomExecutive(position));
+	public void setRoom(int position, int level) {
+		//ขาดเช็คว่ามีลูกค้าป่าว, เป็นห้องที่ต้องยังไม่ก่อสร้าง
+		switch(level) {
+		case 0:this.roomsList.set(position, new RoomConstruction(position));break;
+		case 1:this.roomsList.set(position, new RoomStandard(position));break;
+		case 2:this.roomsList.set(position, new RoomExecutive(position));break;
+		case 3:this.roomsList.set(position, new RoomPresidential(position));break;
+		}
 	}
 	
 	@Override
