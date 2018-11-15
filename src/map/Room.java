@@ -1,5 +1,7 @@
 package map;
 
+import java.util.ArrayList;
+
 import UI.Images;
 import UI.Rectangle;
 import javafx.scene.canvas.GraphicsContext;
@@ -8,13 +10,17 @@ import javafx.scene.image.Image;
 public class Room {
 	protected boolean isAvailable;
 	protected int position;
+	protected int cost;
 	protected Image image;
 	protected Rectangle tractor;
+	protected ArrayList<Rectangle> roomStruct;
 	
 	public Room(Image image, int position) {
+		this.roomStruct = new ArrayList<Rectangle>();
 		this.isAvailable = true;
 		this.position = position;
 		this.image = image;
+		this.cost = 0;
 		initTractor();
 	}
 
@@ -24,6 +30,10 @@ public class Room {
 		}else {
 			this.tractor = new Rectangle(Images.TRACTOR, 378, 166*(this.position-3) + 65);
 		}
+	}
+	
+	public void addRoomStruct(Rectangle s) {
+		this.roomStruct.add(s);
 	}
 	
 	public Rectangle getTractor() {
