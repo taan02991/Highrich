@@ -3,9 +3,11 @@ package character;
 import UI.AnimatedImage;
 import UI.Images;
 import UI.Rectangle;
+import controller.GameManager;
 import controller.KeyInput;
 import javafx.scene.image.Image;
 import map.Map;
+import map.MapWelcome;
 import map.Room;
 import map.RoomConstruction;
 import map.RoomExecutive;
@@ -22,6 +24,19 @@ public class Player extends AnimatedImage implements Walkable{
 	public Player(Image[] frames, Map map, double positionX, double positionY, double velocityX, double velocityY) {
 		super(frames, map, positionX, positionY, velocityX, velocityY);
 		Money = 20000;
+	}
+	
+	public boolean buyReceptionist() {
+		MapWelcome mapWelcome = ((MapWelcome)GameManager.getMaps().get(0));
+		if(mapWelcome.addReceptionist()) {
+			System.out.println("Add Receptionist");
+			this.Money =  this.Money - 1000;
+			return true;
+		}
+		else {
+			System.out.println("Can't add Receptionist");
+			return false;			
+		}
 	}
 
 	public static int getMoney() {
@@ -98,13 +113,13 @@ public class Player extends AnimatedImage implements Walkable{
 		if(super.getMap().getWarpUp() != null &&
 				super.getMap().getWarpUp().intersects(this)) {	
 			//set position after warp later
-			super.setPosition(100, 100);
+			super.setPosition(230, 500 - this.getHeight() - 20);
 			return 1;
 		}
 		else if(super.getMap().getWarpDown() != null && 
 				super.getMap().getWarpDown().intersects(this)) {
 			//set position after warp later
-			this.setPosition(100, 100);
+			this.setPosition(230, 20);
 			return -1;
 		}
 		return 0;

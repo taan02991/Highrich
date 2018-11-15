@@ -52,7 +52,7 @@ public class GameManager {
 		//test add Receptionist
 		if(!this.gamePausing) {
 			gameTick = (gameTick+1)%100000;
-			if(this.currentMap instanceof MapWelcome && gameTick%300 == 0) {
+			if(this.currentMap instanceof MapWelcome && KeyInput.contains("Z")) {
 				((MapWelcome) this.currentMap).addReceptionist();	
 			}
 			if(KeyInput.contains("SPACE")) {
@@ -98,7 +98,7 @@ public class GameManager {
 		return player;
 	}
 
-	public ArrayList<Map> getMaps() {
+	public static ArrayList<Map> getMaps() {
 		return maps;
 	}
 	

@@ -21,5 +21,7 @@ public class Receptionist extends Npc{
 	public void setBusy(boolean isBusy) {
 		this.isBusy = isBusy;
 	}
+	
+	
 
 }
