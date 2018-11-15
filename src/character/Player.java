@@ -19,7 +19,7 @@ public class Player extends AnimatedImage implements Walkable{
 		Money = 20000;
 	}
 
-	public static int getMONEY() {
+	public static int getMoney() {
 		return Money;
 	}
 
