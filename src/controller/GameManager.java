@@ -89,18 +89,12 @@ public class GameManager {
 							((MapUpStair) this.currentMap).setRoom(o.getPosition(), 3);
 							System.out.println("change to Presidential");
 						}else if( o instanceof RoomPresidential) {
-							player.payMoney(40000);
-							((MapUpStair) this.currentMap).setRoom(o.getPosition(), 4);
 							System.out.println("aleary Presidential");
 						}
-						
-						System.out.println(Player.getMONEY());
-						
+						System.out.println(Player.getMoney());
 						this.gamePausing = true;
-											
 					}
-				
-					
+
 	//				if(this.isBumpTractor[0] == true && this.isBumpTractor[1] == false) {
 	//					
 	//					this.isBumpTractor[1] = true;
@@ -143,7 +137,7 @@ public class GameManager {
 				this.gamePausing = false;
 			}
 		}
-		
+
 	}
 	
 	public void render(GraphicsContext gc) {

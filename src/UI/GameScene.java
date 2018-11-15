@@ -60,10 +60,10 @@ public class GameScene extends Scene {
             });        
         gameLoop.getKeyFrames().add(kf);
         gameLoop.play();		
-        
+
         control = new GridPane();
         control.setPadding(new Insets(10));
-        control.add(new HBox(5, new Label("Current Money :"), new Label(Integer.toString(Player.getMONEY()))), 0, 0);
+        control.add(new HBox(5, new Label("Current Money :"), new Label(Integer.toString(Player.getMoney()))), 0, 0);
         root.getChildren().add(control);
 	}
 	
