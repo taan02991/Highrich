@@ -8,9 +8,14 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import map.MapWelcome;
@@ -18,6 +23,8 @@ import map.MapWelcome;
 public class GameScene extends Scene {
 
 	private VBox root;
+	private GridPane control;
+	
 	
 	public static Timeline gameLoop;
 	public static KeyFrame kf;
@@ -30,7 +37,7 @@ public class GameScene extends Scene {
 		root.getChildren().add(canvas);
 		
 		GraphicsContext gc = canvas.getGraphicsContext2D();
-        
+		
         //Prepare Image
 		GameManager gameManager = new GameManager();
 		
@@ -50,11 +57,16 @@ public class GameScene extends Scene {
                 	gameManager.update();
                 	gameManager.render(gc);
                 }
-            });
-        
-        gameLoop.getKeyFrames().add( kf );
+            });        
+        gameLoop.getKeyFrames().add(kf);
         gameLoop.play();		
+        
+        control = new GridPane();
+        control.setPadding(new Insets(10));
+        control.add(new HBox(5, new Label("Current Money :"), new Label(Integer.toString(Player.getMONEY()))), 0, 0);
+        root.getChildren().add(control);
 	}
 	
+
 
 }

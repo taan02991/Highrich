@@ -88,6 +88,8 @@ public class GameManager {
 							System.out.println("aleary Presidential");
 						}
 						
+						System.out.println(Player.getMONEY());
+						
 						this.gamePausing = true;
 											
 					}
@@ -123,6 +125,11 @@ public class GameManager {
 	//				}
 					
 				}
+				
+				//update current money
+				
+				
+				
 			}
 		}
 		else {
