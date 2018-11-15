@@ -22,11 +22,13 @@ public class GameManager {
 	private long gameTick = 0;
 	private int stage = 0;
 	private boolean[] isBumpTractor;
+	private boolean gamePausing;
 	
 	public GameManager() {
 		this.maps = new ArrayList<Map>();
 		this.generateMap();
 		this.currentMap = maps.get(0);
+		this.gamePausing = false;
 		player = new Player(Images.PLAYERU, this.currentMap, 0, 0, 0, 0);
 		this.isBumpTractor = new boolean[2];
 		this.isBumpTractor[0] = false;
@@ -42,13 +44,14 @@ public class GameManager {
 	
 	public void update() {
 		//test add Receptionist
+		if(!this.gamePausing) {
 		gameTick = (gameTick+1)%100000;
 		if(this.currentMap instanceof MapWelcome && gameTick%300 == 0) {
 			((MapWelcome) this.currentMap).addReceptionist();
 			
 		}
-		if(KeyInput.contains("SPACE") && this.stage == 0) {
-			this.stage = 1;
+		if(KeyInput.contains("SPACE") && this.stage == 1) {
+			this.stage = 0;
 			System.out.println(((MapWelcome) this.currentMap).addVisitor());
 		}
 		else if(!KeyInput.contains("SPACE")){
@@ -69,12 +72,21 @@ public class GameManager {
 		if(this.currentMap instanceof MapUpStair) {
 			for(Room o : ((MapUpStair) this.currentMap).getRoomsList()) {
 				
-				this.isBumpTractor[0] = player.intersects(o.getTractor());
+				if(player.intersects(o.getTractor()) && KeyInput.contains("ENTER") && this.stage == 0) {
+					System.out.println("pause");
+					this.gamePausing = true;
+					this.stage = 1;
+					System.out.println("1 " + this.isBumpTractor[0]+" "+this.isBumpTractor[1]);
+				}
+				else if(player.intersects(o.getTractor()) && !KeyInput.contains("ENTER")){
+					this.stage = 0;
+				}
 				
-				if(this.isBumpTractor[0] == true && this.isBumpTractor[1] == false) {
-					
-					System.out.println(this.isBumpTractor[0]+" "+this.isBumpTractor[1]);
-					
+//				if(this.isBumpTractor[0] == true && this.isBumpTractor[1] == false) {
+//					
+//					this.isBumpTractor[1] = true;
+//					System.out.println("1 " + this.isBumpTractor[0]+" "+this.isBumpTractor[1]);
+//					
 					/*ArrayList<String> choices = new ArrayList<>();
 					choices.add("a");
 					choices.add("b");
@@ -94,11 +106,26 @@ public class GameManager {
 					// The Java 8 way to get the response value (with lambda expression).
 					result.ifPresent(letter -> System.out.println("Your choice: " + letter));
 					((MapUpStair) this.currentMap).setRoom(o.getPosition());*/
-				}
-				this.isBumpTractor[1] = this.isBumpTractor[0];
+//				}
+//				else {
+//					this.isBumpTractor[1] = false;
+//				}
 				
 			}
 		}
+		}
+//		else{
+//			if(KeyInput.contains("ENTER") && this.stage == 0) {
+//				System.out.println("play");
+//				this.gamePausing = false;
+//				this.stage = 1;
+//			}
+//			else if(!KeyInput.contains("ENTER")){
+//				this.stage = 0;
+//			}
+//		}
+		
+		
 	}
 	
 	public void render(GraphicsContext gc) {
