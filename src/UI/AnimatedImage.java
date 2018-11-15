@@ -46,13 +46,13 @@ public class AnimatedImage extends Rectangle
 	
 	private void fixCollide() {
 		
-		/* if npc,have to check collide with player */
 		for(Rectangle s: map.getStructList()) {
 			this.fixCollideWith(s);
 		}
 		for(Rectangle s: map.getNpcList()) {
 			this.fixCollideWith(s);
 		}
+		this.fixCollideWith(GameManager.getPlayer());
 		
 	}
 	

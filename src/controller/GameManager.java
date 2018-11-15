@@ -137,6 +137,14 @@ public class GameManager {
 		this.currentMap.render(gc);
 		player.render(gc);
 	}
+
+	public static Player getPlayer() {
+		return player;
+	}
+
+	public ArrayList<Map> getMaps() {
+		return maps;
+	}
 	
 	
 	
