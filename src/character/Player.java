@@ -12,11 +12,25 @@ public class Player extends AnimatedImage implements Walkable{
 	private static final Image[] PLAYERR = Images.PLAYERR;
 	private static final Image[] PLAYERU = Images.PLAYERU;
 	private static final Image[] PLAYERD = Images.PLAYERD;
+	private static int MONEY;
 	
 	public Player(Image[] frames, Map map, double positionX, double positionY, double velocityX, double velocityY) {
 		super(frames, map, positionX, positionY, velocityX, velocityY);
+		MONEY = 20000;
 	}
-	
+
+	public static int getMONEY() {
+		return MONEY;
+	}
+
+
+	public void payMoney(int money) {
+		if( MONEY - money < 0 ) {
+//throw exception
+		}
+		MONEY = MONEY - money;
+	}
+
 	public void setFacing() {
 		if(super.getVelocityX() < 0) {
 			super.setFrame(PLAYERL);

@@ -7,12 +7,17 @@ import UI.GameScene;
 import UI.Images;
 import character.Player;
 import character.Visitor;
+import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ChoiceDialog;
 import map.Map;
 import map.MapUpStair;
 import map.MapWelcome;
 import map.Room;
+import map.RoomConstruction;
+import map.RoomExecutive;
+import map.RoomPresidential;
+import map.RoomStandard;
 
 public class GameManager {
 	private static Player player;
@@ -21,7 +26,6 @@ public class GameManager {
 	//for test
 	private long gameTick = 0;
 	private int stage = 0;
-	private boolean[] isBumpTractor;
 	private boolean gamePausing;
 	
 	public GameManager() {
@@ -30,9 +34,6 @@ public class GameManager {
 		this.currentMap = maps.get(0);
 		this.gamePausing = false;
 		player = new Player(Images.PLAYERU, this.currentMap, 0, 0, 0, 0);
-		this.isBumpTractor = new boolean[2];
-		this.isBumpTractor[0] = false;
-		this.isBumpTractor[1] = false;
 	}
 	
 	public void generateMap() {
@@ -100,10 +101,30 @@ public class GameManager {
 			for(Room o : ((MapUpStair) this.currentMap).getRoomsList()) {
 				
 				if(player.intersects(o.getTractor()) && KeyInput.contains("ENTER") && this.stage == 0) {
-					System.out.println("pause");
-					this.gamePausing = true;
+					
+					//if room is construction , the first pay change to Standard
+					if( o instanceof RoomConstruction) {
+						player.payMoney(5000);
+						((MapUpStair) this.currentMap).setRoom(o.getPosition(), 1);
+						System.out.println("change to Standard");
+					}else if( o instanceof RoomStandard) {
+						player.payMoney(10000);
+						((MapUpStair) this.currentMap).setRoom(o.getPosition(), 2);
+						System.out.println("change to Excecutive");
+					}else if( o instanceof RoomExecutive) {
+						player.payMoney(20000);
+						((MapUpStair) this.currentMap).setRoom(o.getPosition(), 3);
+						System.out.println("change to Presidential");
+					}else if( o instanceof RoomPresidential) {
+						player.payMoney(40000);
+						((MapUpStair) this.currentMap).setRoom(o.getPosition(), 4);
+						System.out.println("aleary Presidential");
+					}
+					
+					//this.gamePausing = true;
 					this.stage = 1;
-					System.out.println("1 " + this.isBumpTractor[0]+" "+this.isBumpTractor[1]);
+					
+					
 				}
 				else if(player.intersects(o.getTractor()) && !KeyInput.contains("ENTER")){
 					this.stage = 0;
