@@ -95,14 +95,15 @@ public class GameManager {
 							System.out.println("aleary Presidential");
 						}
 						
-						//this.gamePausing = true;
+						this.gamePausing = true;
 						this.stage = 1;
 						
 						
 					}
-					else if(player.intersects(o.getTractor()) && !KeyInput.contains("ENTER")){
+					else if(!KeyInput.contains("ENTER")){
 						this.stage = 0;
 					}
+				
 					
 	//				if(this.isBumpTractor[0] == true && this.isBumpTractor[1] == false) {
 	//					
@@ -135,7 +136,16 @@ public class GameManager {
 					
 				}
 			}
-		}		
+		}
+		else {
+			if(KeyInput.contains("ENTER") && this.stage == 0) {
+				this.gamePausing = false;
+				this.stage = 1;
+			}
+			else if(!KeyInput.contains("ENTER")) {
+				this.stage = 0;
+			}
+		}
 		
 	}
 	
