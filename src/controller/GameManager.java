@@ -45,31 +45,58 @@ public class GameManager {
 	public void update() {
 		//test add Receptionist
 		if(!this.gamePausing) {
-		gameTick = (gameTick+1)%100000;
-		if(this.currentMap instanceof MapWelcome && gameTick%300 == 0) {
-			((MapWelcome) this.currentMap).addReceptionist();
+			gameTick = (gameTick+1)%100000;
+			if(this.currentMap instanceof MapWelcome && gameTick%300 == 0) {
+				((MapWelcome) this.currentMap).addReceptionist();
+				
+			}
+			if(KeyInput.contains("SPACE") && this.stage == 1) {
+				this.stage = 0;
+				System.out.println(((MapWelcome) this.currentMap).addVisitor());
+			}
+			else if(!KeyInput.contains("SPACE")){
+				this.stage = 1;
+			}
+			// Change current map if player is on warp position
+			this.currentMap = this.maps.get((this.maps.indexOf(this.currentMap) + player.warp()) % this.maps.size());
+			//Change map player is at
+			player.setMap(this.currentMap);
+			for(Map map: maps) {
+				map.updateNpc();
+			}
+			player.update();
 			
+			if(this.currentMap instanceof MapUpStair) {
+				for(Room r: ((MapUpStair) this.currentMap).getRoomsList()) {
+					if(player.intersects(r.getTractor()) && KeyInput.contains("ENTER") && this.stage == 1) {
+						System.out.println("Game is played");
+						this.gamePausing = true;
+						this.stage = 0;
+						System.out.println("Show Menu");
+					}
+					else if(!KeyInput.contains("ENTER")){
+						this.stage = 1;
+					}
+				}
+			}
 		}
-		if(KeyInput.contains("SPACE") && this.stage == 1) {
-			this.stage = 0;
-			System.out.println(((MapWelcome) this.currentMap).addVisitor());
+		else {
+			if(KeyInput.contains("ENTER") && this.stage == 1){
+				System.out.println("Game is paused");
+	 			this.gamePausing = false;
+				this.stage = 0;
+			}
+			else if(!KeyInput.contains("ENTER")){
+				this.stage = 1;
+			}
 		}
-		else if(!KeyInput.contains("SPACE")){
-			this.stage = 0;
-		}
-		// Change current map if player is on warp position
-		this.currentMap = this.maps.get((this.maps.indexOf(this.currentMap) + player.warp()) % this.maps.size());
-		//Change map player is at
-		player.setMap(this.currentMap);
-		for(Map map: maps) {
-			map.updateNpc();
-		}
-		player.update();
+			
 		
 		/*map up stair
 		*check player intersects with tractor
 		*/
-		if(this.currentMap instanceof MapUpStair) {
+		
+		/*if(this.currentMap instanceof MapUpStair) {
 			for(Room o : ((MapUpStair) this.currentMap).getRoomsList()) {
 				
 				if(player.intersects(o.getTractor()) && KeyInput.contains("ENTER") && this.stage == 0) {
@@ -81,13 +108,11 @@ public class GameManager {
 				else if(player.intersects(o.getTractor()) && !KeyInput.contains("ENTER")){
 					this.stage = 0;
 				}
-				
-//				if(this.isBumpTractor[0] == true && this.isBumpTractor[1] == false) {
-//					
-//					this.isBumpTractor[1] = true;
-//					System.out.println("1 " + this.isBumpTractor[0]+" "+this.isBumpTractor[1]);
-//					
-					/*ArrayList<String> choices = new ArrayList<>();
+					
+					this.isBumpTractor[1] = true;
+					System.out.println("1 " + this.isBumpTractor[0]+" "+this.isBumpTractor[1]);
+					
+					ArrayList<String> choices = new ArrayList<>();
 					choices.add("a");
 					choices.add("b");
 					choices.add("c");
@@ -105,27 +130,26 @@ public class GameManager {
 
 					// The Java 8 way to get the response value (with lambda expression).
 					result.ifPresent(letter -> System.out.println("Your choice: " + letter));
-					((MapUpStair) this.currentMap).setRoom(o.getPosition());*/
-//				}
-//				else {
-//					this.isBumpTractor[1] = false;
-//				}
+					((MapUpStair) this.currentMap).setRoom(o.getPosition());
+				}
+				else {
+					this.isBumpTractor[1] = false;
+				}
 				
 			}
 		}
 		}
-//		else{
-//			if(KeyInput.contains("ENTER") && this.stage == 0) {
-//				System.out.println("play");
-//				this.gamePausing = false;
-//				this.stage = 1;
-//			}
-//			else if(!KeyInput.contains("ENTER")){
-//				this.stage = 0;
-//			}
-//		}
-		
-		
+		else{
+			if(KeyInput.contains("ENTER") && this.stage == 0) {
+				System.out.println("play");
+				this.gamePausing = false;
+				this.stage = 1;
+			}
+			else if(!KeyInput.contains("ENTER")){
+				this.stage = 0;
+			}
+		}*/
+				
 	}
 	
 	public void render(GraphicsContext gc) {
