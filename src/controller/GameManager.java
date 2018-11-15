@@ -26,6 +26,7 @@ public class GameManager {
 	//for test
 	private long gameTick = 0;
 	private int stage = 0;
+	private int visitorStage = 0;
 	private boolean gamePausing;
 	
 	public GameManager() {
@@ -46,106 +47,95 @@ public class GameManager {
 	public void update() {
 		//test add Receptionist
 		if(!this.gamePausing) {
-		gameTick = (gameTick+1)%100000;
-		if(this.currentMap instanceof MapWelcome && gameTick%300 == 0) {
-			((MapWelcome) this.currentMap).addReceptionist();
-			
-		}
-		if(KeyInput.contains("SPACE") && this.stage == 1) {
-			this.stage = 0;
-			System.out.println(((MapWelcome) this.currentMap).addVisitor());
-		}
-		else if(!KeyInput.contains("SPACE")){
-			this.stage = 0;
-		}
-		// Change current map if player is on warp position
-		this.currentMap = this.maps.get((this.maps.indexOf(this.currentMap) + player.warp()) % this.maps.size());
-		//Change map player is at
-		player.setMap(this.currentMap);
-		for(Map map: maps) {
-			map.updateNpc();
-		}
-		player.update();
-		
-		/*map up stair
-		*check player intersects with tractor
-		*/
-		if(this.currentMap instanceof MapUpStair) {
-			for(Room o : ((MapUpStair) this.currentMap).getRoomsList()) {
-				
-				if(player.intersects(o.getTractor()) && KeyInput.contains("ENTER") && this.stage == 0) {
-					
-					//if room is construction , the first pay change to Standard
-					if( o instanceof RoomConstruction) {
-						player.payMoney(5000);
-						((MapUpStair) this.currentMap).setRoom(o.getPosition(), 1);
-						System.out.println("change to Standard");
-					}else if( o instanceof RoomStandard) {
-						player.payMoney(10000);
-						((MapUpStair) this.currentMap).setRoom(o.getPosition(), 2);
-						System.out.println("change to Excecutive");
-					}else if( o instanceof RoomExecutive) {
-						player.payMoney(20000);
-						((MapUpStair) this.currentMap).setRoom(o.getPosition(), 3);
-						System.out.println("change to Presidential");
-					}else if( o instanceof RoomPresidential) {
-						player.payMoney(40000);
-						((MapUpStair) this.currentMap).setRoom(o.getPosition(), 4);
-						System.out.println("aleary Presidential");
-					}
-					
-					//this.gamePausing = true;
-					this.stage = 1;
-					
-					
-				}
-				else if(player.intersects(o.getTractor()) && !KeyInput.contains("ENTER")){
-					this.stage = 0;
-				}
-				
-//				if(this.isBumpTractor[0] == true && this.isBumpTractor[1] == false) {
-//					
-//					this.isBumpTractor[1] = true;
-//					System.out.println("1 " + this.isBumpTractor[0]+" "+this.isBumpTractor[1]);
-//					
-					/*ArrayList<String> choices = new ArrayList<>();
-					choices.add("a");
-					choices.add("b");
-					choices.add("c");
-
-					ChoiceDialog<String> dialog = new ChoiceDialog<>("b", choices);
-					dialog.setTitle("Choice Dialog");
-					dialog.setHeaderText("Look, a Choice Dialog");
-					dialog.setContentText("Choose your letter:");
-
-					// Traditional way to get the response value.
-					Optional<String> result = dialog.showAndWait();
-					if (result.isPresent()){
-					    System.out.println("Your choice: " + result.get());
-					}
-
-					// The Java 8 way to get the response value (with lambda expression).
-					result.ifPresent(letter -> System.out.println("Your choice: " + letter));
-					((MapUpStair) this.currentMap).setRoom(o.getPosition());*/
-//				}
-//				else {
-//					this.isBumpTractor[1] = false;
-//				}
+			gameTick = (gameTick+1)%100000;
+			if(this.currentMap instanceof MapWelcome && gameTick%300 == 0) {
+				((MapWelcome) this.currentMap).addReceptionist();
 				
 			}
-		}
-		}
-//		else{
-//			if(KeyInput.contains("ENTER") && this.stage == 0) {
-//				System.out.println("play");
-//				this.gamePausing = false;
-//				this.stage = 1;
-//			}
-//			else if(!KeyInput.contains("ENTER")){
-//				this.stage = 0;
-//			}
-//		}
-		
+			if(KeyInput.contains("SPACE") && this.visitorStage == 1) {
+				this.visitorStage = 0;
+				System.out.println(((MapWelcome) this.currentMap).addVisitor());
+			}
+			else if(!KeyInput.contains("SPACE")){
+				this.visitorStage = 1;
+			}
+			// Change current map if player is on warp position
+			this.currentMap = this.maps.get((this.maps.indexOf(this.currentMap) + player.warp()) % this.maps.size());
+			//Change map player is at
+			player.setMap(this.currentMap);
+			for(Map map: maps) {
+				map.updateNpc();
+			}
+			player.update();
+			
+			/*map up stair
+			*check player intersects with tractor
+			*/
+			if(this.currentMap instanceof MapUpStair) {
+				for(Room o : ((MapUpStair) this.currentMap).getRoomsList()) {
+					
+					if(player.intersects(o.getTractor()) && KeyInput.contains("ENTER") && this.stage == 0) {
+						
+						//if room is construction , the first pay change to Standard
+						if( o instanceof RoomConstruction) {
+							player.payMoney(5000);
+							((MapUpStair) this.currentMap).setRoom(o.getPosition(), 1);
+							System.out.println("change to Standard");
+						}else if( o instanceof RoomStandard) {
+							player.payMoney(10000);
+							((MapUpStair) this.currentMap).setRoom(o.getPosition(), 2);
+							System.out.println("change to Excecutive");
+						}else if( o instanceof RoomExecutive) {
+							player.payMoney(20000);
+							((MapUpStair) this.currentMap).setRoom(o.getPosition(), 3);
+							System.out.println("change to Presidential");
+						}else if( o instanceof RoomPresidential) {
+							player.payMoney(40000);
+							((MapUpStair) this.currentMap).setRoom(o.getPosition(), 4);
+							System.out.println("aleary Presidential");
+						}
+						
+						//this.gamePausing = true;
+						this.stage = 1;
+						
+						
+					}
+					else if(player.intersects(o.getTractor()) && !KeyInput.contains("ENTER")){
+						this.stage = 0;
+					}
+					
+	//				if(this.isBumpTractor[0] == true && this.isBumpTractor[1] == false) {
+	//					
+	//					this.isBumpTractor[1] = true;
+	//					System.out.println("1 " + this.isBumpTractor[0]+" "+this.isBumpTractor[1]);
+	//					
+						/*ArrayList<String> choices = new ArrayList<>();
+						choices.add("a");
+						choices.add("b");
+						choices.add("c");
+	
+						ChoiceDialog<String> dialog = new ChoiceDialog<>("b", choices);
+						dialog.setTitle("Choice Dialog");
+						dialog.setHeaderText("Look, a Choice Dialog");
+						dialog.setContentText("Choose your letter:");
+	
+						// Traditional way to get the response value.
+						Optional<String> result = dialog.showAndWait();
+						if (result.isPresent()){
+						    System.out.println("Your choice: " + result.get());
+						}
+	
+						// The Java 8 way to get the response value (with lambda expression).
+						result.ifPresent(letter -> System.out.println("Your choice: " + letter));
+						((MapUpStair) this.currentMap).setRoom(o.getPosition());*/
+	//				}
+	//				else {
+	//					this.isBumpTractor[1] = false;
+	//				}
+					
+				}
+			}
+		}		
 		
 	}
 	
