@@ -34,7 +34,7 @@ public class MapWelcome extends Map{
 	}
 	
 	public boolean addReceptionist(){
-		if(this.numberOfReceptionist == this.MAXRECEPTIONIST) {
+		if(this.numberOfReceptionist == MAXRECEPTIONIST) {
 			return false;
 //			throw new Exception or may be pop up message ("Can't add more receptionist");
 		}

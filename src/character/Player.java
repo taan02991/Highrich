@@ -33,7 +33,7 @@ public class Player extends AnimatedImage implements Walkable{
 		MapWelcome mapWelcome = ((MapWelcome)GameManager.getMaps().get(0));
 		if(this.enoughMoney(Receptionist.getCost()) && mapWelcome.addReceptionist()) {
 			this.payMoney(Receptionist.getCost());
-			System.out.println("Add Receptionist" + this.getMoney());
+			System.out.println("Add Receptionist" + getMoney());
 			return true;
 		}
 		else {
@@ -44,7 +44,7 @@ public class Player extends AnimatedImage implements Walkable{
 	
 	public boolean enoughMoney(int n) {
 		//Throw Exception
-		if(this.Money >= n) {
+		if(Money >= n) {
 			return true;
 		}
 		else {

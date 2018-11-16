@@ -14,7 +14,7 @@ public class MapUpStair extends Map{
 	
 	public MapUpStair(int floor) {
 		super();
-		this.floor = floor;
+		this.setFloor(floor);
 		this.roomsList = new ArrayList<Room>();
 		initRoom();
 		this.setWarpUp(new Rectangle(Images.WARP, 190, 0));
@@ -76,6 +76,14 @@ public class MapUpStair extends Map{
 		for(Room o : roomsList) {
 			o.render(gc);
 		}
+	}
+
+	public int getFloor() {
+		return floor;
+	}
+
+	public void setFloor(int floor) {
+		this.floor = floor;
 	}
 	
 }

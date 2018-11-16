@@ -67,7 +67,7 @@ public class GameManager {
 				for(Room o : ((MapUpStair) currentMap).getRoomsList()) {
 					if(player.intersects(o.getTractor()) && KeyInput.contains("ENTER")) {
 						player.buyRoom(o);
-						System.out.println(player.getMoney());
+						System.out.println(Player.getMoney());
 						gamePausing = true;
 					}
 				}
