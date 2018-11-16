@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import UI.Images;
 import UI.Rectangle;
+import character.Visitor;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -12,13 +13,17 @@ public class Room {
 	protected int position;
 	protected Image image;
 	protected Rectangle tractor;
+	protected int constructionCost;
+	protected int fee;
 	protected ArrayList<Rectangle> roomStruct;
+	protected Visitor visitor;
 	
-	public Room(Image image, int position) {
+	public Room(Image image, int position, int constructionCost, int fee) {
 		this.roomStruct = new ArrayList<Rectangle>();
-		this.isAvailable = true;
 		this.position = position;
 		this.image = image;
+		this.constructionCost = constructionCost;
+		this.fee = fee;
 		initTractor();
 	}
 
@@ -43,6 +48,10 @@ public class Room {
 		this.tractor = tractor;
 	}
 
+	public void setAvailable(boolean b) {
+		this.isAvailable = b;
+	}
+	
 	public boolean isAvailable() {
 		return isAvailable;
 	}
@@ -63,4 +72,27 @@ public class Room {
     	}
     	this.tractor.render(gc);
     }
+
+
+	public int getConstructionCost() {
+		return constructionCost;
+	}
+
+
+	public int getFee() {
+		return fee;
+	}
+
+
+	public Visitor getVisitor() {
+		return visitor;
+	}
+
+
+	public void setVisitor(Visitor visitor) {
+		this.visitor = visitor;
+		System.out.println("setvisitor");
+	}
+    
+	
 }

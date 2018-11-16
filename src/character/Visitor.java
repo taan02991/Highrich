@@ -1,7 +1,10 @@
 package character;
 
+import controller.GameManager;
 import javafx.scene.image.Image;
 import map.Map;
+import map.MapUpStair;
+import map.Room;
 
 public class Visitor extends Npc implements Walkable{
 	private int stage;
@@ -33,10 +36,10 @@ public class Visitor extends Npc implements Walkable{
 
 	}
 	
-	public void findContactPerson(){
+	private void findContactPerson(){
 		for(Npc npc: super.getMap().getNpcList()) {
 			if(npc instanceof Receptionist) {
-				if(!((Receptionist) npc).isBusy()) {
+				if(!((Receptionist) npc).isBusy() && hasRoom()) {
 					this.contactPerson = (Receptionist) npc;
 					this.contactPerson.setBusy(true);
 					stage = 1;
@@ -53,7 +56,7 @@ public class Visitor extends Npc implements Walkable{
 		}
 	}
 	
-	public void walkToContactPerson(){
+	private void walkToContactPerson(){
 		if(this.contactPerson != null) {
 			if(this.contactPerson.getPositionY() != this.getPositionY()) {
 				super.setVelocity(0, -1);
@@ -71,7 +74,7 @@ public class Visitor extends Npc implements Walkable{
 		
 	}
 	
-	public void talkWithContactPerson() {
+	private void talkWithContactPerson() {
 		super.setFacing("RIGHT");
 		this.talkTick++;
 		if(talkTick == 1000) {
@@ -80,7 +83,7 @@ public class Visitor extends Npc implements Walkable{
 		}	
 	}
 	
-	public void walkToWarpUp() {
+	private void walkToWarpUp() {
 		if(super.getPositionX() != 250) {
 			super.setVelocity(1, 0);
 			super.setFacing("RIGHT");
@@ -93,6 +96,24 @@ public class Visitor extends Npc implements Walkable{
 			this.stage = 4;
 			super.setActive(false);
 		}
+	}
+	
+	private boolean hasRoom() {
+		boolean check = false;
+		for(Map map: GameManager.getMaps()) {
+			if(map instanceof MapUpStair) {
+				MapUpStair mapUpStair = (MapUpStair) map;
+				for(Room r: ((MapUpStair) map).getRoomsList()) {
+					if(r.isAvailable()) {
+						r.setAvailable(false);
+						r.setVisitor(this);
+						Player.addMoney(r.getFee());
+						return true;
+					}
+				}
+			}
+		}
+		return false;
 	}
 	
 	@Override

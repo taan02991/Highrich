@@ -38,7 +38,7 @@ public class GameManager {
 	
 	public static void generateMap() {
 		maps.add(new MapWelcome());
-		for(int i = 0; i < 6; i++) {
+		for(int i = 0; i < 3; i++) {
 			maps.add(new MapUpStair(i));
 		}
 	}
@@ -49,9 +49,9 @@ public class GameManager {
 			gameTick = (gameTick + 1) % 11250;
 			if(gameTick % (500 + Customer*100) == 0
 				&& ((MapWelcome) maps.get(0)).addVisitor()) {
-				System.out.println(gameTick);
+//				System.out.println(gameTick);
 				Customer = Customer + 1;
-				System.out.println(Customer);
+//				System.out.println(Customer);
 			}
 			currentMap = maps.get((maps.indexOf(currentMap) + player.warp()) % maps.size());
 			player.setMap(currentMap);

@@ -23,7 +23,7 @@ public class Player extends AnimatedImage implements Walkable{
 	
 	public Player(Image[] frames, Map map, double positionX, double positionY, double velocityX, double velocityY) {
 		super(frames, map, positionX, positionY, velocityX, velocityY);
-		this.Money = 20000;
+		Money = 20000;
 	}
 	
 	public boolean buyReceptionist() {
@@ -43,12 +43,18 @@ public class Player extends AnimatedImage implements Walkable{
 	}
 	
 	public boolean enoughMoney(int n) {
+		//Throw Exception
 		if(this.Money >= n) {
 			return true;
 		}
 		else {
 			return false;
 		}
+	}
+	
+	public static void addMoney(int m) {
+		Money += m;
+		System.out.println(Money);
 	}
 
 	public static int getMoney() {
@@ -57,29 +63,30 @@ public class Player extends AnimatedImage implements Walkable{
 
 
 	public boolean payMoney(int o) {
-		if( this.Money - o < 0 ) {
+		if( Money - o < 0 ) {
 			return false;
 //throw exception
 		}
 		else{
-			this.Money = this.Money - o;
+			Money -= o;
 			return true;
 		}
 	}
 	
 	public void buyRoom(Room room) {
-		if( room instanceof RoomConstruction) {
-			payMoney(5000);
+		if( room instanceof RoomConstruction && this.enoughMoney(room.getConstructionCost())) {
+			payMoney(room.getConstructionCost());
+			System.out.println(room.getConstructionCost());
 			super.getMap().setRoom(room.getPosition(), 1);
 			System.out.println("change to Standard");
 			
-		}else if( room instanceof RoomStandard) {
-			payMoney(10000);
+		}else if( room instanceof RoomStandard && this.enoughMoney(room.getConstructionCost())) {
+			payMoney(room.getConstructionCost());
 			super.getMap().setRoom(room.getPosition(), 2);
 			System.out.println("change to Executive");
 			
-		}else if( room instanceof RoomExecutive) {
-			payMoney(20000);
+		}else if( room instanceof RoomExecutive && this.enoughMoney(room.getConstructionCost())) {
+			payMoney(room.getConstructionCost());
 			super.getMap().setRoom(room.getPosition(), 3);
 			System.out.println("change to Presidential");
 			
