@@ -78,13 +78,16 @@ public class Player extends AnimatedImage implements Walkable{
 		if( room instanceof RoomConstruction && this.enoughMoney(room.getConstructionCost())) {
 			payMoney(room.getConstructionCost());
 			
+			
 			room.renderDusty(gc);
+			
 			
 			new Sleeper(1000);
 			super.getMap().setRoom(room.getPosition(), 1);
 			System.out.println("change to Standard");
 		}else if( room instanceof RoomStandard && this.enoughMoney(room.getConstructionCost())) {
 			payMoney(room.getConstructionCost());
+			room.renderDusty(gc);
 			new Sleeper(1000);
 			super.getMap().setRoom(room.getPosition(), 2);
 			System.out.println("change to Executive");
