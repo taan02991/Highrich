@@ -6,12 +6,12 @@ import map.Map;
 
 public class Receptionist extends Npc{
 	
+	private static int cost = 5000;
 	private boolean isBusy;
 	
 	public Receptionist(Image[] npcL, Image[] npcR, Image[] npcU, Image[] npcD, Map map, double positionX, double positionY) {
 		super(npcL, npcR, npcU, npcD, map, positionX, positionY, 0, 0);
 		this.isBusy = false;
-		//Have to change to Receptionist pic later
 	}
 
 	public boolean isBusy() {
@@ -22,6 +22,9 @@ public class Receptionist extends Npc{
 		this.isBusy = isBusy;
 	}
 	
+	public static int getCost() {
+		return cost;
+	}
 	
 
 }

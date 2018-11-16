@@ -23,19 +23,31 @@ public class Player extends AnimatedImage implements Walkable{
 	
 	public Player(Image[] frames, Map map, double positionX, double positionY, double velocityX, double velocityY) {
 		super(frames, map, positionX, positionY, velocityX, velocityY);
-		Money = 20000;
+		this.Money = 20000;
 	}
 	
 	public boolean buyReceptionist() {
+		if(!(super.getMap() instanceof MapWelcome)) {
+			return false;
+		}
 		MapWelcome mapWelcome = ((MapWelcome)GameManager.getMaps().get(0));
-		if(mapWelcome.addReceptionist()) {
-			System.out.println("Add Receptionist");
-			this.Money =  this.Money - 1000;
+		if(this.enoughMoney(Receptionist.getCost()) && mapWelcome.addReceptionist()) {
+			this.payMoney(Receptionist.getCost());
+			System.out.println("Add Receptionist" + this.getMoney());
 			return true;
 		}
 		else {
 			System.out.println("Can't add Receptionist");
 			return false;			
+		}
+	}
+	
+	public boolean enoughMoney(int n) {
+		if(this.Money >= n) {
+			return true;
+		}
+		else {
+			return false;
 		}
 	}
 
@@ -44,11 +56,15 @@ public class Player extends AnimatedImage implements Walkable{
 	}
 
 
-	public void payMoney(int o) {
-		if( Money - o < 0 ) {
+	public boolean payMoney(int o) {
+		if( this.Money - o < 0 ) {
+			return false;
 //throw exception
 		}
-		Money = Money - o;
+		else{
+			this.Money = this.Money - o;
+			return true;
+		}
 	}
 	
 	public void buyRoom(Room room) {
@@ -112,13 +128,11 @@ public class Player extends AnimatedImage implements Walkable{
 	public int warp() {
 		if(super.getMap().getWarpUp() != null &&
 				super.getMap().getWarpUp().intersects(this)) {	
-			//set position after warp later
 			super.setPosition(230, 500 - this.getHeight() - 20);
 			return 1;
 		}
 		else if(super.getMap().getWarpDown() != null && 
 				super.getMap().getWarpDown().intersects(this)) {
-			//set position after warp later
 			this.setPosition(230, 20);
 			return -1;
 		}
@@ -135,6 +149,9 @@ public class Player extends AnimatedImage implements Walkable{
 	@Override 
 	public void update() {
     	this.walk();
+    	if(KeyInput.contains("Z")) {
+    		this.buyReceptionist();    		
+    	}
     	super.update();                		                		
 	}
 

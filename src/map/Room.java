@@ -10,7 +10,6 @@ import javafx.scene.image.Image;
 public class Room {
 	protected boolean isAvailable;
 	protected int position;
-	protected int cost;
 	protected Image image;
 	protected Rectangle tractor;
 	protected ArrayList<Rectangle> roomStruct;
@@ -20,9 +19,9 @@ public class Room {
 		this.isAvailable = true;
 		this.position = position;
 		this.image = image;
-		this.cost = 0;
 		initTractor();
 	}
+
 
 	private void initTractor() {
 		if( this.position < 3 ) {

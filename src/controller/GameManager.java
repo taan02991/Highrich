@@ -24,24 +24,19 @@ public class GameManager {
 	private static ArrayList<Map> maps;
 	private static Map currentMap;
 	private static boolean gamePausing;
-	private static boolean isGameOver;
 	private static int Customer;
-	private static int AvailableRoom;
-	private static int TotalRoom;
-	private static int floor;
-	
-	//for test
-	private long gameTick = 0;
+	private static long gameTick = 0;
 	
 	public GameManager() {
-		this.maps = new ArrayList<Map>();
-		this.generateMap();
-		this.currentMap = maps.get(0);
-		this.gamePausing = false;
-		player = new Player(Images.PLAYERU, this.currentMap, 0, 0, 0, 0);
+		maps = new ArrayList<Map>();
+		generateMap();
+		currentMap = maps.get(0);
+		gamePausing = false;
+		Customer = 0;
+		player = new Player(Images.PLAYERU, currentMap, 0, 0, 0, 0);
 	}
 	
-	public void generateMap() {
+	public static void generateMap() {
 		maps.add(new MapWelcome());
 		for(int i = 0; i < 6; i++) {
 			maps.add(new MapUpStair(i));
@@ -50,18 +45,16 @@ public class GameManager {
 	
 	public void update() {
 		//test add Receptionist
-		if(!this.gamePausing) {
-			gameTick = (gameTick+1)%100000;
-			if(this.currentMap instanceof MapWelcome && KeyInput.contains("Z")) {
-				((MapWelcome) this.currentMap).addReceptionist();	
+		if(!gamePausing) {
+			gameTick = (gameTick + 1) % 11250;
+			if(gameTick % (500 + Customer*100) == 0
+				&& ((MapWelcome) maps.get(0)).addVisitor()) {
+				System.out.println(gameTick);
+				Customer = Customer + 1;
+				System.out.println(Customer);
 			}
-			if(KeyInput.contains("SPACE")) {
-				System.out.println(((MapWelcome) this.currentMap).addVisitor());
-			}
-			// Change current map if player is on warp position
-			this.currentMap = this.maps.get((this.maps.indexOf(this.currentMap) + player.warp()) % this.maps.size());
-			//Change map player is at
-			player.setMap(this.currentMap);
+			currentMap = maps.get((maps.indexOf(currentMap) + player.warp()) % maps.size());
+			player.setMap(currentMap);
 			for(Map map: maps) {
 				map.updateNpc();
 			}
@@ -70,27 +63,26 @@ public class GameManager {
 			/*map up stair
 			*check player intersects with tractor
 			*/
-			if(this.currentMap instanceof MapUpStair) {
-				for(Room o : ((MapUpStair) this.currentMap).getRoomsList()) {
+			if(currentMap instanceof MapUpStair) {
+				for(Room o : ((MapUpStair) currentMap).getRoomsList()) {
 					if(player.intersects(o.getTractor()) && KeyInput.contains("ENTER")) {
 						player.buyRoom(o);
-						System.out.println(Player.getMoney());
-						this.gamePausing = true;
+						System.out.println(player.getMoney());
+						gamePausing = true;
 					}
 				}
-				
 			}
 		}
 		else {
 			if(KeyInput.contains("ENTER")) {
-				this.gamePausing = false;
+				gamePausing = false;
 			}
 		}
 
 	}
 	
 	public void render(GraphicsContext gc) {
-		this.currentMap.render(gc);
+		currentMap.render(gc);
 		player.render(gc);
 	}
 

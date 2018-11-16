@@ -9,7 +9,7 @@ public class Visitor extends Npc implements Walkable{
 	private Receptionist contactPerson;
 	
 	public Visitor(Image[] npcL, Image[] npcR, Image[] npcU, Image[] npcD, Map map) {
-		super(npcL, npcR, npcU, npcD, map, 250, 450, 0, 0);
+		super(npcL, npcR, npcU, npcD, map, 230, 450, 0, 0);
 		super.setFacing("UP");
 		this.stage = 0;
 		this.talkTick = 0;
