@@ -2,9 +2,10 @@ package character;
 
 import UI.AnimatedImage;
 import UI.Images;
-import UI.Rectangle;
 import controller.GameManager;
 import controller.KeyInput;
+import controller.Sleeper;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import map.Map;
 import map.MapWelcome;
@@ -73,32 +74,30 @@ public class Player extends AnimatedImage implements Walkable{
 		}
 	}
 	
-	public void buyRoom(Room room) {
+	public void buyRoom(Room room, GraphicsContext gc){
 		if( room instanceof RoomConstruction && this.enoughMoney(room.getConstructionCost())) {
 			payMoney(room.getConstructionCost());
-			System.out.println(room.getConstructionCost());
+			
+			room.renderDusty(gc);
+			
+			new Sleeper(1000);
 			super.getMap().setRoom(room.getPosition(), 1);
 			System.out.println("change to Standard");
-			
 		}else if( room instanceof RoomStandard && this.enoughMoney(room.getConstructionCost())) {
 			payMoney(room.getConstructionCost());
+			new Sleeper(1000);
 			super.getMap().setRoom(room.getPosition(), 2);
 			System.out.println("change to Executive");
 			
 		}else if( room instanceof RoomExecutive && this.enoughMoney(room.getConstructionCost())) {
 			payMoney(room.getConstructionCost());
+			new Sleeper(1000);
 			super.getMap().setRoom(room.getPosition(), 3);
 			System.out.println("change to Presidential");
 			
 		}else if( room instanceof RoomPresidential) {
 			System.out.println("aleary Presidential");
 		}
-		
-		/*switch(level) {
-		case 1:payMoney(5000);super.getMap().setRoom(position, 1);break;
-		case 2:payMoney(10000);super.getMap().setRoom(position, 2);break;
-		case 3:payMoney(20000);super.getMap().setRoom(position, 3);break;
-		}*/
 	}
 
 	public void setFacing() {

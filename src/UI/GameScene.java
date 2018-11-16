@@ -52,7 +52,7 @@ public class GameScene extends Scene {
             {
                 public void handle(ActionEvent ae)
                 {
-                	gameManager.update();
+					gameManager.update(gc);
                 	gameManager.render(gc);
                 }
             });        

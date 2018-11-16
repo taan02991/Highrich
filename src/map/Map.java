@@ -1,11 +1,8 @@
 package map;
 
 import java.util.ArrayList;
-
-import UI.Images;
 import UI.Rectangle;
 import character.Npc;
-import character.Player;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 

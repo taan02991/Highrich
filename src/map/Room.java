@@ -72,6 +72,14 @@ public class Room {
     	}
     	this.tractor.render(gc);
     }
+    
+    public void renderDusty(GraphicsContext gc){
+    	if( this.position < 3 ) {
+    		gc.drawImage(Images.DUSTYSTRUCTION, 0, 166*(this.position) );
+    	}else{
+    		gc.drawImage(Images.DUSTYSTRUCTION, 300, 166*(this.position-3) );
+    	}
+    }
 
 
 	public int getConstructionCost() {

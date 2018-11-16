@@ -1,23 +1,13 @@
 package controller;
 
 import java.util.ArrayList;
-import java.util.Optional;
-
-import UI.GameScene;
 import UI.Images;
 import character.Player;
-import character.Visitor;
-import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.ChoiceDialog;
 import map.Map;
 import map.MapUpStair;
 import map.MapWelcome;
 import map.Room;
-import map.RoomConstruction;
-import map.RoomExecutive;
-import map.RoomPresidential;
-import map.RoomStandard;
 
 public class GameManager {
 	private static Player player;
@@ -43,7 +33,7 @@ public class GameManager {
 		}
 	}
 	
-	public void update() {
+	public void update(GraphicsContext gc){
 		//test add Receptionist
 		if(!gamePausing) {
 			gameTick = (gameTick + 1) % 11250;
@@ -66,18 +56,18 @@ public class GameManager {
 			if(currentMap instanceof MapUpStair) {
 				for(Room o : ((MapUpStair) currentMap).getRoomsList()) {
 					if(player.intersects(o.getTractor()) && KeyInput.contains("ENTER")) {
-						player.buyRoom(o);
+						player.buyRoom(o, gc);
 						System.out.println(Player.getMoney());
-						gamePausing = true;
+						//gamePausing = true;
 					}
 				}
 			}
 		}
-		else {
+		/*else {
 			if(KeyInput.contains("ENTER")) {
 				gamePausing = false;
 			}
-		}
+		}*/
 
 	}
 	
@@ -93,10 +83,14 @@ public class GameManager {
 	public static ArrayList<Map> getMaps() {
 		return maps;
 	}
-	
-	
-	
-	
+
+	public static boolean isGamePausing() {
+		return gamePausing;
+	}
+
+	public static void setGamePausing(boolean gamePausing) {
+		GameManager.gamePausing = gamePausing;
+	}	
 	
 	
 }
