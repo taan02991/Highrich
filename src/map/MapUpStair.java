@@ -24,7 +24,7 @@ public class MapUpStair extends Map{
 	
 	private void initRoom() {
 		for(int i = 0; i < 6; i++) {
-			roomsList.add(new RoomConstruction(i));
+			roomsList.add(new RoomConstruction(i, this));
 		}
 	}
 
@@ -44,7 +44,7 @@ public class MapUpStair extends Map{
 				if(this.roomsList.get(i) instanceof RoomConstruction) {
 /* not sure 	throw new Exception("This room is aleady construction"); */
 				}else {
-					this.roomsList.set(i, new RoomConstruction(i));
+					this.roomsList.set(i, new RoomConstruction(i, this));
 					break;
 				}
 			}
@@ -55,10 +55,10 @@ public class MapUpStair extends Map{
 	public void setRoom(int position, int level) {
 		//à¸‚à¸²à¸”à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸²à¸¡à¸µà¸¥à¸¹à¸�à¸„à¹‰à¸²à¸›à¹ˆà¸²à¸§, à¹€à¸›à¹‡à¸™à¸«à¹‰à¸­à¸‡à¸—à¸µà¹ˆà¸•à¹‰à¸­à¸‡à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¸�à¹ˆà¸­à¸ªà¸£à¹‰à¸²à¸‡
 		switch(level) {
-		case 0:this.roomsList.set(position, new RoomConstruction(position));break;
-		case 1:this.roomsList.set(position, new RoomStandard(position));break;
-		case 2:this.roomsList.set(position, new RoomExecutive(position));break;
-		case 3:this.roomsList.set(position, new RoomPresidential(position));break;
+		case 0:this.roomsList.set(position, new RoomConstruction(position, this));break;
+		case 1:this.roomsList.set(position, new RoomStandard(position, this));break;
+		case 2:this.roomsList.set(position, new RoomExecutive(position, this));break;
+		case 3:this.roomsList.set(position, new RoomPresidential(position, this));break;
 		}
 	}
 	

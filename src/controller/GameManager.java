@@ -37,12 +37,14 @@ public class GameManager {
 		//test add Receptionist
 		if(!gamePausing) {
 			gameTick = (gameTick + 1) % 11250;
-			if(gameTick % (500 + Customer*100) == 0
-				&& ((MapWelcome) maps.get(0)).addVisitor()) {
-//				System.out.println(gameTick);
-				Customer = Customer + 1;
-//				System.out.println(Customer);
+			//for test
+			if(KeyInput.contains("X")) {
+				((MapWelcome)maps.get(0)).addVisitor();
 			}
+			if(gameTick % (500 + Customer*100) == 0 && ((MapWelcome) maps.get(0)).addVisitor()) {
+				Customer = Customer + 1;
+			}
+			
 			currentMap = maps.get((maps.indexOf(currentMap) + player.warp()) % maps.size());
 			player.setMap(currentMap);
 			for(Map map: maps) {

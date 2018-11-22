@@ -62,6 +62,7 @@ public class MapWelcome extends Map{
 		for(Npc npc: super.getNpcList()) {
 			npc.render(gc);
 		}
+		
 	}
 	
 	@Override

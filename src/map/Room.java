@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 
 public class Room {
 	protected boolean isAvailable;
+	protected Map map;
 	protected int position;
 	protected Image image;
 	protected Rectangle tractor;
@@ -18,12 +19,14 @@ public class Room {
 	protected ArrayList<Rectangle> roomStruct;
 	protected Visitor visitor;
 	
-	public Room(Image image, int position, int constructionCost, int fee) {
+	public Room(Image image, int position, int constructionCost, int fee, Map map) {
 		this.roomStruct = new ArrayList<Rectangle>();
 		this.position = position;
 		this.image = image;
 		this.constructionCost = constructionCost;
 		this.fee = fee;
+		this.visitor = null;
+		this.map = map;
 		initTractor();
 	}
 
@@ -71,6 +74,13 @@ public class Room {
     		gc.drawImage(this.image, 300, 166*(this.position-3) );
     	}
     	this.tractor.render(gc);
+    	if(this.visitor != null) {
+    		this.visitor.render(gc);    		
+    	}
+    	for(Rectangle r: roomStruct){
+    		r.render(gc);
+    	}
+    	
     }
     
     public void renderDusty(GraphicsContext gc){
@@ -99,8 +109,16 @@ public class Room {
 
 	public void setVisitor(Visitor visitor) {
 		this.visitor = visitor;
+		visitor.setMap(this.map);
+		this.map.addNpc(visitor);
 		System.out.println("setvisitor");
 	}
+
+
+	public ArrayList<Rectangle> getRoomStruct() {
+		return roomStruct;
+	}
     
+	
 	
 }

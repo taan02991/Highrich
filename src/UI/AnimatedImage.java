@@ -1,5 +1,6 @@
 package UI;
 
+import character.Npc;
 import character.Player;
 import controller.GameManager;
 import controller.KeyInput;
@@ -52,13 +53,22 @@ public class AnimatedImage extends Rectangle
 		for(Rectangle s: map.getNpcList()) {
 			this.fixCollideWith(s);
 		}
-		this.fixCollideWith(GameManager.getPlayer());
+		
+		if(this.map instanceof MapUpStair) {
+			for(Room r: ((MapUpStair) map).getRoomsList()) {
+				for(Rectangle s: r.getRoomStruct()) {
+					this.fixCollideWith(s);;
+				}
+			}
+		}
+		if(this.map.equals(GameManager.getPlayer().getMap())) {
+			this.fixCollideWith(GameManager.getPlayer());			
+		}
 		
 	}
 	
 	private void fixCollideWith(Rectangle s) {
-		if(s != this && this.intersects(s)) {
-			
+		if(!s.equals(this) && this.intersects(s)) {
 			super.setPositionX(this.lastPositionX);
 			super.setPositionY(this.lastPositionY);
 			
@@ -82,8 +92,7 @@ public class AnimatedImage extends Rectangle
 						super.setPositionY(s.getPositionY() + s.getHeight());
 					}
 				}
-			}
-					
+			}		
 		}
 	}
     

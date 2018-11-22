@@ -24,7 +24,7 @@ public class Player extends AnimatedImage implements Walkable{
 	
 	public Player(Image[] frames, Map map, double positionX, double positionY, double velocityX, double velocityY) {
 		super(frames, map, positionX, positionY, velocityX, velocityY);
-		Money = 20000;
+		Money = 200000;
 	}
 	
 	public boolean buyReceptionist() {
@@ -77,12 +77,6 @@ public class Player extends AnimatedImage implements Walkable{
 	public void buyRoom(Room room, GraphicsContext gc){
 		if( room instanceof RoomConstruction && this.enoughMoney(room.getConstructionCost())) {
 			payMoney(room.getConstructionCost());
-			
-			
-			room.renderDusty(gc);
-			
-			
-			new Sleeper(1000);
 			super.getMap().setRoom(room.getPosition(), 1);
 			System.out.println("change to Standard");
 		}else if( room instanceof RoomStandard && this.enoughMoney(room.getConstructionCost())) {
@@ -135,13 +129,11 @@ public class Player extends AnimatedImage implements Walkable{
 	}
 	
 	public int warp() {
-		if(super.getMap().getWarpUp() != null &&
-				super.getMap().getWarpUp().intersects(this)) {	
+		if(super.getMap().getWarpUp() != null && super.getMap().getWarpUp().intersects(this)) {	
 			super.setPosition(230, 500 - this.getHeight() - 20);
 			return 1;
 		}
-		else if(super.getMap().getWarpDown() != null && 
-				super.getMap().getWarpDown().intersects(this)) {
+		else if(super.getMap().getWarpDown() != null && super.getMap().getWarpDown().intersects(this)) {
 			this.setPosition(230, 20);
 			return -1;
 		}

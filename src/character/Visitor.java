@@ -1,5 +1,8 @@
 package character;
 
+import UI.AnimatedImage;
+import UI.Images;
+import UI.Rectangle;
 import controller.GameManager;
 import javafx.scene.image.Image;
 import map.Map;
@@ -10,6 +13,7 @@ public class Visitor extends Npc implements Walkable{
 	private int stage;
 	private int talkTick;
 	private Receptionist contactPerson;
+	private Room room;
 	
 	public Visitor(Image[] npcL, Image[] npcR, Image[] npcU, Image[] npcD, Map map) {
 		super(npcL, npcR, npcU, npcD, map, 230, 450, 0, 0);
@@ -17,6 +21,7 @@ public class Visitor extends Npc implements Walkable{
 		this.stage = 0;
 		this.talkTick = 0;
 		this.contactPerson = null;
+		this.room = null;
 	}
 	
 	@Override
@@ -32,6 +37,10 @@ public class Visitor extends Npc implements Walkable{
 		}
 		else if(this.stage == 3) {
 			this.walkToWarpUp();
+		}
+		else if(this.stage == 4) {
+			this.setActive(true);
+			this.walkAround();
 		}
 
 	}
@@ -77,8 +86,7 @@ public class Visitor extends Npc implements Walkable{
 	private void talkWithContactPerson() {
 		super.setFacing("RIGHT");
 		this.talkTick++;
-		if(talkTick == 1000) {
-			this.contactPerson.setBusy(false);
+		if(talkTick == 100) {
 			this.stage = 3;
 		}	
 	}
@@ -95,18 +103,36 @@ public class Visitor extends Npc implements Walkable{
 		else {
 			this.stage = 4;
 			super.setActive(false);
+			this.room.setVisitor(this);
+			this.contactPerson.setBusy(false);
+			if( this.room.getPosition() < 3 ) {
+				this.setPosition(78, 166*(this.room.getPosition()) + 65);
+			}else {
+				this.setPosition(378, 166*(this.room.getPosition() - 3) + 65);
+			}
+			this.setVelocity(-1, 0);
+			this.setFacing("LEFT");
+		}
+	}
+	
+	public void walkAround() {
+		if(this.getPositionX() == 30 + 300*((int) room.getPosition()/3)) {
+			this.setFacing("RIGHT");
+			this.setVelocity(1, 0);
+		}
+		else if(this.getPositionX() == 150 + 300*((int) room.getPosition()/3)) {
+			this.setFacing("LEFT");
+			this.setVelocity(-1, 0);
 		}
 	}
 	
 	private boolean hasRoom() {
-		boolean check = false;
 		for(Map map: GameManager.getMaps()) {
 			if(map instanceof MapUpStair) {
-				MapUpStair mapUpStair = (MapUpStair) map;
 				for(Room r: ((MapUpStair) map).getRoomsList()) {
 					if(r.isAvailable()) {
 						r.setAvailable(false);
-						r.setVisitor(this);
+						this.room = r;
 						Player.addMoney(r.getFee());
 						return true;
 					}

@@ -40,8 +40,7 @@ public class Npc extends AnimatedImage{
 		else if(s.equals("DOWN")) {
 			super.setFrame(npcD);
 		}
-	}
-	
+	}	
 	
 	public boolean isActive() {
 		return isActive;
