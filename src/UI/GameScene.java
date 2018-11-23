@@ -49,6 +49,7 @@ public class GameScene extends Scene {
         gameLoop.setCycleCount( Timeline.INDEFINITE );
         
         Text label = new Text();
+        Text label2 = new Text();
 
         KeyFrame kf = new KeyFrame(
             Duration.seconds(0.016),                // 60 FPS
@@ -59,6 +60,7 @@ public class GameScene extends Scene {
 					gameManager.update(gc);
                 	gameManager.render(gc);
                 	label.setText(Integer.toString(Player.getMoney()));
+                	label2.setText(Integer.toString(GameManager.getPopularity()));
                 	
                 }
             });        
@@ -67,6 +69,7 @@ public class GameScene extends Scene {
         control = new GridPane();
         control.setPadding(new Insets(10));
         control.add(new HBox(5, new Label("Current Money :"), label), 0, 0);
+        control.add(new HBox(5, new Label("Popularity :"), label2), 0, 1);
         root.getChildren().add(control);
 	}
 	

@@ -15,6 +15,7 @@ public class GameManager {
 	private static Map currentMap;
 	private static boolean gamePausing;
 	private static int Customer;
+	private static int Popularity;
 	private static long gameTick = 0;
 	
 	public GameManager() {
@@ -23,6 +24,7 @@ public class GameManager {
 		currentMap = maps.get(0);
 		gamePausing = false;
 		Customer = 0;
+		Popularity = 50;
 		player = new Player(Images.PLAYERU, currentMap, 0, 0, 0, 0);
 	}
 	
@@ -92,7 +94,25 @@ public class GameManager {
 
 	public static void setGamePausing(boolean gamePausing) {
 		GameManager.gamePausing = gamePausing;
-	}	
+	}
+	
+	public static void addPopularity() {
+		if(Popularity < 100) {
+			Popularity += 1;
+		}
+	}
+	
+	public static void minusPopularity() {
+		if(Popularity > 1) {
+			Popularity -= 1;
+		}
+	}
+
+	public static int getPopularity() {
+		return Popularity;
+	}
+	
+	
 	
 	
 }

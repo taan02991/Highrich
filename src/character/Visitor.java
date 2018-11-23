@@ -56,12 +56,13 @@ public class Visitor extends Npc implements Walkable{
 				}
 			}
 		}
-		if(super.getPositionY() != 450) {
-			super.setVelocity(0, 1);
-			super.setFacing("DOWN");
+		if(super.getPositionX() != 200) {
+			super.setVelocity(-1, 0);
+			super.setFacing("LEFT");
 		}
 		else {
 			super.setActive(false);
+			GameManager.minusPopularity();
 		}
 	}
 	
