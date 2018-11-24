@@ -20,8 +20,10 @@ public class Time{
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					count++;
-					convert();					
+					if(!GameManager.isGamePausing()) {
+						count++;
+						convert();											
+					}
 				}
 			}
 			

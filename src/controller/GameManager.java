@@ -39,50 +39,42 @@ public class GameManager {
 	
 	public void update(GraphicsContext gc){
 		//test add Receptionist
-		if(!gamePausing) {
-			gameTick = (gameTick + 1) % 11250;
-			//for test
-			if(KeyInput.contains("X")) {
-				((MapWelcome)maps.get(0)).addVisitor();
-			}
-//			if(gameTick % (500 + Customer*100) == 0 && ((MapWelcome) maps.get(0)).addVisitor()) {
-//			}
+		gameTick = (gameTick + 1) % 11250;
+		//for test
+		if(KeyInput.contains("X")) {
+			((MapWelcome)maps.get(0)).addVisitor();
+		}
+//		if(gameTick % (500 + Customer*100) == 0 && ((MapWelcome) maps.get(0)).addVisitor()) {
+//		}
 			
-			currentMap = maps.get((maps.indexOf(currentMap) + player.warp()) % maps.size());
-			player.setMap(currentMap);
-			for(Map map: maps) {
-				map.updateNpc();
-			}
-			player.update();
+		currentMap = maps.get((maps.indexOf(currentMap) + player.warp()) % maps.size());
+		player.setMap(currentMap);
+		for(Map map: maps) {
+			map.updateNpc();
+		}
+		player.update();
 			
 			
-			if(Time.getHour() == 12 && Time.getMin() == 0) {
-				for(Map m: maps) {
-					if(m instanceof MapUpStair) {
-						((MapUpStair) m).clear();
-					}
-				}
-			}
-			
-			/*map up stair
-			*check player intersects with tractor
-			*/
-			if(currentMap instanceof MapUpStair) {
-				for(Room o : ((MapUpStair) currentMap).getRoomsList()) {
-					if(player.intersects(o.getTractor()) && KeyInput.contains("ENTER")) {
-						player.buyRoom(o, gc);
-						System.out.println(Player.getMoney());
-						//gamePausing = true;
-					}
+		if(Time.getHour() == 12 && Time.getMin() == 0) {
+			for(Map m: maps) {
+				if(m instanceof MapUpStair) {
+					((MapUpStair) m).clear();
 				}
 			}
 		}
-		/*else {
-			if(KeyInput.contains("ENTER")) {
-				gamePausing = false;
+			
+		/*map up stair
+		*check player intersects with tractor
+		*/
+		if(currentMap instanceof MapUpStair) {
+			for(Room o : ((MapUpStair) currentMap).getRoomsList()) {
+				if(player.intersects(o.getTractor()) && KeyInput.contains("ENTER")) {
+					player.buyRoom(o, gc);
+					System.out.println(Player.getMoney());
+					//gamePausing = true;
+				}
 			}
-		}*/
-
+		}
 	}
 	
 	public void render(GraphicsContext gc) {

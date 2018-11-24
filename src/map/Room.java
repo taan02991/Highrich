@@ -123,6 +123,5 @@ public class Room {
 		this.isAvailable = true;
 		this.visitor = null;			
 	}
-	
-	
+		
 }

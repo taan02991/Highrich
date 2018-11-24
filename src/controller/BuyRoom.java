@@ -38,8 +38,7 @@ public class BuyRoom extends Thread{
 		GameManager.setGamePausing(true);
 		while(this.frameNumber<this.totalFrame) {
 			gc.clearRect(this.x, this.y, 200, 166);
-			//gc.drawImage(Images.DustConstruction, this.width, 0, 200, 166, this.x, this.y, 200, 166);
-			gc.drawImage(Images.PRESIDENTIALROOM, this.x, this.y);
+			gc.drawImage(Images.DustConstruction, this.width, 0, 200, 166, this.x, this.y, 200, 166);
 			this.frameNumber++;
 			width += 200;
 			try {

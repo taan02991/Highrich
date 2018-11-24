@@ -61,8 +61,10 @@ public class GameScene extends Scene {
             {
                 public void handle(ActionEvent ae)
                 {
-					gameManager.update(gc);
-                	gameManager.render(gc);
+                	if(!GameManager.isGamePausing()) {
+                		gameManager.update(gc);
+                		gameManager.render(gc);                		
+                	}
                 	
                 	money.setText(Integer.toString(Player.getMoney()));
                 	popularity.setText(Integer.toString(GameManager.getPopularity()));
