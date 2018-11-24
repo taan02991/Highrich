@@ -4,7 +4,7 @@ import UI.AnimatedImage;
 import UI.Images;
 import controller.GameManager;
 import controller.KeyInput;
-import controller.Sleeper;
+import controller.BuyRoom;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import map.Map;
@@ -77,21 +77,16 @@ public class Player extends AnimatedImage implements Walkable{
 	public void buyRoom(Room room, GraphicsContext gc){
 		if( room instanceof RoomConstruction && this.enoughMoney(room.getConstructionCost())) {
 			payMoney(room.getConstructionCost());
-			room.renderDusty(gc);
-			new Sleeper(1000);
-			super.getMap().setRoom(room.getPosition(), 1);
+			new BuyRoom(super.getMap(), room, 1, gc);
 			System.out.println("change to Standard");
 		}else if( room instanceof RoomStandard && this.enoughMoney(room.getConstructionCost())) {
 			payMoney(room.getConstructionCost());
-			room.renderDusty(gc);
-			new Sleeper(1000);
-			super.getMap().setRoom(room.getPosition(), 2);
+			new BuyRoom(super.getMap(), room, 2, gc);
 			System.out.println("change to Executive");
 			
 		}else if( room instanceof RoomExecutive && this.enoughMoney(room.getConstructionCost())) {
 			payMoney(room.getConstructionCost());
-			new Sleeper(1000);
-			super.getMap().setRoom(room.getPosition(), 3);
+			new BuyRoom(super.getMap(), room, 3, gc);
 			System.out.println("change to Presidential");
 			
 		}else if( room instanceof RoomPresidential) {
