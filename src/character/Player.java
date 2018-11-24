@@ -77,7 +77,12 @@ public class Player extends AnimatedImage implements Walkable{
 	public void buyRoom(Room room, GraphicsContext gc){
 		if( room instanceof RoomConstruction && this.enoughMoney(room.getConstructionCost())) {
 			payMoney(room.getConstructionCost());
-			new BuyRoom(super.getMap(), room, 1, gc);
+			BuyRoom o = new BuyRoom(super.getMap(), room, 1, gc);
+			/*try {
+				o.join();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}*/
 			System.out.println("change to Standard");
 		}else if( room instanceof RoomStandard && this.enoughMoney(room.getConstructionCost())) {
 			payMoney(room.getConstructionCost());
