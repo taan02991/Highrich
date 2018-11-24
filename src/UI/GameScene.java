@@ -34,7 +34,7 @@ public class GameScene extends Scene {
 		super(new VBox() ,500 ,700);
 		root = (VBox) getRoot();
 		
-		Canvas canvas = new Canvas(500,500);
+		Canvas canvas = new Canvas(500,498);
 		root.getChildren().add(canvas);
 		
 		GraphicsContext gc = canvas.getGraphicsContext2D();

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import UI.Images;
 import UI.Rectangle;
 import character.Visitor;
-import controller.GameManager;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 

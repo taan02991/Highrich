@@ -37,19 +37,17 @@ public class Images {
 		public static final Image WARP = new Image(ClassLoader.getSystemResource("Warp.png").toString());
 		
 		public static final Image TRACTOR = new Image(ClassLoader.getSystemResource("Tractor.png").toString());
+		public static final Image DustConstruction = new Image(ClassLoader.getSystemResource("DustConstruction.png").toString());
 		
 		public static final Image CONSTRUCTIONROOM = new Image(ClassLoader.getSystemResource("ConstructionRoom.png").toString());
 		public static final Image STANDARDROOM = new Image(ClassLoader.getSystemResource("StandardRoom.png").toString());
 		public static final Image EXECUTIVEROOM = new Image(ClassLoader.getSystemResource("ExecutiveRoom.png").toString());
 		public static final Image PRESIDENTIALROOM = new Image(ClassLoader.getSystemResource("PresidentialRoom.png").toString());
 		
-		public static final Image DUSTYSTRUCTION = new Image(ClassLoader.getSystemResource("DustyStruction.gif").toString());
-		
 		public static final Image HORIZONTALWALL = new Image(ClassLoader.getSystemResource("HorizontalWall.png").toString());
 		public static final Image VERTICALWALL = new Image(ClassLoader.getSystemResource("VerticalWall.png").toString());
 		public static final Image VERTICALWALLONDOOR = new Image(ClassLoader.getSystemResource("VerticalWallOnDoor.png").toString());
-		
-		
+
 		public static final Image TOILETLEFT = new Image(ClassLoader.getSystemResource("ToiletLeft.png").toString());
 		public static final Image TOILETRIGHT = new Image(ClassLoader.getSystemResource("ToiletRight.png").toString());
 		public static final Image BEDLEFT = new Image(ClassLoader.getSystemResource("BedLeft.png").toString());

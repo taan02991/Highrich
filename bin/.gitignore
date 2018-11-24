@@ -1,27 +1,9 @@
-/ConstructionRoom.png
-/DustyStruction.gif
-/ExecutiveRoom.png
-/Floor.png
-/HorizontalWall.png
-/PlayerD.png
-/PlayerL.png
-/PlayerR.png
-/PlayerU.png
-/PresidentialRoom.png
-/Sofa.png
-/StandardRoom.png
-/StartButton.png
-/StartButtonHover.png
-/StartScene.png
-/Tractor.png
-/Tree.png
 /UI/
-/VerticalWall.png
-/Warp.png
 /application/
 /character/
 /controller/
 /map/
+<<<<<<< HEAD
 /BedLeft.png
 /BedRight.png
 /BigTable.png
@@ -31,3 +13,6 @@
 /ToiletLeft.png
 /ToiletRight.png
 /VerticalWallOnDoor.png
+=======
+/DustConstruction.png
+>>>>>>> master
