@@ -1,8 +1,5 @@
 package character;
 
-import UI.AnimatedImage;
-import UI.Images;
-import UI.Rectangle;
 import controller.GameManager;
 import javafx.scene.image.Image;
 import map.Map;
@@ -72,7 +69,7 @@ public class Visitor extends Npc implements Walkable{
 				super.setVelocity(0, -1);
 				super.setFacing("UP");
 			}
-			else if(this.contactPerson.getPositionX() + 50 != this.getPositionX()) {
+			else if(this.contactPerson.getPositionX() + 90 != this.getPositionX()) {
 				super.setVelocity(-1, 0);
 				super.setFacing("LEFT");
 			}
@@ -85,7 +82,6 @@ public class Visitor extends Npc implements Walkable{
 	}
 	
 	private void talkWithContactPerson() {
-		super.setFacing("RIGHT");
 		this.talkTick++;
 		if(talkTick == 100) {
 			this.stage = 3;

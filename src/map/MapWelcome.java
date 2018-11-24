@@ -2,13 +2,16 @@ package map;
 
 import UI.Images;
 import UI.Rectangle;
+import character.Adult;
 import character.Npc;
+import character.OldMan;
 import character.Receptionist;
+import character.Teenager;
 import character.Visitor;
 import javafx.scene.canvas.GraphicsContext;
 
 public class MapWelcome extends Map{
-	private static final int MAXRECEPTIONIST = 10;
+	private static final int MAXRECEPTIONIST = 8;
 	private int numberOfReceptionist;
 	
 	public MapWelcome(){
@@ -18,36 +21,38 @@ public class MapWelcome extends Map{
 		super.addStruct(new Rectangle(Images.TREE, 140, 442));
 		super.addStruct(new Rectangle(Images.TREE, 288, 442));
 		super.addStruct(new Rectangle(Images.SOFA, 431, 118));
+		super.addStruct(new Rectangle(Images.RECEPTIONTABLE, 54, 92));
 	}
 	
-	public boolean addVisitor() {
-		for(Npc npc: super.getNpcList()) {
-			if(npc instanceof Receptionist) {
-				Receptionist recep = (Receptionist) npc;
-				if(!recep.isBusy()) {
-					super.getNpcList().add(new Visitor(Images.PLAYERL, Images.PLAYERR, Images.PLAYERU, Images.PLAYERD, this));
-					return true;
-				}
-			}
+	public void addVisitor() {
+		int random = (int) (Math.random()*1000);
+		if(random % 3 == 0) {
+			super.getNpcList().add(new Teenager(this));			
 		}
-		return false;
+		else if(random % 3 == 1) {
+			super.getNpcList().add(new Adult(this));
+		}
+		else {
+			super.getNpcList().add(new OldMan(this));
+		}
 	}
+	
 	
 	public boolean addReceptionist(){
 		if(this.numberOfReceptionist == MAXRECEPTIONIST) {
 			return false;
 //			throw new Exception or may be pop up message ("Can't add more receptionist");
 		}
-		double x = 40;
+		double x = 20;
 		double y = 250;
 		this.numberOfReceptionist += 1;
 		if(this.numberOfReceptionist%2 == 0) {
-			y = 250 + this.numberOfReceptionist/2 * 32;				
+			y = 200 + this.numberOfReceptionist/2 * 32;				
 		}
 		else{
-			y = 250 - this.numberOfReceptionist/2 * 32;				
+			y = 200 - this.numberOfReceptionist/2 * 32;				
 		}
-		Npc receptionist = new Receptionist(Images.PLAYERL, Images.PLAYERR, Images.PLAYERU, Images.PLAYERD, this, x, y);
+		Npc receptionist = new Receptionist(Images.Receptionist, this, x, y);
 		super.getNpcList().add(receptionist);
 		return true;
 	}

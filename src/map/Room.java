@@ -110,7 +110,6 @@ public class Room {
 		this.visitor = visitor;
 		visitor.setMap(this.map);
 		this.map.addNpc(visitor);
-		System.out.println("setvisitor");
 	}
 
 
