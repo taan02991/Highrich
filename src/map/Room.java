@@ -73,14 +73,15 @@ public class Room {
     	}else{
     		gc.drawImage(this.image, 300, 166*(this.position-3) );
     	}
-    	this.tractor.render(gc);
+    	if( !(this instanceof RoomPresidential) ) {
+    		this.tractor.render(gc);
+    	}
     	if(this.visitor != null) {
     		this.visitor.render(gc);    		
     	}
     	for(Rectangle r: roomStruct){
     		r.render(gc);
     	}
-    	
     }
     
     public void renderDusty(GraphicsContext gc){
