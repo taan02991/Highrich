@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import UI.Images;
 import UI.Rectangle;
 import character.Visitor;
+import controller.GameManager;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -76,9 +77,6 @@ public class Room {
     	if( !(this instanceof RoomPresidential) ) {
     		this.tractor.render(gc);
     	}
-    	if(this.visitor != null) {
-    		this.visitor.render(gc);    		
-    	}
     	for(Rectangle r: roomStruct){
     		r.render(gc);
     	}
@@ -120,6 +118,13 @@ public class Room {
 		return roomStruct;
 	}
     
+	public void clear() {
+		if(this instanceof RoomConstruction) {
+			return;
+		}
+		this.isAvailable = true;
+		this.visitor = null;			
+	}
 	
 	
 }

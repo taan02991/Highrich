@@ -1,6 +1,7 @@
 package application;
 	
 import UI.StartScene;
+import controller.Time;
 import UI.GameScene;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -27,5 +28,6 @@ public class Main extends Application {
 	
 	public static void gameScene() {
 		stage.setScene(gameScene);
+		new Time();
 	}
 }

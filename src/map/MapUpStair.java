@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import UI.Images;
 import UI.Rectangle;
 import character.Npc;
+import controller.GameManager;
 import javafx.scene.canvas.GraphicsContext;
 import map.RoomConstruction;
 
@@ -70,10 +71,12 @@ public class MapUpStair extends Map{
 		for(Rectangle o: super.getStructList()) {
 			o.render(gc);
 		}
-		for(Npc o: this.getNpcList()) {
+		
+		for(Room o : roomsList) {
 			o.render(gc);
 		}
-		for(Room o : roomsList) {
+		
+		for(Npc o: this.getNpcList()) {
 			o.render(gc);
 		}
 	}
@@ -84,6 +87,14 @@ public class MapUpStair extends Map{
 
 	public void setFloor(int floor) {
 		this.floor = floor;
+	}
+	
+	public void clear() {
+		for(Room r: roomsList) {
+			r.clear();
+		}
+		this.getNpcList().clear();
+		GameManager.setCustomer(0);
 	}
 	
 }

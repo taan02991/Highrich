@@ -7,7 +7,13 @@ public class RoomPresidential extends Room{
 
 	public RoomPresidential(int position, Map map) {
 		super(Images.PRESIDENTIALROOM, position, 0, 0, map);
-		super.setAvailable(true);
+		
+		if(((MapUpStair) map).getRoomsList().get(position).getVisitor() == null) {
+			super.setAvailable(true);			
+		}
+		else {
+			super.setAvailable(false);
+		}
 		
 		if(position < 3) {
 			super.addRoomStruct(new Rectangle(Images.VERTICALWALL, 0, 166*(this.position)));

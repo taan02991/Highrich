@@ -4,6 +4,7 @@ package UI;
 import character.Player;
 import controller.GameManager;
 import controller.KeyInput;
+import controller.Time;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -48,8 +49,11 @@ public class GameScene extends Scene {
 		Timeline gameLoop = new Timeline();
         gameLoop.setCycleCount( Timeline.INDEFINITE );
         
-        Text label = new Text();
-        Text label2 = new Text();
+        Text money = new Text();
+        Text popularity = new Text();
+        Text customer = new Text();
+        Text time = new Text();
+        Text day = new Text();
 
         KeyFrame kf = new KeyFrame(
             Duration.seconds(0.016),                // 60 FPS
@@ -59,17 +63,24 @@ public class GameScene extends Scene {
                 {
 					gameManager.update(gc);
                 	gameManager.render(gc);
-                	label.setText(Integer.toString(Player.getMoney()));
-                	label2.setText(Integer.toString(GameManager.getPopularity()));
                 	
+                	money.setText(Integer.toString(Player.getMoney()));
+                	popularity.setText(Integer.toString(GameManager.getPopularity()));
+                	customer.setText(Integer.toString(GameManager.getCustomer()));
+                	time.setText(String.format("%02d:%02d", Time.getHour(), Time.getMin()));
+                	day.setText(Integer.toString(GameManager.getDay()));
                 }
             });        
         gameLoop.getKeyFrames().add(kf);
         gameLoop.play();		
         control = new GridPane();
         control.setPadding(new Insets(10));
-        control.add(new HBox(5, new Label("Current Money :"), label), 0, 0);
-        control.add(new HBox(5, new Label("Popularity :"), label2), 0, 1);
+        control.add(new HBox(5, new Label("Current Money :"), money), 0, 0);
+        control.add(new HBox(5, new Label("Popularity :"), popularity), 0, 1);
+        control.add(new HBox(5, new Label("Customer :"), customer), 0, 2);
+        control.add(new HBox(5, new Label("Time :"), time), 0, 3);
+        control.add(new HBox(5, new Label("Day :"), day), 0, 4);
+        
         root.getChildren().add(control);
 	}
 	

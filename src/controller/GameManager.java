@@ -17,6 +17,7 @@ public class GameManager {
 	private static int Customer;
 	private static int Popularity;
 	private static long gameTick = 0;
+	private static int day;
 	
 	public GameManager() {
 		maps = new ArrayList<Map>();
@@ -25,6 +26,7 @@ public class GameManager {
 		gamePausing = false;
 		Customer = 0;
 		Popularity = 50;
+		day = 0;
 		player = new Player(Images.PLAYERU, currentMap, 0, 0, 0, 0);
 	}
 	
@@ -43,9 +45,8 @@ public class GameManager {
 			if(KeyInput.contains("X")) {
 				((MapWelcome)maps.get(0)).addVisitor();
 			}
-			if(gameTick % (500 + Customer*100) == 0 && ((MapWelcome) maps.get(0)).addVisitor()) {
-				Customer = Customer + 1;
-			}
+//			if(gameTick % (500 + Customer*100) == 0 && ((MapWelcome) maps.get(0)).addVisitor()) {
+//			}
 			
 			currentMap = maps.get((maps.indexOf(currentMap) + player.warp()) % maps.size());
 			player.setMap(currentMap);
@@ -53,6 +54,15 @@ public class GameManager {
 				map.updateNpc();
 			}
 			player.update();
+			
+			
+			if(Time.getHour() == 12 && Time.getMin() == 0) {
+				for(Map m: maps) {
+					if(m instanceof MapUpStair) {
+						((MapUpStair) m).clear();
+					}
+				}
+			}
 			
 			/*map up stair
 			*check player intersects with tractor
@@ -111,6 +121,26 @@ public class GameManager {
 	public static int getPopularity() {
 		return Popularity;
 	}
+
+	public static int getCustomer() {
+		return Customer;
+	}
+
+	public static void setCustomer(int customer) {
+		Customer = customer;
+	}
+
+	public static int getDay() {
+		return day;
+	}
+
+	public static void setDay(int day) {
+		GameManager.day = day;
+	}
+	
+	
+	
+	
 	
 	
 	

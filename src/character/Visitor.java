@@ -89,6 +89,9 @@ public class Visitor extends Npc implements Walkable{
 		this.talkTick++;
 		if(talkTick == 100) {
 			this.stage = 3;
+			GameManager.setCustomer(GameManager.getCustomer() + 1);
+			GameManager.addPopularity();
+			Player.addMoney(this.room.getFee());
 		}	
 	}
 	
@@ -134,7 +137,6 @@ public class Visitor extends Npc implements Walkable{
 					if(r.isAvailable()) {
 						r.setAvailable(false);
 						this.room = r;
-						Player.addMoney(r.getFee());
 						return true;
 					}
 				}

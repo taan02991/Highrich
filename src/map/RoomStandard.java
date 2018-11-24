@@ -7,7 +7,13 @@ public class RoomStandard extends Room{
 
 	public RoomStandard(int position, Map map) {
 		super(Images.STANDARDROOM, position, 10000, 1000, map);
-		super.setAvailable(true);
+		
+		if(((MapUpStair) map).getRoomsList().get(position).getVisitor() == null) {
+			super.setAvailable(true);			
+		}
+		else {
+			super.setAvailable(false);
+		}
 		
 		if(position < 3) {
 			super.addRoomStruct(new Rectangle(Images.VERTICALWALL, 0, 166*(this.position)));
