@@ -13,7 +13,7 @@ public class Visitor extends Npc implements Walkable{
 	private Room room;
 	
 	public Visitor(Image[] npcL, Image[] npcR, Image[] npcU, Image[] npcD, Map map) {
-		super(npcL, npcR, npcU, npcD, map, 230, 450, 0, 0);
+		super(npcL, npcR, npcU, npcD, map, 250, 468, 0, 0);
 		super.setFacing("UP");
 		this.stage = 0;
 		this.talkTick = 0;
@@ -92,11 +92,11 @@ public class Visitor extends Npc implements Walkable{
 	}
 	
 	private void walkToWarpUp() {
-		if(super.getPositionX() != 250) {
+		if(super.getPositionX() != 234) {
 			super.setVelocity(1, 0);
 			super.setFacing("RIGHT");
 		}
-		else if(super.getPositionY() != 50) {
+		else if(super.getPositionY() != 0) {
 			super.setVelocity(0, -1);
 			super.setFacing("UP");
 		}
@@ -116,11 +116,11 @@ public class Visitor extends Npc implements Walkable{
 	}
 	
 	public void walkAround() {
-		if(this.getPositionX() == 30 + 300*((int) room.getPosition()/3)) {
+		if(this.getPositionX() == 36 + 300*((int) room.getPosition()/3)) {
 			this.setFacing("RIGHT");
 			this.setVelocity(1, 0);
 		}
-		else if(this.getPositionX() == 150 + 300*((int) room.getPosition()/3)) {
+		else if(this.getPositionX() == 132 + 300*((int) room.getPosition()/3)) {
 			this.setFacing("LEFT");
 			this.setVelocity(-1, 0);
 		}

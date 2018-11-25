@@ -18,8 +18,8 @@ public class MapUpStair extends Map{
 		this.setFloor(floor);
 		this.roomsList = new ArrayList<Room>();
 		initRoom();
-		this.setWarpUp(new Rectangle(Images.WARP, 190, 0));
-		this.setWarpDown(new Rectangle(Images.WARP, 190, 480));
+		this.setWarpUp(new Rectangle(Images.WARPUP, 216, 0));
+		this.setWarpDown(new Rectangle(Images.WARPDOWN, 216, 487));
 		this.setBackground(Images.FLOOR);
 	}
 	

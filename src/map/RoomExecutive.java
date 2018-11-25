@@ -8,11 +8,11 @@ public class RoomExecutive extends Room{
 	public RoomExecutive(int position, Map map) {
 		super(Images.EXECUTIVEROOM, position, 20000, 2000, map);
 		
-		if(((MapUpStair) map).getRoomsList().get(position).getVisitor() == null) {
+		if(((MapUpStair) map).getRoomsList().get(position) instanceof RoomConstruction) {
 			super.setAvailable(true);			
 		}
 		else {
-			super.setAvailable(false);
+			super.setAvailable(this.isAvailable);
 		}
 		
 		if(position < 3) {

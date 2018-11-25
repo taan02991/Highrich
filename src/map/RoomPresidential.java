@@ -8,11 +8,11 @@ public class RoomPresidential extends Room{
 	public RoomPresidential(int position, Map map) {
 		super(Images.PRESIDENTIALROOM, position, 0, 0, map);
 		
-		if(((MapUpStair) map).getRoomsList().get(position).getVisitor() == null) {
+		if(((MapUpStair) map).getRoomsList().get(position) instanceof RoomConstruction) {
 			super.setAvailable(true);			
 		}
 		else {
-			super.setAvailable(false);
+			super.setAvailable(this.isAvailable);
 		}
 		
 		if(position < 3) {

@@ -27,7 +27,7 @@ public class GameManager {
 		Customer = 0;
 		Popularity = 50;
 		day = 0;
-		player = new Player(Images.PLAYERU, currentMap, 0, 0, 0, 0);
+		player = new Player(Images.PLAYERR, currentMap, 0, 0, 0, 0);
 	}
 	
 	public static void generateMap() {

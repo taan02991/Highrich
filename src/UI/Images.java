@@ -9,10 +9,10 @@ public class Images {
 		public static final Image STARTBUTTONHOVER = new Image(ClassLoader.getSystemResource("StartButtonHover.png").toString());
 		public static final Image FLOOR = new Image(ClassLoader.getSystemResource("floor.png").toString());
 		
-		public static final Image[] PLAYERL = {new Image(ClassLoader.getSystemResource("PlayerL.png").toString())};
-		public static final Image[] PLAYERR = {new Image(ClassLoader.getSystemResource("PlayerR.png").toString())};
-		public static final Image[] PLAYERU = {new Image(ClassLoader.getSystemResource("PlayerU.png").toString())};
-		public static final Image[] PLAYERD = {new Image(ClassLoader.getSystemResource("PlayerD.png").toString())};
+		public static final Image[] PLAYERL = new Image[3];
+		public static final Image[] PLAYERR = new Image[3];
+		public static final Image[] PLAYERU = new Image[3];
+		public static final Image[] PLAYERD = new Image[3];
 		
 		public static final Image[] TEENAGERL = new Image[3];
 		public static final Image[] TEENAGERR = new Image[3];
@@ -34,7 +34,8 @@ public class Images {
 		public static final Image TREE = new Image(ClassLoader.getSystemResource("Tree.png").toString());
 		public static final Image SOFA = new Image(ClassLoader.getSystemResource("Sofa.png").toString());
 		public static final Image RECEPTIONTABLE = new Image(ClassLoader.getSystemResource("ReceptionTable.png").toString()); 
-		public static final Image WARP = new Image(ClassLoader.getSystemResource("Warp.png").toString());
+		public static final Image WARPUP = new Image(ClassLoader.getSystemResource("WarpUp.png").toString());
+		public static final Image WARPDOWN = new Image(ClassLoader.getSystemResource("WarpDown.png").toString());
 		
 		public static final Image TRACTOR = new Image(ClassLoader.getSystemResource("Tractor.png").toString());
 		public static final Image DustConstruction = new Image(ClassLoader.getSystemResource("DustConstruction.png").toString());
@@ -72,6 +73,11 @@ public class Images {
 				ADULTR[i] = new Image(ClassLoader.getSystemResource("ADULTR" + i + ".png").toString());
 				ADULTU[i] = new Image(ClassLoader.getSystemResource("ADULTU" + i + ".png").toString());
 				ADULTD[i] = new Image(ClassLoader.getSystemResource("ADULTD" + i + ".png").toString());
+				
+				PLAYERL[i] = new Image(ClassLoader.getSystemResource("PLAYERL" + i + ".png").toString());
+				PLAYERR[i] = new Image(ClassLoader.getSystemResource("PLAYERR" + i + ".png").toString());
+				PLAYERU[i] = new Image(ClassLoader.getSystemResource("PLAYERU" + i + ".png").toString());
+				PLAYERD[i] = new Image(ClassLoader.getSystemResource("PLAYERD" + i + ".png").toString());
 			}
 		}
 

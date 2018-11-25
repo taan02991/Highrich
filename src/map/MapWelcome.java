@@ -16,10 +16,10 @@ public class MapWelcome extends Map{
 	
 	public MapWelcome(){
 		super();
-		super.setWarpUp(new Rectangle(Images.WARP, 190, 0));
+		super.setWarpUp(new Rectangle(Images.WARPUP, 216, 0));
 		super.setBackground(Images.FLOOR);
-		super.addStruct(new Rectangle(Images.TREE, 140, 442));
-		super.addStruct(new Rectangle(Images.TREE, 288, 442));
+		super.addStruct(new Rectangle(Images.TREE, 125, 442));
+		super.addStruct(new Rectangle(Images.TREE, 325, 442));
 		super.addStruct(new Rectangle(Images.SOFA, 431, 118));
 		super.addStruct(new Rectangle(Images.RECEPTIONTABLE, 54, 92));
 	}
