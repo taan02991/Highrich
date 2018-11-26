@@ -57,6 +57,8 @@ public class Images {
 		public static final Image TVRIGHT = new Image(ClassLoader.getSystemResource("TVRight.png").toString());
 		public static final Image BIGTABLE = new Image(ClassLoader.getSystemResource("BigTable.png").toString());
 		
+		public static final Image UPSET = new Image(ClassLoader.getSystemResource("UpSet.png").toString());
+		
 		static {
 			for(int i = 0; i < 3; i++) {
 				TEENAGERL[i] = new Image(ClassLoader.getSystemResource("TeenagerL" + i + ".png").toString());

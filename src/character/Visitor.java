@@ -1,5 +1,6 @@
 package character;
 
+import UI.Images;
 import controller.GameManager;
 import javafx.scene.image.Image;
 import map.Map;
@@ -39,6 +40,12 @@ public class Visitor extends Npc implements Walkable{
 			this.setActive(true);
 			this.walkAround();
 		}
+		else if(this.stage == -1) {
+			this.Upset();
+		}
+		else if(this.stage == -2) {
+			this.walkOut();
+		}
 
 	}
 	
@@ -53,13 +60,20 @@ public class Visitor extends Npc implements Walkable{
 				}
 			}
 		}
-		if(super.getPositionX() != 200) {
-			super.setVelocity(-1, 0);
-			super.setFacing("LEFT");
+		stage = -1;
+	}
+	
+	public void WalkToCheck() {
+		if(this.getPositionY() != 400) {
+			this.setVelocity(0, -1);
+			this.setFacing("UP");
+		}
+		else if(this.getPositionX() != 200) {
+			this.setVelocity(-1, 0);
+			this.setFacing("LEFT");
 		}
 		else {
-			super.setActive(false);
-			GameManager.minusPopularity();
+			this.stage = -2;
 		}
 	}
 	
@@ -72,10 +86,6 @@ public class Visitor extends Npc implements Walkable{
 			else if(this.contactPerson.getPositionX() + 90 != this.getPositionX()) {
 				super.setVelocity(-1, 0);
 				super.setFacing("LEFT");
-			}
-			else {
-				super.setVelocity(0, 0);
-				this.stage = 2;
 			}
 		}
 		
@@ -126,6 +136,45 @@ public class Visitor extends Npc implements Walkable{
 		}
 	}
 	
+	private void Upset() {
+		if(this.getPositionY() != 400) {
+			this.setVelocity(0, -1);
+			this.setFacing("UP");
+		}
+		else if(this.getPositionX() != 200) {
+			this.setVelocity(-1, 0);
+			this.setFacing("LEFT");
+		}
+		else {
+			this.setVelocity(0, 0);
+			this.showMessage(Images.UPSET, 1500);
+			Thread t = new Thread(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						Thread.sleep(1500);
+						stage = -2;
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+				
+			});
+			t.start();
+		}
+	}
+	
+	private void walkOut() {
+		if(this.getPositionY() != 468) {
+			this.setVelocity(0, 1);
+			this.setFacing("DOWN");
+		}
+		else {
+			GameManager.minusPopularity();
+			this.setActive(false);
+		}
+	}
+	
 	private boolean hasRoom() {
 		for(Map map: GameManager.getMaps()) {
 			if(map instanceof MapUpStair) {
@@ -146,6 +195,4 @@ public class Visitor extends Npc implements Walkable{
 		walk();
 		super.update();
 	}
-	
-	
 }

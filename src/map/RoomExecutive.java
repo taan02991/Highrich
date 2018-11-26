@@ -6,14 +6,8 @@ import UI.Rectangle;
 public class RoomExecutive extends Room{
 
 	public RoomExecutive(int position, Map map) {
-		super(Images.EXECUTIVEROOM, position, 20000, 2000, map);
-		
-		if(((MapUpStair) map).getRoomsList().get(position) instanceof RoomConstruction) {
-			super.setAvailable(true);			
-		}
-		else {
-			super.setAvailable(this.isAvailable);
-		}
+		super(Images.EXECUTIVEROOM, position, 20000, 2000, map);	
+		super.setAvailable(this.isAvailable);
 		
 		if(position < 3) {
 			super.addRoomStruct(new Rectangle(Images.VERTICALWALL, 0, 166*(this.position)));

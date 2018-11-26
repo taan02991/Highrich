@@ -7,13 +7,7 @@ public class RoomPresidential extends Room{
 
 	public RoomPresidential(int position, Map map) {
 		super(Images.PRESIDENTIALROOM, position, 0, 0, map);
-		
-		if(((MapUpStair) map).getRoomsList().get(position) instanceof RoomConstruction) {
-			super.setAvailable(true);			
-		}
-		else {
-			super.setAvailable(this.isAvailable);
-		}
+		super.setAvailable(this.isAvailable);
 		
 		if(position < 3) {
 			super.addRoomStruct(new Rectangle(Images.VERTICALWALL, 0, 166*(this.position)));

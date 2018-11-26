@@ -17,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
@@ -24,18 +25,27 @@ import javafx.util.Duration;
 public class GameScene extends Scene {
 
 	private VBox root;
-	private GridPane control;
-	
+	private ControlBar controlBar;
 	
 	public static Timeline gameLoop;
 	public static KeyFrame kf;
+	
+	public static StackPane stackPane;
 	
 	public GameScene() {
 		super(new VBox() ,500 ,700);
 		root = (VBox) getRoot();
 		
 		Canvas canvas = new Canvas(500,498);
-		root.getChildren().add(canvas);
+		
+		stackPane = new StackPane();
+		stackPane.setPrefHeight(500);
+		stackPane.setPrefWidth(498);
+		stackPane.getChildren().addAll(canvas);
+		ControlBar controlBar = new ControlBar();
+		
+		root.getChildren().add(stackPane);
+		root.getChildren().add(controlBar);
 		
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		
@@ -49,11 +59,6 @@ public class GameScene extends Scene {
 		Timeline gameLoop = new Timeline();
         gameLoop.setCycleCount( Timeline.INDEFINITE );
         
-        Text money = new Text();
-        Text popularity = new Text();
-        Text customer = new Text();
-        Text time = new Text();
-        Text day = new Text();
 
         KeyFrame kf = new KeyFrame(
             Duration.seconds(0.016),                // 60 FPS
@@ -63,27 +68,15 @@ public class GameScene extends Scene {
                 {
                 	if(!GameManager.isGamePausing()) {
                 		gameManager.update(gc);
-                		gameManager.render(gc);                		
+                		gameManager.render(gc);
                 	}
+                	controlBar.update();
                 	
-                	money.setText(Integer.toString(Player.getMoney()));
-                	popularity.setText(Integer.toString(GameManager.getPopularity()));
-                	customer.setText(Integer.toString(GameManager.getCustomer()));
-                	time.setText(String.format("%02d:%02d", Time.getHour(), Time.getMin()));
-                	day.setText(Integer.toString(GameManager.getDay()));
+
                 }
             });        
         gameLoop.getKeyFrames().add(kf);
         gameLoop.play();		
-        control = new GridPane();
-        control.setPadding(new Insets(10));
-        control.add(new HBox(5, new Label("Current Money :"), money), 0, 0);
-        control.add(new HBox(5, new Label("Popularity :"), popularity), 0, 1);
-        control.add(new HBox(5, new Label("Customer :"), customer), 0, 2);
-        control.add(new HBox(5, new Label("Time :"), time), 0, 3);
-        control.add(new HBox(5, new Label("Day :"), day), 0, 4);
-        
-        root.getChildren().add(control);
 	}
 	
 

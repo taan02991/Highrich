@@ -42,7 +42,7 @@ public class BuyRoom extends Thread{
 			this.frameNumber++;
 			width += 200;
 			try {
-				Thread.sleep(100);
+				Thread.sleep(20);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
