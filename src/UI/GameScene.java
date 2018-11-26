@@ -1,25 +1,17 @@
 package UI;
 
 
-import character.Player;
 import controller.GameManager;
 import controller.KeyInput;
-import controller.Time;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 public class GameScene extends Scene {
@@ -31,6 +23,9 @@ public class GameScene extends Scene {
 	public static KeyFrame kf;
 	
 	public static StackPane stackPane;
+	
+	//for temporary
+	private static GraphicsContext gc;
 	
 	public GameScene() {
 		super(new VBox() ,500 ,700);
@@ -47,7 +42,8 @@ public class GameScene extends Scene {
 		root.getChildren().add(stackPane);
 		root.getChildren().add(controlBar);
 		
-		GraphicsContext gc = canvas.getGraphicsContext2D();
+//		GraphicsContext gc = canvas.getGraphicsContext2D();
+		this.gc = canvas.getGraphicsContext2D();
 		
         //Prepare Image
 		GameManager gameManager = new GameManager();
@@ -77,6 +73,11 @@ public class GameScene extends Scene {
             });        
         gameLoop.getKeyFrames().add(kf);
         gameLoop.play();		
+	}
+	
+	//for temporary
+	public static GraphicsContext getGC() {
+		return gc;
 	}
 	
 

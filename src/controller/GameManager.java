@@ -63,18 +63,18 @@ public class GameManager {
 			}
 		}
 			
-		/*map up stair
-		*check player intersects with tractor
-		*/
-		if(currentMap instanceof MapUpStair) {
-			for(Room o : ((MapUpStair) currentMap).getRoomsList()) {
-				if(player.intersects(o.getTractor()) && KeyInput.contains("ENTER")) {
-					player.buyRoom(o, gc);
-					System.out.println(Player.getMoney());
-					//gamePausing = true;
-				}
-			}
-		}
+//		/*map up stair
+//		*check player intersects with tractor
+//		*/
+//		if(currentMap instanceof MapUpStair) {
+//			for(Room o : ((MapUpStair) currentMap).getRoomsList()) {
+//				if(player.intersects(o.getTractor()) && KeyInput.contains("ENTER")) {
+//					player.buyRoom(o, gc);
+//					System.out.println(Player.getMoney());
+//					//gamePausing = true;
+//				}
+//			}
+//		}
 	}
 	
 	public void render(GraphicsContext gc) {
