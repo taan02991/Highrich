@@ -32,7 +32,7 @@ public class GameManager {
 	
 	public static void generateMap() {
 		maps.add(new MapWelcome());
-		for(int i = 0; i < 3; i++) {
+		for(int i = 0; i < 5; i++) {
 			maps.add(new MapUpStair(i));
 		}
 	}
@@ -44,8 +44,13 @@ public class GameManager {
 		if(KeyInput.contains("X")) {
 			((MapWelcome)maps.get(0)).addVisitor();
 		}
-//		if(gameTick % (500 + Customer*100) == 0 && ((MapWelcome) maps.get(0)).addVisitor()) {
-//		}
+		
+		if(Time.getHour() < 6 || Time.getHour() > 12) {
+			if(this.gameTick % (200 - ((MapWelcome)maps.get(0)).getNumberOfReceptionist()*20 + this.Customer*10) == 0) {
+				((MapWelcome)maps.get(0)).addVisitor();
+				System.out.println(this.gameTick + "");
+			}
+		}
 			
 		currentMap = maps.get((maps.indexOf(currentMap) + player.warp()) % maps.size());
 		player.setMap(currentMap);

@@ -75,31 +75,62 @@ public class Player extends AnimatedImage implements Walkable{
 		}
 	}
 	
-	public void buyRoom(GraphicsContext gc){
+	public boolean buyRoom(GraphicsContext gc, String roomType){
 		if(this.getMap() instanceof MapUpStair) {
 			for(Room room: ((MapUpStair) this.getMap()).getRoomsList()) {
 				if(this.intersects(room.getTractor())) {
-					if( room instanceof RoomConstruction && this.enoughMoney(room.getConstructionCost())) {
+					if(roomType.equals("Standard") && this.enoughMoney(room.getConstructionCost())) {
+						if(room.moreThan("RoomStandard")) {
+							return false;
+						}
 						payMoney(room.getConstructionCost());
 						BuyRoom o = new BuyRoom(super.getMap(), room, 1, gc);
 						System.out.println("change to Standard");
-					}else if( room instanceof RoomStandard && this.enoughMoney(room.getConstructionCost())) {
+						
+					}
+					else if(roomType.equals("Executive") && this.enoughMoney(room.getConstructionCost())) {
+						if(room.moreThan("RoomExecutive")) {
+							return false;
+						}
 						payMoney(room.getConstructionCost());
 						new BuyRoom(super.getMap(), room, 2, gc);
 						System.out.println("change to Executive");
-						
-					}else if( room instanceof RoomExecutive && this.enoughMoney(room.getConstructionCost())) {
+					
+					}
+					else if(roomType.equals("Presidential") && this.enoughMoney(room.getConstructionCost())) {
+						if(room.moreThan("RoomPresidential")) {
+							return false;
+						}
 						payMoney(room.getConstructionCost());
 						new BuyRoom(super.getMap(), room, 3, gc);
 						System.out.println("change to Presidential");
-						
-					}else if( room instanceof RoomPresidential) {
-						System.out.println("aleary Presidential");
+					
 					}
+					return true;
+					
+					
+//					if( room instanceof RoomConstruction && this.enoughMoney(room.getConstructionCost())) {
+//						payMoney(room.getConstructionCost());
+//						BuyRoom o = new BuyRoom(super.getMap(), room, 1, gc);
+//						System.out.println("change to Standard");
+//					}else if( room instanceof RoomStandard && this.enoughMoney(room.getConstructionCost())) {
+//						payMoney(room.getConstructionCost());
+//						new BuyRoom(super.getMap(), room, 2, gc);
+//						System.out.println("change to Executive");
+//						
+//					}else if( room instanceof RoomExecutive && this.enoughMoney(room.getConstructionCost())) {
+//						payMoney(room.getConstructionCost());
+//						new BuyRoom(super.getMap(), room, 3, gc);
+//						System.out.println("change to Presidential");
+//						
+//					}else if( room instanceof RoomPresidential) {
+//						System.out.println("aleary Presidential");
+//					}
 					
 				}
 			}
 		}
+		return false;
 		
 		
 //		if( room instanceof RoomConstruction && this.enoughMoney(room.getConstructionCost())) {
@@ -179,7 +210,7 @@ public class Player extends AnimatedImage implements Walkable{
 	@Override 
 	public void update() {
     	this.walk();
-    	super.update();                		                		
+    	super.update();
 	}
 
 	

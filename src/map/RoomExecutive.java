@@ -7,7 +7,7 @@ public class RoomExecutive extends Room{
 
 	public RoomExecutive(int position, Map map) {
 		super(Images.EXECUTIVEROOM, position, 20000, 2000, map);	
-		super.setAvailable(this.isAvailable);
+		super.setAvailable(((MapUpStair) map).getRoomsList().get(position).isAvailable);
 		
 		if(position < 3) {
 			super.addRoomStruct(new Rectangle(Images.VERTICALWALL, 0, 166*(this.position)));

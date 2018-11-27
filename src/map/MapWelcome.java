@@ -72,4 +72,10 @@ public class MapWelcome extends Map{
 	
 	@Override
 	public void setRoom(int position, int level) {}
+
+	public int getNumberOfReceptionist() {
+		return numberOfReceptionist;
+	}
+	
+	
 }

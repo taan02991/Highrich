@@ -14,7 +14,7 @@ public class Visitor extends Npc implements Walkable{
 	private Room room;
 	
 	public Visitor(Image[] npcL, Image[] npcR, Image[] npcU, Image[] npcD, Map map) {
-		super(npcL, npcR, npcU, npcD, map, 250, 468, 0, 0);
+		super(npcL, npcR, npcU, npcD, map, 280, 468, 0, 0);
 		super.setFacing("UP");
 		this.stage = 0;
 		this.talkTick = 0;
@@ -87,6 +87,10 @@ public class Visitor extends Npc implements Walkable{
 				super.setVelocity(-1, 0);
 				super.setFacing("LEFT");
 			}
+			else {
+				super.setVelocity(0, 0);
+				stage = 2;
+			}
 		}
 		
 	}
@@ -98,11 +102,12 @@ public class Visitor extends Npc implements Walkable{
 			GameManager.setCustomer(GameManager.getCustomer() + 1);
 			GameManager.addPopularity();
 			Player.addMoney(this.room.getFee());
+			this.contactPerson.setBusy(false);
 		}	
 	}
 	
 	private void walkToWarpUp() {
-		if(super.getPositionX() != 234) {
+		if(super.getPositionX() != 204) {
 			super.setVelocity(1, 0);
 			super.setFacing("RIGHT");
 		}
@@ -114,7 +119,6 @@ public class Visitor extends Npc implements Walkable{
 			this.stage = 4;
 			super.setActive(false);
 			this.room.setVisitor(this);
-			this.contactPerson.setBusy(false);
 			if( this.room.getPosition() < 3 ) {
 				this.setPosition(78, 166*(this.room.getPosition()) + 65);
 			}else {
@@ -147,12 +151,12 @@ public class Visitor extends Npc implements Walkable{
 		}
 		else {
 			this.setVelocity(0, 0);
-			this.showMessage(Images.UPSET, 1500);
+			this.showMessage(Images.UPSET, 500);
 			Thread t = new Thread(new Runnable() {
 				@Override
 				public void run() {
 					try {
-						Thread.sleep(1500);
+						Thread.sleep(500);
 						stage = -2;
 					} catch (InterruptedException e) {
 						e.printStackTrace();

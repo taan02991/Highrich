@@ -16,16 +16,12 @@ import javafx.util.Duration;
 
 public class GameScene extends Scene {
 
-	private VBox root;
-	private ControlBar controlBar;
-	
 	public static Timeline gameLoop;
 	public static KeyFrame kf;
-	
 	public static StackPane stackPane;
-	
-	//for temporary
-	private static GraphicsContext gc;
+	public static GraphicsContext gc;
+	private VBox root;
+	private ControlBar controlBar;
 	
 	public GameScene() {
 		super(new VBox() ,500 ,700);
@@ -41,8 +37,7 @@ public class GameScene extends Scene {
 		
 		root.getChildren().add(stackPane);
 		root.getChildren().add(controlBar);
-		
-//		GraphicsContext gc = canvas.getGraphicsContext2D();
+	
 		this.gc = canvas.getGraphicsContext2D();
 		
         //Prepare Image
@@ -73,11 +68,6 @@ public class GameScene extends Scene {
             });        
         gameLoop.getKeyFrames().add(kf);
         gameLoop.play();		
-	}
-	
-	//for temporary
-	public static GraphicsContext getGC() {
-		return gc;
 	}
 	
 

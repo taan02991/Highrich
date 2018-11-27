@@ -1,6 +1,8 @@
 package map;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import UI.Images;
 import UI.Rectangle;
@@ -18,6 +20,7 @@ public class Room {
 	protected int fee;
 	protected ArrayList<Rectangle> roomStruct;
 	protected Visitor visitor;
+	protected static List<String> comp = Arrays.asList(new String[]{"RoomConstruction", "RoomStandard", "RoomExecutive", "RoomPresidential"});
 	
 	public Room(Image image, int position, int constructionCost, int fee, Map map) {
 		this.roomStruct = new ArrayList<Rectangle>();
@@ -30,12 +33,22 @@ public class Room {
 		initTractor();
 	}
 
-
 	private void initTractor() {
 		if( this.position < 3 ) {
 			this.tractor = new Rectangle(Images.TRACTOR, 78, 166*(this.position) + 65);
 		}else {
 			this.tractor = new Rectangle(Images.TRACTOR, 378, 166*(this.position-3) + 65);
+		}
+	}
+	
+	public boolean moreThan(String roomType) {
+		String nameL = this.getClass().getName().toString().substring(4);
+		String nameR = roomType;
+		if(comp.indexOf(nameL) >= comp.indexOf(nameR)) {
+			return true;			
+		}
+		else {
+			return false;
 		}
 	}
 	
