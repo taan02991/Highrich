@@ -35,11 +35,8 @@ public class ControlBar extends HBox{
 	private static VBox showMenu;
 	private static Button buyRoom;
 	private static Button buyRecButton;
-	private static Button exitButton;
 	private static VBox showStatus;
 	private static HBox showTime;
-	private static VBox roomChoice;
-	public static Button level1,level2,level3;
 	
 	public ControlBar() {
 		
@@ -85,28 +82,8 @@ public class ControlBar extends HBox{
         this.showMenu.getChildren().addAll(this.buyRecButton, this.buyRoom);
         this.getChildren().add(this.showMenu);
         
-        this.roomChoice = new VBox(10);
-        this.level1 = new Button("Standard");
-        this.level1.setPrefWidth(100);
-        this.level2 = new Button("Executive");
-        this.level2.setPrefWidth(100);
-        this.level3 = new Button("Presidential");
-        this.level3.setPrefWidth(100);
-        this.exitButton = new Button("Exit");
-        this.exitButton.setPrefWidth(100);
-        this.roomChoice.getChildren().addAll(this.level1, this.level2, this.level3, this.exitButton);
-        this.roomChoice.setVisible(false);
-        GameScene.stackPane.getChildren().add(this.roomChoice);
-        
         
     	
-    	exitButton.setOnAction(new EventHandler<ActionEvent>() {
-
-			@Override
-			public void handle(ActionEvent event) {	
-				roomChoice.setVisible(false);
-			}   		
-    	});
     	
     	buyRecButton.setOnAction(new EventHandler<ActionEvent>(){
 
@@ -117,47 +94,16 @@ public class ControlBar extends HBox{
     		
     	});
     	
-    	this.buyRoom.setOnAction(new EventHandler<ActionEvent>() {
+    	buyRoom.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				roomChoice.setVisible(true);
+				GameManager.getPlayer().buyRoom(GameScene.gc);
 				
 			}
     		
     	});
-    	
-    	level1.setOnAction(new EventHandler<ActionEvent>() {
 
-			@Override
-			public void handle(ActionEvent arg0) {
-				GameManager.getPlayer().buyRoom(GameScene.gc, "Standard");
-				roomChoice.setVisible(false);
-				
-			}
-    		
-    	});
-    	
-    	level2.setOnAction(new EventHandler<ActionEvent>() {
-
-			@Override
-			public void handle(ActionEvent arg0) {
-				 GameManager.getPlayer().buyRoom(GameScene.gc, "Executive");
-				 roomChoice.setVisible(false);
-				
-			}
-    		
-    	});
-    	
-    	level3.setOnAction(new EventHandler<ActionEvent>() {
-
-			@Override
-			public void handle(ActionEvent arg0) {
-				GameManager.getPlayer().buyRoom(GameScene.gc, "Presidential");
-				roomChoice.setVisible(false);		
-			}
-    		
-    	});
         
 	}
 	

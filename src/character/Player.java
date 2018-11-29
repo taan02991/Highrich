@@ -29,9 +29,6 @@ public class Player extends AnimatedImage implements Walkable{
 	}
 	
 	public boolean buyReceptionist() {
-		if(!(super.getMap() instanceof MapWelcome)) {
-			return false;
-		}
 		MapWelcome mapWelcome = ((MapWelcome)GameManager.getMaps().get(0));
 		if(this.enoughMoney(Receptionist.getCost()) && mapWelcome.addReceptionist()) {
 			this.payMoney(Receptionist.getCost());
@@ -75,86 +72,35 @@ public class Player extends AnimatedImage implements Walkable{
 		}
 	}
 	
-	public boolean buyRoom(GraphicsContext gc, String roomType){
+	public void buyRoom(GraphicsContext gc){
 		if(this.getMap() instanceof MapUpStair) {
 			for(Room room: ((MapUpStair) this.getMap()).getRoomsList()) {
 				if(this.intersects(room.getTractor())) {
-					if(roomType.equals("Standard") && this.enoughMoney(room.getConstructionCost())) {
-						if(room.moreThan("RoomStandard")) {
-							return false;
-						}
+					if( room instanceof RoomConstruction && this.enoughMoney(room.getConstructionCost())) {
 						payMoney(room.getConstructionCost());
 						BuyRoom o = new BuyRoom(super.getMap(), room, 1, gc);
+			//			try {
+			//				o.join();
+			//			} catch (InterruptedException e) {
+			//				e.printStackTrace();
+			//			}
 						System.out.println("change to Standard");
-						
-					}
-					else if(roomType.equals("Executive") && this.enoughMoney(room.getConstructionCost())) {
-						if(room.moreThan("RoomExecutive")) {
-							return false;
-						}
+					}else if( room instanceof RoomStandard && this.enoughMoney(room.getConstructionCost())) {
 						payMoney(room.getConstructionCost());
 						new BuyRoom(super.getMap(), room, 2, gc);
 						System.out.println("change to Executive");
-					
-					}
-					else if(roomType.equals("Presidential") && this.enoughMoney(room.getConstructionCost())) {
-						if(room.moreThan("RoomPresidential")) {
-							return false;
-						}
+						
+					}else if( room instanceof RoomExecutive && this.enoughMoney(room.getConstructionCost())) {
 						payMoney(room.getConstructionCost());
 						new BuyRoom(super.getMap(), room, 3, gc);
 						System.out.println("change to Presidential");
-					
+						
+					}else if( room instanceof RoomPresidential) {
+						System.out.println("aleary Presidential");
 					}
-					return true;
-					
-					
-//					if( room instanceof RoomConstruction && this.enoughMoney(room.getConstructionCost())) {
-//						payMoney(room.getConstructionCost());
-//						BuyRoom o = new BuyRoom(super.getMap(), room, 1, gc);
-//						System.out.println("change to Standard");
-//					}else if( room instanceof RoomStandard && this.enoughMoney(room.getConstructionCost())) {
-//						payMoney(room.getConstructionCost());
-//						new BuyRoom(super.getMap(), room, 2, gc);
-//						System.out.println("change to Executive");
-//						
-//					}else if( room instanceof RoomExecutive && this.enoughMoney(room.getConstructionCost())) {
-//						payMoney(room.getConstructionCost());
-//						new BuyRoom(super.getMap(), room, 3, gc);
-//						System.out.println("change to Presidential");
-//						
-//					}else if( room instanceof RoomPresidential) {
-//						System.out.println("aleary Presidential");
-//					}
-					
 				}
 			}
 		}
-		return false;
-		
-		
-//		if( room instanceof RoomConstruction && this.enoughMoney(room.getConstructionCost())) {
-//			payMoney(room.getConstructionCost());
-//			BuyRoom o = new BuyRoom(super.getMap(), room, 1, gc);
-////			try {
-////				o.join();
-////			} catch (InterruptedException e) {
-////				e.printStackTrace();
-////			}
-//			System.out.println("change to Standard");
-//		}else if( room instanceof RoomStandard && this.enoughMoney(room.getConstructionCost())) {
-//			payMoney(room.getConstructionCost());
-//			new BuyRoom(super.getMap(), room, 2, gc);
-//			System.out.println("change to Executive");
-//			
-//		}else if( room instanceof RoomExecutive && this.enoughMoney(room.getConstructionCost())) {
-//			payMoney(room.getConstructionCost());
-//			new BuyRoom(super.getMap(), room, 3, gc);
-//			System.out.println("change to Presidential");
-//			
-//		}else if( room instanceof RoomPresidential) {
-//			System.out.println("aleary Presidential");
-//		}
 	}
 
 	public void setFacing() {

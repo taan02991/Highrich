@@ -23,7 +23,7 @@ public class BuyRoom extends Thread{
 		this.frameNumber = 1;
 		this.totalFrame = 36;
 		this.width = 0;
-		if(room.getPosition() > 3) {
+		if(room.getPosition() > 2) {
 			this.x = 300;
 			this.y = 166*(room.getPosition()-3);
 		}else {
