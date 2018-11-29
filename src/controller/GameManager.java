@@ -46,7 +46,7 @@ public class GameManager {
 		}
 		
 		if(Time.getHour() < 6 || Time.getHour() > 12) {
-			if(this.gameTick % (200 - ((MapWelcome)maps.get(0)).getNumberOfReceptionist()*20 + this.Customer*10) == 0) {
+			if(this.gameTick % (400 - ((MapWelcome)maps.get(0)).getNumberOfReceptionist()*20 + this.Customer*10) == 0) {
 				((MapWelcome)maps.get(0)).addVisitor();
 				System.out.println(this.gameTick + "");
 			}
