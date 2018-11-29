@@ -1,6 +1,7 @@
 package controller;
 
 import UI.Images;
+import UI.ControlBar;
 import javafx.scene.canvas.GraphicsContext;
 import map.Map;
 import map.Room;
@@ -36,6 +37,8 @@ public class BuyRoom extends Thread{
 	public void run() {
 		System.out.println("sleep");
 		GameManager.setGamePausing(true);
+		ControlBar.getBuyRoom().setDisable(true);
+		ControlBar.getbuyRecButton().setDisable(true);
 		while(this.frameNumber<this.totalFrame) {
 			gc.clearRect(this.x, this.y, 200, 166);
 			gc.drawImage(Images.DustConstruction, this.width, 0, 200, 166, this.x, this.y, 200, 166);
@@ -48,6 +51,8 @@ public class BuyRoom extends Thread{
 			}
 		}
 		this.map.setRoom(this.room.getPosition(), this.level);
+		ControlBar.getBuyRoom().setDisable(false);
+		ControlBar.getbuyRecButton().setDisable(false);
 		GameManager.setGamePausing(false);
 		System.out.println("awake");
 	}

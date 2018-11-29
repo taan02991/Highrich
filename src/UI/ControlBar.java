@@ -8,13 +8,8 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
@@ -73,14 +68,14 @@ public class ControlBar extends HBox{
     	this.getChildren().add(showTime);	
     	
     	//Right side
-        this.showMenu = new VBox(10);
-        this.showMenu.setPrefSize(140, 180);;
-        this.buyRecButton = new Button("Buy Receptionist");
-        this.buyRecButton.setPrefWidth(100);
-        this.buyRoom = new Button("Buy Room");
-        this.buyRoom.setPrefWidth(100);
-        this.showMenu.getChildren().addAll(this.buyRecButton, this.buyRoom);
-        this.getChildren().add(this.showMenu);
+        showMenu = new VBox(10);
+        showMenu.setPrefSize(140, 180);;
+        buyRecButton = new Button("Buy Receptionist");
+        buyRecButton.setPrefWidth(100);
+        buyRoom = new Button("Buy Room");
+        buyRoom.setPrefWidth(100);
+        showMenu.getChildren().addAll(buyRecButton, buyRoom);
+        getChildren().add(showMenu);
         
         
     	
@@ -114,4 +109,13 @@ public class ControlBar extends HBox{
     	time.setText(String.format("%02d:%02d", Time.getHour(), Time.getMin()));
     	day.setText(Integer.toString(GameManager.getDay()));
 	}
+
+	public static Button getBuyRoom() {
+		return buyRoom;
+	}
+	
+	public static Button getbuyRecButton() {
+		return buyRecButton;
+	}
+	
 }
