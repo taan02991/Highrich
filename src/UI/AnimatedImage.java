@@ -40,8 +40,8 @@ public class AnimatedImage extends Rectangle
 		if(super.getPositionY() < 0) {
 			super.setPositionY(0);
 		}
-		if(super.getPositionY() + super.getHeight() > 500) {
-			super.setPositionY(500 - super.getHeight());
+		if(super.getPositionY() + super.getHeight() > 498) {
+			super.setPositionY(498 - super.getHeight());
 		}
 	}
 	
