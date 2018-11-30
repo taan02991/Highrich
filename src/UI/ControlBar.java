@@ -19,6 +19,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 
 public class ControlBar extends HBox{
@@ -28,14 +29,17 @@ public class ControlBar extends HBox{
 	private static Text time;
 	private static Text day;
 	private static VBox showMenu;
+	private static Button menuButton;
 	private static Button buyRoom;
 	private static Button buyRecButton;
+	private static Button continueButton;
+	private static Button exitButton;
 	private static VBox showStatus;
 	private static HBox showTime;
+	private static VBox showButton;
 	
 	public ControlBar() {
 		
-//		this.setBorder(new Border(new BorderStroke(Color.web("#A5A5A3"), BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(5))));
 		this.setSpacing(20);
 		this.setAlignment(Pos.CENTER);
 		this.setPadding(new Insets(10));
@@ -65,26 +69,68 @@ public class ControlBar extends HBox{
     	time.setFont(Font.font("Digital Dismay", 50));
     	time.setFill(Color.WHITE);
     	showTime.getChildren().add(time);
-    	this.getChildren().add(showTime);	
-    	
-    	//Right side
+    	this.getChildren().add(showTime);	  
+        
+        //right side
+    	showButton = new VBox(10);
+    	showButton.setPrefSize(140, 180);
+        menuButton = new Button("Menu");
+        exitButton = new Button("Exit");
+        showButton.getChildren().addAll(menuButton, exitButton);
+        this.getChildren().add(showButton);
+        
+        //Popup Menu
         showMenu = new VBox(10);
-        showMenu.setPrefSize(140, 180);;
+        showMenu.setAlignment(Pos.CENTER);
+        showMenu.setStyle("-fx-background-color: rgba(255, 255, 255, 0.5); -fx-boarder-radius: 25px; -fx-background-radius: 25px");
+        showMenu.setMaxSize(250, 150);
         buyRecButton = new Button("Buy Receptionist");
-        buyRecButton.setPrefWidth(100);
+        buyRecButton.setPrefWidth(200);
         buyRoom = new Button("Buy Room");
-        buyRoom.setPrefWidth(100);
-        showMenu.getChildren().addAll(buyRecButton, buyRoom);
-        getChildren().add(showMenu);
-        
+        buyRoom.setPrefWidth(200);
+        continueButton = new Button("Continue");
+        continueButton.setPrefWidth(200);
+        showMenu.getChildren().addAll(continueButton, buyRecButton, buyRoom);
+        showMenu.setVisible(false);
+        GameScene.stackPane.getChildren().add(showMenu);
         
     	
+       menuButton.setOnAction(new EventHandler<ActionEvent>() {
+
+		@Override
+		public void handle(ActionEvent arg0) {
+			GameManager.setGamePausing(true);
+			showMenu.setVisible(true);
+		}
+    	   
+       });
+       
+       exitButton.setOnAction(new EventHandler<ActionEvent>() {
+
+		@Override
+		public void handle(ActionEvent event) {
+			Stage stage = (Stage) exitButton.getScene().getWindow();
+		    stage.close();
+			
+		}
+	});
+       
+       continueButton.setOnAction(new EventHandler<ActionEvent>() {
+
+		@Override
+		public void handle(ActionEvent event) {
+			GameManager.setGamePausing(false);
+			showMenu.setVisible(false);
+		}
+	});
     	
-    	buyRecButton.setOnAction(new EventHandler<ActionEvent>(){
+       buyRecButton.setOnAction(new EventHandler<ActionEvent>(){
 
 			@Override
 			public void handle(ActionEvent event) {
 				GameManager.getPlayer().buyReceptionist();
+				GameManager.setGamePausing(false);
+				showMenu.setVisible(false);
 			}		
     		
     	});
@@ -94,10 +140,12 @@ public class ControlBar extends HBox{
 			@Override
 			public void handle(ActionEvent arg0) {
 				GameManager.getPlayer().buyRoom(GameScene.gc);
-				
+				GameManager.setGamePausing(false);
+				showMenu.setVisible(false);	
 			}
     		
     	});
+    	
 
         
 	}
