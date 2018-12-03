@@ -96,7 +96,6 @@ public class Player extends AnimatedImage implements Walkable{
 		try {
 			if(this.getMap() instanceof MapUpStair) {
 				for(Room room: ((MapUpStair) this.getMap()).getRoomsList()) {
-					
 					if(this.intersects(room.getTractor())) {
 						//check this room is presidential for throw exception
 						this.checkRoomPresidential(room);
@@ -194,7 +193,6 @@ public class Player extends AnimatedImage implements Walkable{
 		return 0;
 	}
 	
-	
 	@Override
 	public void walk() {
 		this.setVelocityOnKeyPressed();
@@ -206,9 +204,5 @@ public class Player extends AnimatedImage implements Walkable{
     	this.walk();
     	super.update();
 	}
-
-	
-	
-	
 	
 }
