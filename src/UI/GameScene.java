@@ -38,7 +38,7 @@ public class GameScene extends Scene {
 		root.getChildren().add(stackPane);
 		root.getChildren().add(controlBar);
 	
-		this.gc = canvas.getGraphicsContext2D();
+		gc = canvas.getGraphicsContext2D();
 		
         //Prepare Image
 		GameManager gameManager = new GameManager();
@@ -50,10 +50,10 @@ public class GameScene extends Scene {
 		Timeline gameLoop = new Timeline();
         gameLoop.setCycleCount( Timeline.INDEFINITE );
         
-        AudioClip BGM = new AudioClip(ClassLoader.getSystemResource("BGM.mp3").toString());
-        BGM.setVolume(0.5);
-        BGM.play();
-
+        Audio.BGM.setVolume(1);
+        Audio.BGM.setCycleCount(AudioClip.INDEFINITE);
+        Audio.BGM.play();
+		
         KeyFrame kf = new KeyFrame(
             Duration.seconds(0.016),                // 60 FPS
             new EventHandler<ActionEvent>()

@@ -95,59 +95,58 @@ public class ControlBar extends HBox{
         GameScene.stackPane.getChildren().add(showMenu);
         
     	
-       menuButton.setOnAction(new EventHandler<ActionEvent>() {
-
-		@Override
-		public void handle(ActionEvent arg0) {
-			GameManager.setGamePausing(true);
-			showMenu.setVisible(true);
-		}
-    	   
-       });
+        menuButton.setOnAction(new EventHandler<ActionEvent>() {
+    		@Override
+    		public void handle(ActionEvent arg0) {
+    			GameManager.setGamePausing(true);
+    			showMenu.setVisible(true);
+    			Audio.MENU.setVolume(1);
+    			Audio.MENU.play();
+    		}
+        });
        
-       exitButton.setOnAction(new EventHandler<ActionEvent>() {
-
-		@Override
-		public void handle(ActionEvent event) {
-			Stage stage = (Stage) exitButton.getScene().getWindow();
-		    stage.close();
-			
-		}
-	});
+        exitButton.setOnAction(new EventHandler<ActionEvent>() {
+    		@Override
+    		public void handle(ActionEvent event) {
+    			Stage stage = (Stage) exitButton.getScene().getWindow();
+    		    stage.close();
+    			Audio.MENU.setVolume(1);
+    			Audio.MENU.play();
+    		}
+    	});
        
-       continueButton.setOnAction(new EventHandler<ActionEvent>() {
-
-		@Override
-		public void handle(ActionEvent event) {
-			GameManager.setGamePausing(false);
-			showMenu.setVisible(false);
-		}
-	});
-    	
-       buyRecButton.setOnAction(new EventHandler<ActionEvent>(){
-
-			@Override
-			public void handle(ActionEvent event) {
-				GameManager.getPlayer().buyReceptionist();
-				GameManager.setGamePausing(false);
-				showMenu.setVisible(false);
-			}		
-    		
+        continueButton.setOnAction(new EventHandler<ActionEvent>() {
+    		@Override
+    		public void handle(ActionEvent event) {
+    			GameManager.setGamePausing(false);
+    			showMenu.setVisible(false);
+    			Audio.MENU.setVolume(1);
+    			Audio.MENU.play();
+    		}
     	});
     	
+        buyRecButton.setOnAction(new EventHandler<ActionEvent>(){
+ 			@Override
+ 			public void handle(ActionEvent event) {
+ 				GameManager.getPlayer().buyReceptionist();
+ 				GameManager.setGamePausing(false);
+ 				showMenu.setVisible(false);
+    			Audio.MENU.setVolume(1);
+    			Audio.MENU.play();
+ 			}		
+     	});
+    	
     	buyRoom.setOnAction(new EventHandler<ActionEvent>() {
-
 			@Override
 			public void handle(ActionEvent arg0) {
 				GameManager.getPlayer().buyRoom(GameScene.gc);
 				GameManager.setGamePausing(false);
 				showMenu.setVisible(false);	
+    			Audio.MENU.setVolume(1);
+    			Audio.MENU.play();
 			}
-    		
     	});
-    	
-
-        
+ 
 	}
 	
 	public void update() {

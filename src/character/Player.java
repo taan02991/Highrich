@@ -1,6 +1,7 @@
 package character;
 
 import UI.AnimatedImage;
+import UI.Audio;
 import UI.Images;
 import controller.GameManager;
 import controller.KeyInput;
@@ -142,10 +143,14 @@ public class Player extends AnimatedImage implements Walkable{
 	public int warp() {
 		if(super.getMap().getWarpUp() != null && super.getMap().getWarpUp().intersects(this)) {	
 			super.setPosition(230, 500 - this.getHeight() - 20);
+			Audio.WARP.setVolume(1);
+			Audio.WARP.play();
 			return 1;
 		}
 		else if(super.getMap().getWarpDown() != null && super.getMap().getWarpDown().intersects(this)) {
 			this.setPosition(230, 20);
+			Audio.WARP.setVolume(1);
+			Audio.WARP.play();
 			return -1;
 		}
 		return 0;
