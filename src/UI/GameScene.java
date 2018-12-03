@@ -51,6 +51,7 @@ public class GameScene extends Scene {
         gameLoop.setCycleCount( Timeline.INDEFINITE );
         
         AudioClip BGM = new AudioClip(ClassLoader.getSystemResource("BGM.mp3").toString());
+        BGM.setVolume(0.5);
         BGM.play();
 
         KeyFrame kf = new KeyFrame(
