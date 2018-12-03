@@ -7,7 +7,7 @@ import character.Npc;
 import character.OldMan;
 import character.Receptionist;
 import character.Teenager;
-import character.Visitor;
+import exception.ReceptionistFullException;
 import javafx.scene.canvas.GraphicsContext;
 
 public class MapWelcome extends Map{
@@ -38,10 +38,9 @@ public class MapWelcome extends Map{
 	}
 	
 	
-	public boolean addReceptionist(){
+	public void addReceptionist() throws ReceptionistFullException{
 		if(this.numberOfReceptionist == MAXRECEPTIONIST) {
-			return false;
-//			throw new Exception or may be pop up message ("Can't add more receptionist");
+			throw new ReceptionistFullException();
 		}
 		double x = 20;
 		double y = 250;
@@ -54,7 +53,6 @@ public class MapWelcome extends Map{
 		}
 		Npc receptionist = new Receptionist(Images.Receptionist, this, x, y);
 		super.getNpcList().add(receptionist);
-		return true;
 	}
 	
 	@Override
