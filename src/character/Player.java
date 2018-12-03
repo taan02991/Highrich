@@ -5,6 +5,10 @@ import UI.Audio;
 import UI.Images;
 import controller.GameManager;
 import controller.KeyInput;
+import exception.MoneyNotEnoughtException;
+import exception.ReceptionistFullException;
+import exception.RoomIsHighestClassException;
+import exception.StandNotTractorException;
 import controller.BuyRoom;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
@@ -31,27 +35,45 @@ public class Player extends AnimatedImage implements Walkable{
 		Money = 200000;
 	}
 	
-	public boolean buyReceptionist() {
+	public void buyReceptionist() {
 		MapWelcome mapWelcome = ((MapWelcome)GameManager.getMaps().get(0));
-		if(this.enoughMoney(Receptionist.getCost()) && mapWelcome.addReceptionist()) {
-			this.payMoney(Receptionist.getCost());
+		try {
+			this.enoughMoney(Receptionist.getCost());
+			mapWelcome.addReceptionist();
 			System.out.println("Add Receptionist" + getMoney());
-			return true;
-		}
-		else {
-			System.out.println("Can't add Receptionist");
-			return false;			
+		}catch(MoneyNotEnoughtException e) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Warning Dialog");
+			alert.setHeaderText("You can't buy new Receptionist");
+			alert.setContentText("You don't have enought money for new Receptionist");
+			alert.showAndWait();
+		}catch(ReceptionistFullException e) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Warning Dialog");
+			alert.setHeaderText("You can't buy new Receptionist");
+			alert.setContentText("Receptionists are over limit");
+			alert.showAndWait();
 		}
 	}
 	
-	public boolean enoughMoney(int n) {
-		//Throw Exception
-		if(Money >= n) {
-			return true;
+	private void enoughMoney(int n) throws MoneyNotEnoughtException {
+		if(Money < n) {
+			throw new MoneyNotEnoughtException();
 		}
-		else {
-			return false;
+	}
+	
+	private void checkRoomPresidential(Room room) throws RoomIsHighestClassException {
+		if(room instanceof RoomPresidential) {
+			throw new RoomIsHighestClassException();
 		}
+	}
+	
+	private void throwNotStandAtTractor() throws StandNotTractorException {
+		throw new StandNotTractorException("tractor icon");
+	}
+	
+	private void throwNotStandAtMapUpStair() throws StandNotTractorException{
+		throw new StandNotTractorException("map up stair");
 	}
 	
 	public static void addMoney(int m) {
@@ -64,49 +86,65 @@ public class Player extends AnimatedImage implements Walkable{
 	}
 
 
-	public boolean payMoney(int o) {
-		if( Money - o < 0 ) {
-			return false;
-//throw exception
-		}
-		else{
+	public void payMoney(int o) {
+		if( Money - o > 0 ) {
 			Money -= o;
-			return true;
 		}
 	}
 	
-	public void buyRoom(GraphicsContext gc){
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Warning Dialog");
-		if(this.getMap() instanceof MapUpStair) {
-			for(Room room: ((MapUpStair) this.getMap()).getRoomsList()) {
-				if(this.intersects(room.getTractor())) {
-					if( room instanceof RoomConstruction && this.enoughMoney(room.getConstructionCost())) {
-						payMoney(room.getConstructionCost());
-						new BuyRoom(super.getMap(), room, 1, gc);
-						return;
-					}else if( room instanceof RoomStandard && this.enoughMoney(room.getConstructionCost())) {
-						payMoney(room.getConstructionCost());
-						new BuyRoom(super.getMap(), room, 2, gc);
-						return;
-						
-					}else if( room instanceof RoomExecutive && this.enoughMoney(room.getConstructionCost())) {
-						payMoney(room.getConstructionCost());
-						new BuyRoom(super.getMap(), room, 3, gc);
-						return;
-						
-					}else if( room instanceof RoomPresidential) {
-						alert.setHeaderText("You can't upgrade anymore");
-						alert.setContentText("The room is already in highest class");
-						alert.showAndWait();
-						return;
+	public void buyRoom(GraphicsContext gc){		
+		try {
+			if(this.getMap() instanceof MapUpStair) {
+				for(Room room: ((MapUpStair) this.getMap()).getRoomsList()) {
+					
+					if(this.intersects(room.getTractor())) {
+						//check this room is presidential for throw exception
+						this.checkRoomPresidential(room);
+						if( room instanceof RoomConstruction) {
+							//check have enough money for throw exception
+							this.enoughMoney(room.getConstructionCost());
+							payMoney(room.getConstructionCost());
+							new BuyRoom(super.getMap(), room, 1, gc);
+							return;
+						}else if( room instanceof RoomStandard) {
+							//check have enough money for throw exception
+							this.enoughMoney(room.getConstructionCost());
+							payMoney(room.getConstructionCost());
+							new BuyRoom(super.getMap(), room, 2, gc);
+							return;
+							
+						}else if( room instanceof RoomExecutive) {
+							//check have enough money for throw exception
+							this.enoughMoney(room.getConstructionCost());
+							payMoney(room.getConstructionCost());
+							new BuyRoom(super.getMap(), room, 3, gc);
+							return;
+							
+						}
+						this.throwNotStandAtTractor();
 					}
 				}
 			}
+			this.throwNotStandAtMapUpStair();			
+		}catch(MoneyNotEnoughtException e) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Warning Dialog");
+			alert.setHeaderText("You can't buy the room");
+			alert.setContentText("You don't have enought money for buy this room");
+			alert.showAndWait();
+		}catch(RoomIsHighestClassException e) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Warning Dialog");
+			alert.setHeaderText("You can't buy the room");
+			alert.setContentText("This room is already highest class");
+			alert.showAndWait();
+		}catch(StandNotTractorException e) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Warning Dialog");
+			alert.setHeaderText("You can't buy the room");
+			alert.setContentText("You must stand at Tractor icon");
+			alert.showAndWait();
 		}
-		alert.setHeaderText("You can't buy the room");
-		alert.setContentText("You have to stand at the tractor icon");
-		alert.showAndWait();
 	}
 
 	public void setFacing() {
