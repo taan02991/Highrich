@@ -31,7 +31,7 @@ public class GameManager {
 		gamePausing = false;
 		gameTick = 0;
 		customer = 0;
-		popularity = 50;
+		popularity = 100;
 		day = 0;
 		availableRoom = 0;
 		nStandard = 0;
@@ -45,11 +45,13 @@ public class GameManager {
 		for(int i = 0; i < 5; i++) {
 			maps.add(new MapUpStair(i));
 		}
-		maps.add(new MapTerrace());
 	}
 	
 	public void update(GraphicsContext gc){
 		
+		if(isWin() || KeyInput.contains("T")) {
+			maps.add(new MapTerrace());
+		}
 		//test add Receptionist
 		gameTick = (gameTick + 1) % 11250;
 		//for test
@@ -58,14 +60,14 @@ public class GameManager {
 		}
 		
 		if(Time.getHour() < 6 || Time.getHour() > 12) {
-			if(gameTick % (400 - ((MapWelcome)maps.get(0)).getNumberOfReceptionist()*20 + customer*10) == 0) {
-				((MapWelcome)maps.get(0)).addVisitor();
-				System.out.println(gameTick + "");
+			if(gameTick % (300 - ((MapWelcome)maps.get(0)).getNumberOfReceptionist()*20 + customer*10) == 0) {
+				System.out.println(Math.random()*100000%200);
+				if(Math.random()*100000%200 <= popularity) {
+					((MapWelcome)maps.get(0)).addVisitor();	
+				}
 			}
 		}
 			
-		currentMap = maps.get((maps.indexOf(currentMap) + player.warp()) % maps.size());
-		player.setMap(currentMap);
 		for(Map map: maps) {
 			map.updateNpc();
 		}
@@ -95,6 +97,19 @@ public class GameManager {
 		return maps;
 	}
 	
+	public static void setMaps(ArrayList<Map> maps) {
+		GameManager.maps = maps;
+	}
+	
+	public static Map getCurrentMap() {
+		return currentMap;
+	}
+
+	public static void setCurrentMap(Map currentMap) {
+		GameManager.currentMap = currentMap;
+	}
+
+
 	public static boolean isWin() {	
 		if(nPresidential == MAXROOM) {
 			return true;
@@ -113,7 +128,7 @@ public class GameManager {
 	}
 	
 	public static void addPopularity() {
-		if(popularity < 100) {
+		if(popularity < 200) {
 			popularity += 1;
 		}
 	}
@@ -175,6 +190,7 @@ public class GameManager {
 	public static void setnPresidential(int nPresidential) {
 		GameManager.nPresidential = nPresidential;
 	}
+	
 	
 	
 }

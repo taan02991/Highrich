@@ -8,6 +8,7 @@ public class Images {
 		public static final Image STARTBUTTON = new Image(ClassLoader.getSystemResource("StartButton.png").toString());
 		public static final Image STARTBUTTONHOVER = new Image(ClassLoader.getSystemResource("StartButtonHover.png").toString());
 		public static final Image FLOOR = new Image(ClassLoader.getSystemResource("floor.png").toString());
+		public static final Image[] AIRPLANE = {new Image(ClassLoader.getSystemResource("Airplane.png").toString())};
 		
 		public static final Image[] PLAYERL = new Image[3];
 		public static final Image[] PLAYERR = new Image[3];
