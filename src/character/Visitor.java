@@ -100,6 +100,7 @@ public class Visitor extends Npc implements Walkable{
 		if(talkTick == 100) {
 			this.stage = 3;
 			GameManager.setCustomer(GameManager.getCustomer() + 1);
+			GameManager.setAvailableRoom(GameManager.getAvailableRoom() - 1);
 			GameManager.addPopularity();
 			Player.addMoney(this.room.getFee());
 			this.contactPerson.setBusy(false);

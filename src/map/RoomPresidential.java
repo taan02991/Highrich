@@ -2,17 +2,19 @@ package map;
 
 import UI.Images;
 import UI.Rectangle;
+import controller.GameManager;
 
 public class RoomPresidential extends Room{
 
 	public RoomPresidential(int position, Map map) {
 		super(Images.PRESIDENTIALROOM, position, 0, 0, map);
-		if(((MapUpStair) map).getRoomsList().get(position) instanceof RoomConstruction) {
-			super.setAvailable(true);
+		Room oldRoom = ((MapUpStair) map).getRoomsList().get(position);
+		super.setAvailable(oldRoom.isAvailable);
+		if(oldRoom.getVisitor() != null) {
+			super.setVisitor(oldRoom.getVisitor());
 		}
-		else {
-			super.setAvailable(((MapUpStair) map).getRoomsList().get(position).isAvailable);
-		}
+		GameManager.setnExecutive(GameManager.getnExecutive() - 1);
+		GameManager.setnPresidential(GameManager.getnPresidential() + 1);
 		
 		if(position < 3) {
 			super.addRoomStruct(new Rectangle(Images.VERTICALWALL, 0, 166*(this.position)));

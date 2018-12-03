@@ -7,16 +7,20 @@ import javafx.scene.canvas.GraphicsContext;
 import map.Map;
 import map.MapUpStair;
 import map.MapWelcome;
-import map.Room;
 
 public class GameManager {
+	private static final int MAXROOM = 30;
 	private static Player player;
 	private static ArrayList<Map> maps;
 	private static Map currentMap;
 	private static boolean gamePausing;
-	private static int Customer;
-	private static int Popularity;
-	private static long gameTick = 0;
+	private static int customer;
+	private static int popularity;
+	private static int availableRoom;
+	private static int nStandard;
+	private static int nExecutive;
+	private static int nPresidential;
+	private static long gameTick;
 	private static int day;
 	
 	public GameManager() {
@@ -24,9 +28,14 @@ public class GameManager {
 		generateMap();
 		currentMap = maps.get(0);
 		gamePausing = false;
-		Customer = 0;
-		Popularity = 50;
+		gameTick = 0;
+		customer = 0;
+		popularity = 50;
 		day = 0;
+		availableRoom = 0;
+		nStandard = 0;
+		nExecutive = 0;
+		nPresidential = 0;
 		player = new Player(Images.PLAYERR, currentMap, 0, 0, 0, 0);
 	}
 	
@@ -38,6 +47,7 @@ public class GameManager {
 	}
 	
 	public void update(GraphicsContext gc){
+		
 		//test add Receptionist
 		gameTick = (gameTick + 1) % 11250;
 		//for test
@@ -46,9 +56,9 @@ public class GameManager {
 		}
 		
 		if(Time.getHour() < 6 || Time.getHour() > 12) {
-			if(this.gameTick % (400 - ((MapWelcome)maps.get(0)).getNumberOfReceptionist()*20 + this.Customer*10) == 0) {
+			if(gameTick % (400 - ((MapWelcome)maps.get(0)).getNumberOfReceptionist()*20 + customer*10) == 0) {
 				((MapWelcome)maps.get(0)).addVisitor();
-				System.out.println(this.gameTick + "");
+				System.out.println(gameTick + "");
 			}
 		}
 			
@@ -66,20 +76,8 @@ public class GameManager {
 					((MapUpStair) m).clear();
 				}
 			}
+			availableRoom = nStandard + nExecutive + nPresidential;
 		}
-			
-//		/*map up stair
-//		*check player intersects with tractor
-//		*/
-//		if(currentMap instanceof MapUpStair) {
-//			for(Room o : ((MapUpStair) currentMap).getRoomsList()) {
-//				if(player.intersects(o.getTractor()) && KeyInput.contains("ENTER")) {
-//					player.buyRoom(o, gc);
-//					System.out.println(Player.getMoney());
-//					//gamePausing = true;
-//				}
-//			}
-//		}
 	}
 	
 	public void render(GraphicsContext gc) {
@@ -94,6 +92,18 @@ public class GameManager {
 	public static ArrayList<Map> getMaps() {
 		return maps;
 	}
+	
+	public static boolean isWin() {
+		//test
+		return true;
+//		
+//		if(nPresidential == MAXROOM) {
+//			return true;
+//		}
+//		else {
+//			return false;
+//		}
+	}
 
 	public static boolean isGamePausing() {
 		return gamePausing;
@@ -104,27 +114,27 @@ public class GameManager {
 	}
 	
 	public static void addPopularity() {
-		if(Popularity < 100) {
-			Popularity += 1;
+		if(popularity < 100) {
+			popularity += 1;
 		}
 	}
 	
 	public static void minusPopularity() {
-		if(Popularity > 1) {
-			Popularity -= 1;
+		if(popularity > 1) {
+			popularity -= 1;
 		}
 	}
 
 	public static int getPopularity() {
-		return Popularity;
+		return popularity;
 	}
 
 	public static int getCustomer() {
-		return Customer;
+		return customer;
 	}
 
-	public static void setCustomer(int customer) {
-		Customer = customer;
+	public static void setCustomer(int n) {
+		customer = n;
 	}
 
 	public static int getDay() {
@@ -134,12 +144,38 @@ public class GameManager {
 	public static void setDay(int day) {
 		GameManager.day = day;
 	}
-	
-	
-	
-	
-	
-	
+
+	public static int getAvailableRoom() {
+		return availableRoom;
+	}
+
+	public static void setAvailableRoom(int availableRoom) {
+		GameManager.availableRoom = availableRoom;
+	}
+
+	public static int getnStandard() {
+		return nStandard;
+	}
+
+	public static void setnStandard(int nStandard) {
+		GameManager.nStandard = nStandard;
+	}
+
+	public static int getnExecutive() {
+		return nExecutive;
+	}
+
+	public static void setnExecutive(int nExecutive) {
+		GameManager.nExecutive = nExecutive;
+	}
+
+	public static int getnPresidential() {
+		return nPresidential;
+	}
+
+	public static void setnPresidential(int nPresidential) {
+		GameManager.nPresidential = nPresidential;
+	}
 	
 	
 }

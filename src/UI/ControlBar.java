@@ -28,6 +28,10 @@ public class ControlBar extends HBox{
 	private static Text customer;
 	private static Text time;
 	private static Text day;
+	private static Text nStandard;
+	private static Text nExecutive;
+	private static Text nPresidential;
+	private static Text availableRoom;
 	private static VBox showMenu;
 	private static Button menuButton;
 	private static Button buyRoom;
@@ -51,10 +55,14 @@ public class ControlBar extends HBox{
 		customer = new Text();
 		time = new Text();
 		day = new Text();
-        showStatus = new VBox(10);
+		nStandard = new Text();
+		nExecutive = new Text();
+		nPresidential = new Text();
+		availableRoom = new Text();
+        showStatus = new VBox(5);
         showStatus.setPrefWidth(140);
         showStatus.setPrefHeight(180);
-        showStatus.getChildren().addAll(money, popularity, customer, day);
+        showStatus.getChildren().addAll(money, popularity, customer, day, nStandard, nExecutive, nPresidential, availableRoom);
         showStatus.setBorder(new Border(new BorderStroke(Color.web("#000000"), BorderStrokeStyle.SOLID, new CornerRadii(5), BorderWidths.DEFAULT)));
     	showStatus.setBackground(new Background(new BackgroundFill(Color.IVORY, null, null)));
     	getChildren().add(showStatus);
@@ -155,6 +163,10 @@ public class ControlBar extends HBox{
     	customer.setText("Customer: " + Integer.toString(GameManager.getCustomer()));
     	time.setText(String.format("%02d:%02d", Time.getHour(), Time.getMin()));
     	day.setText("Day: " + Integer.toString(GameManager.getDay()));
+    	nStandard.setText("nStandard: " + GameManager.getnStandard());
+    	nExecutive.setText("nExecutive: " + GameManager.getnExecutive());
+    	nPresidential.setText("nPresidential: " + GameManager.getnPresidential());
+    	availableRoom.setText("AvailableRoom: " + GameManager.getAvailableRoom());
 	}
 
 	public static Button getBuyRoom() {

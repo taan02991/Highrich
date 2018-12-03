@@ -159,8 +159,18 @@ public class Player extends AnimatedImage implements Walkable{
 	
 	@Override
 	public void walk() {
-		this.setVelocityOnKeyPressed();
-		this.setFacing();	
+		if(!GameManager.isWin()) {
+			this.setVelocityOnKeyPressed();			
+		}
+		else {
+			if(this.getPositionX() != 230) {
+				super.setVelocity(super.getPositionX() > 250?-1:1, 0);
+			}
+			else if(this.getPositionY() != 0) {
+				super.setVelocity(0, -1);
+			}
+		}
+		this.setFacing();
 	}
 	
 	@Override 
