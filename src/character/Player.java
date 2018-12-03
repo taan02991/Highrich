@@ -83,7 +83,7 @@ public class Player extends AnimatedImage implements Walkable{
 				if(this.intersects(room.getTractor())) {
 					if( room instanceof RoomConstruction && this.enoughMoney(room.getConstructionCost())) {
 						payMoney(room.getConstructionCost());
-						BuyRoom o = new BuyRoom(super.getMap(), room, 1, gc);
+						new BuyRoom(super.getMap(), room, 1, gc);
 						return;
 					}else if( room instanceof RoomStandard && this.enoughMoney(room.getConstructionCost())) {
 						payMoney(room.getConstructionCost());
