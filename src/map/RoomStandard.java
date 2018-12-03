@@ -2,12 +2,15 @@ package map;
 
 import UI.Images;
 import UI.Rectangle;
+import controller.GameManager;
 
 public class RoomStandard extends Room{
 
 	public RoomStandard(int position, Map map) {
 		super(Images.STANDARDROOM, position, 10000, 1000, map);
-		super.setAvailable(true);			
+		super.setAvailable(true);
+		GameManager.setnStandard(GameManager.getnStandard() + 1);
+		GameManager.setAvailableRoom(GameManager.getAvailableRoom() + 1);
 		
 		if(position < 3) {
 			super.addRoomStruct(new Rectangle(Images.VERTICALWALL, 0, 166*(this.position)));
