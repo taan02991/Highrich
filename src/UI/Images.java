@@ -8,7 +8,6 @@ public class Images {
 		public static final Image STARTBUTTON = new Image(ClassLoader.getSystemResource("StartButton.png").toString());
 		public static final Image STARTBUTTONHOVER = new Image(ClassLoader.getSystemResource("StartButtonHover.png").toString());
 		public static final Image FLOOR = new Image(ClassLoader.getSystemResource("floor.png").toString());
-		public static final Image[] AIRPLANE = {new Image(ClassLoader.getSystemResource("Airplane.png").toString())};
 		
 		public static final Image[] PLAYERL = new Image[3];
 		public static final Image[] PLAYERR = new Image[3];
@@ -66,6 +65,9 @@ public class Images {
 		public static final Image ICONPOPULARITY = new Image(ClassLoader.getSystemResource("IconPopularity.png").toString());
 		public static final Image ICONCUSTOMER = new Image(ClassLoader.getSystemResource("IconCustomer.png").toString());
 		public static final Image ICONROOM = new Image(ClassLoader.getSystemResource("IconRoom.png").toString());
+		
+		public static final Image TERRACE = new Image(ClassLoader.getSystemResource("Terrace.png").toString());
+		public static final Image[] AIRPLANE = {new Image(ClassLoader.getSystemResource("Airplane.png").toString())};
 		
 		static {
 			for(int i = 0; i < 3; i++) {

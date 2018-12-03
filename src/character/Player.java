@@ -190,7 +190,12 @@ public class Player extends AnimatedImage implements Walkable{
 		if(super.getMap().getWarpUp() != null && super.getMap().getWarpUp().intersects(this)) {
 			GameManager.setCurrentMap(GameManager.getMaps().get(GameManager.getMaps().indexOf(this.getMap()) + 1));
 			this.setMap(GameManager.getCurrentMap());
-			this.setPosition(230, 500 - this.getHeight() - 20);
+			if(GameManager.getCurrentMap() instanceof MapTerrace) {
+				this.setPosition(39, 292);
+			}
+			else {
+				this.setPosition(230, 500 - this.getHeight() - 20);								
+			}
 			Audio.WARP.setVolume(1);
 			Audio.WARP.play();
 		}
@@ -204,11 +209,8 @@ public class Player extends AnimatedImage implements Walkable{
 	}
 	
 	public void endWalking() {
-		if(this.getPositionX() != 250) {
+		if(this.getPositionX() != 392) {
 			this.setVelocity(1, 0);
-		}
-		else if(this.getPositionY() != 100) {
-			this.setVelocity(0, -1);
 		}
 		else {
 			this.setVelocity(0, 0);

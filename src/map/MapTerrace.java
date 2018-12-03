@@ -11,8 +11,8 @@ public class MapTerrace extends Map{
 	
 	public MapTerrace() {
 		super();
-		super.setBackground(Images.FLOOR);
-		this.airPlane = new AnimatedImage(Images.AIRPLANE, this, 0, 0 , 0, 0);
+		super.setBackground(Images.TERRACE);
+		this.airPlane = new AnimatedImage(Images.AIRPLANE, this, 297, 250, 0, 0);
 	}
 
 	@Override
