@@ -27,6 +27,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import map.MapUpStair;
+import map.MapWelcome;
 import javafx.scene.paint.Color;
 
 public class ControlBar extends HBox{
@@ -53,6 +55,7 @@ public class ControlBar extends HBox{
 	private static ProgressBar progressPresidential;
 	private static ProgressBar progressPresidentialOnStatus;
 	private static ProgressBar progressAvailable;
+	private static ImageView currentFloor;
 	
 	public ControlBar() {
 		
@@ -116,7 +119,7 @@ public class ControlBar extends HBox{
         //Popup Menu
         showMenu = new VBox(10);
         showMenu.setAlignment(Pos.CENTER);
-        showMenu.setStyle("-fx-background-color: rgba(255, 255, 255, 0.5); -fx-boarder-radius: 25px; -fx-background-radius: 25px");
+        showMenu.setStyle("-fx-background-color: rgba(255, 255, 255, 0.8); -fx-boarder-radius: 25px; -fx-background-radius: 25px");
         showMenu.setMaxSize(250, 150);
         buyRecButton = new Button("Buy Receptionist");
         buyRecButton.setPrefWidth(200);
@@ -131,7 +134,7 @@ public class ControlBar extends HBox{
         //Popup status
         showStatus = new GridPane();
         showStatus.setAlignment(Pos.CENTER);
-        showStatus.setStyle("-fx-background-color: rgba(255, 255, 255, 0.5); -fx-boarder-radius: 25px; -fx-background-radius: 25px");
+        showStatus.setStyle("-fx-background-color: rgba(255, 255, 255, 0.8); -fx-boarder-radius: 25px; -fx-background-radius: 25px");
         showStatus.setMaxSize(250, 200);
         showStatus.setVgap(7);
         showStatus.setHgap(10);
@@ -140,18 +143,21 @@ public class ControlBar extends HBox{
         GridPane.setHalignment(continueButtonOnStatus, HPos.CENTER);
         GridPane.setValignment(continueButtonOnStatus, VPos.CENTER);
         showStatus.add(continueButtonOnStatus, 0, 0, 2, 1);
-        showStatus.add(new Label("N' Standard :"), 0, 1);
+        showStatus.add(new Label("Current Floor:"), 0, 1);
+        currentFloor = new ImageView(Images.ICONFLOOR[1]);
+        showStatus.add(currentFloor, 1, 1);
+        showStatus.add(new Label("N' Standard :"), 0, 2);
         progressStandard = new ProgressBar(0);
-        showStatus.add(progressStandard, 1, 1);
-        showStatus.add(new Label("N' Executive :"), 0, 2);
+        showStatus.add(progressStandard, 1, 2);
+        showStatus.add(new Label("N' Executive :"), 0, 3);
         progressExecutive =  new ProgressBar(0);
-        showStatus.add(progressExecutive, 1, 2);
-        showStatus.add(new Label("N' Presidential :"), 0, 3);
+        showStatus.add(progressExecutive, 1, 3);
+        showStatus.add(new Label("N' Presidential :"), 0, 4);
         progressPresidentialOnStatus = new ProgressBar(0);
-        showStatus.add(progressPresidentialOnStatus, 1, 3);
-        showStatus.add(new Label("N' Available Room :"), 0, 4);
+        showStatus.add(progressPresidentialOnStatus, 1, 4);
+        showStatus.add(new Label("N' Available Room :"), 0, 5);
         progressAvailable = new ProgressBar(0);
-        showStatus.add(progressAvailable, 1, 4);
+        showStatus.add(progressAvailable, 1, 5);
         showStatus.setVisible(false);
         GameScene.stackPane.getChildren().add(showStatus);
         
@@ -235,6 +241,11 @@ public class ControlBar extends HBox{
     	progressStandard.setProgress((double)GameManager.getnStandard()/18.0);
     	progressExecutive.setProgress((double)GameManager.getnExecutive()/18.0);
     	progressAvailable.setProgress((double)GameManager.getAvailableRoom()/18.0);
+    	if(GameManager.getCurrentMap() instanceof MapWelcome) {
+    		currentFloor.setImage(Images.ICONFLOOR[1]);
+    	}else if(GameManager.getCurrentMap() instanceof MapUpStair) {
+    		currentFloor.setImage(Images.ICONFLOOR[GameManager.getMaps().indexOf(GameManager.getCurrentMap())+1]);
+    	}
 	}
 
 	public static Button getBuyRoom() {
