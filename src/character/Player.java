@@ -6,6 +6,8 @@ import controller.GameManager;
 import controller.KeyInput;
 import controller.BuyRoom;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import map.Map;
 import map.MapUpStair;
@@ -73,34 +75,37 @@ public class Player extends AnimatedImage implements Walkable{
 	}
 	
 	public void buyRoom(GraphicsContext gc){
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Warning Dialog");
 		if(this.getMap() instanceof MapUpStair) {
 			for(Room room: ((MapUpStair) this.getMap()).getRoomsList()) {
 				if(this.intersects(room.getTractor())) {
 					if( room instanceof RoomConstruction && this.enoughMoney(room.getConstructionCost())) {
 						payMoney(room.getConstructionCost());
 						BuyRoom o = new BuyRoom(super.getMap(), room, 1, gc);
-			//			try {
-			//				o.join();
-			//			} catch (InterruptedException e) {
-			//				e.printStackTrace();
-			//			}
-						System.out.println("change to Standard");
+						return;
 					}else if( room instanceof RoomStandard && this.enoughMoney(room.getConstructionCost())) {
 						payMoney(room.getConstructionCost());
 						new BuyRoom(super.getMap(), room, 2, gc);
-						System.out.println("change to Executive");
+						return;
 						
 					}else if( room instanceof RoomExecutive && this.enoughMoney(room.getConstructionCost())) {
 						payMoney(room.getConstructionCost());
 						new BuyRoom(super.getMap(), room, 3, gc);
-						System.out.println("change to Presidential");
+						return;
 						
 					}else if( room instanceof RoomPresidential) {
-						System.out.println("aleary Presidential");
+						alert.setHeaderText("You can't upgrade anymore");
+						alert.setContentText("The room is already in highest class");
+						alert.showAndWait();
+						return;
 					}
 				}
 			}
 		}
+		alert.setHeaderText("You can't buy the room");
+		alert.setContentText("You have to stand at the tractor icon");
+		alert.showAndWait();
 	}
 
 	public void setFacing() {

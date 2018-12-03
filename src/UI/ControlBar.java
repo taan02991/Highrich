@@ -44,13 +44,13 @@ public class ControlBar extends HBox{
 		this.setAlignment(Pos.CENTER);
 		this.setPadding(new Insets(10));
 		
-        money = new Text();
-        popularity = new Text();
-        customer = new Text();
-        time = new Text();
-        day = new Text();
         
         //Left side
+		money = new Text();
+		popularity = new Text();
+		customer = new Text();
+		time = new Text();
+		day = new Text();
         showStatus = new VBox(10);
         showStatus.setPrefWidth(140);
         showStatus.setPrefHeight(180);
@@ -151,11 +151,11 @@ public class ControlBar extends HBox{
 	}
 	
 	public void update() {
-    	money.setText(Integer.toString(Player.getMoney()));
-    	popularity.setText(Integer.toString(GameManager.getPopularity()));
-    	customer.setText(Integer.toString(GameManager.getCustomer()));
+    	money.setText("Money: " + Integer.toString(Player.getMoney()));
+    	popularity.setText("Popularity: " + Integer.toString(GameManager.getPopularity()));
+    	customer.setText("Customer: " + Integer.toString(GameManager.getCustomer()));
     	time.setText(String.format("%02d:%02d", Time.getHour(), Time.getMin()));
-    	day.setText(Integer.toString(GameManager.getDay()));
+    	day.setText("Day: " + Integer.toString(GameManager.getDay()));
 	}
 
 	public static Button getBuyRoom() {
