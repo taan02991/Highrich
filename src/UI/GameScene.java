@@ -22,7 +22,6 @@ public class GameScene extends Scene {
 	public static StackPane stackPane;
 	public static GraphicsContext gc;
 	private VBox root;
-	private ControlBar controlBar;
 	
 	public GameScene() {
 		super(new VBox() ,500 ,700);

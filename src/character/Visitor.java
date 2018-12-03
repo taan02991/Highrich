@@ -169,7 +169,7 @@ public class Visitor extends Npc implements Walkable{
 	}
 	
 	private void walkOut() {
-		if(this.getPositionY() != 468) {
+		if(this.getPositionY() != 458) {
 			this.setVelocity(0, 1);
 			this.setFacing("DOWN");
 		}
