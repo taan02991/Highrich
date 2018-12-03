@@ -29,6 +29,8 @@ public class Images {
 		public static final Image[] ADULTU = new Image[3];
 		public static final Image[] ADULTD = new Image[3];
 		
+		public static final Image[] ICONFLOOR = new Image[7];
+		
 		public static final Image[] Receptionist = {new Image(ClassLoader.getSystemResource("Receptionist.png").toString())};
 		
 		public static final Image TREE = new Image(ClassLoader.getSystemResource("Tree.png").toString());
@@ -65,11 +67,15 @@ public class Images {
 		public static final Image ICONPOPULARITY = new Image(ClassLoader.getSystemResource("IconPopularity.png").toString());
 		public static final Image ICONCUSTOMER = new Image(ClassLoader.getSystemResource("IconCustomer.png").toString());
 		public static final Image ICONROOM = new Image(ClassLoader.getSystemResource("IconRoom.png").toString());
-		
+
 		public static final Image TERRACE = new Image(ClassLoader.getSystemResource("Terrace.png").toString());
 		public static final Image[] AIRPLANE = {new Image(ClassLoader.getSystemResource("Airplane.png").toString())};
 		
 		static {
+			for(int i = 1; i<7; i++) {
+				ICONFLOOR[i] = new Image(ClassLoader.getSystemResource("IconFloor" + i + ".png").toString());
+			}
+			
 			for(int i = 0; i < 3; i++) {
 				TEENAGERL[i] = new Image(ClassLoader.getSystemResource("TeenagerL" + i + ".png").toString());
 				TEENAGERR[i] = new Image(ClassLoader.getSystemResource("TeenagerR" + i + ".png").toString());

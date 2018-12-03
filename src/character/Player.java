@@ -188,7 +188,6 @@ public class Player extends AnimatedImage implements Walkable{
 	}
 	
 	public void warp() {
-		
 		try{
 			this.checkWrapToTerrace();
 		}catch(WarpToTerraceException e) {
@@ -202,9 +201,9 @@ public class Player extends AnimatedImage implements Walkable{
 			KeyInput.removeKey("DOWN");
 			KeyInput.removeKey("LEFT");
 			KeyInput.removeKey("RIGHT");
-			this.setPosition(this.getPositionX(), 13);
+			this.setPosition(this.getPositionX(), 25);
 			try {
-				Thread.sleep(500);
+				Thread.sleep(300);
 			} catch (InterruptedException e1) {
 				e1.printStackTrace();
 			}
