@@ -52,7 +52,6 @@ public class MapUpStair extends Map{
 		}
 	}
 	
-	@Override
 	public void setRoom(int position, int level) {
 		//à¸‚à¸²à¸”à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸²à¸¡à¸µà¸¥à¸¹à¸�à¸„à¹‰à¸²à¸›à¹ˆà¸²à¸§, à¹€à¸›à¹‡à¸™à¸«à¹‰à¸­à¸‡à¸—à¸µà¹ˆà¸•à¹‰à¸­à¸‡à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¸�à¹ˆà¸­à¸ªà¸£à¹‰à¸²à¸‡
 		switch(level) {

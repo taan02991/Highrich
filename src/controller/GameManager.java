@@ -5,6 +5,7 @@ import UI.Images;
 import character.Player;
 import javafx.scene.canvas.GraphicsContext;
 import map.Map;
+import map.MapTerrace;
 import map.MapUpStair;
 import map.MapWelcome;
 
@@ -44,6 +45,7 @@ public class GameManager {
 		for(int i = 0; i < 5; i++) {
 			maps.add(new MapUpStair(i));
 		}
+		maps.add(new MapTerrace());
 	}
 	
 	public void update(GraphicsContext gc){
@@ -93,16 +95,13 @@ public class GameManager {
 		return maps;
 	}
 	
-	public static boolean isWin() {
-		//test
-		return true;
-//		
-//		if(nPresidential == MAXROOM) {
-//			return true;
-//		}
-//		else {
-//			return false;
-//		}
+	public static boolean isWin() {	
+		if(nPresidential == MAXROOM) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	public static boolean isGamePausing() {

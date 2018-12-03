@@ -4,6 +4,7 @@ import UI.Images;
 import UI.ControlBar;
 import javafx.scene.canvas.GraphicsContext;
 import map.Map;
+import map.MapUpStair;
 import map.Room;
 
 public class BuyRoom extends Thread{
@@ -50,7 +51,7 @@ public class BuyRoom extends Thread{
 			}
 		}
 		gc.clearRect(this.x, this.y, 200, 166);
-		this.map.setRoom(this.room.getPosition(), this.level);
+		((MapUpStair) this.map).setRoom(this.room.getPosition(), this.level);
 		ControlBar.getBuyRoom().setDisable(false);
 		ControlBar.getbuyRecButton().setDisable(false);
 		GameManager.setGamePausing(false);
