@@ -15,6 +15,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import map.Map;
+import map.MapTerrace;
 import map.MapUpStair;
 import map.MapWelcome;
 import map.Room;
@@ -177,34 +178,50 @@ public class Player extends AnimatedImage implements Walkable{
     	}
 	}
 	
-	public int warp() {
-		if(super.getMap().getWarpUp() != null && super.getMap().getWarpUp().intersects(this)) {	
-			super.setPosition(230, 500 - this.getHeight() - 20);
+	public void warp() {
+		if(GameManager.getMaps().indexOf(this.getMap()) + 1 >= GameManager.getMaps().size()) {
+			if(super.getMap().getWarpUp() != null && super.getMap().getWarpUp().intersects(this)) {
+				// Throw exception here
+				System.out.println("Terrace map is locked until you completed game");
+				this.setPosition(this.getPositionX(), 13);
+			}
+			return;
+		}
+		if(super.getMap().getWarpUp() != null && super.getMap().getWarpUp().intersects(this)) {
+			GameManager.setCurrentMap(GameManager.getMaps().get(GameManager.getMaps().indexOf(this.getMap()) + 1));
+			this.setMap(GameManager.getCurrentMap());
+			this.setPosition(230, 500 - this.getHeight() - 20);
 			Audio.WARP.setVolume(1);
 			Audio.WARP.play();
-			return 1;
 		}
 		else if(super.getMap().getWarpDown() != null && super.getMap().getWarpDown().intersects(this)) {
+			GameManager.setCurrentMap(GameManager.getMaps().get(GameManager.getMaps().indexOf(this.getMap()) - 1));
+			this.setMap(GameManager.getCurrentMap());
 			this.setPosition(230, 20);
 			Audio.WARP.setVolume(1);
-			Audio.WARP.play();
-			return -1;
+			Audio.WARP.play();	
 		}
-		return 0;
+	}
+	
+	public void endWalking() {
+		if(this.getPositionX() != 250) {
+			this.setVelocity(1, 0);
+		}
+		else if(this.getPositionY() != 100) {
+			this.setVelocity(0, -1);
+		}
+		else {
+			this.setVelocity(0, 0);
+		}
 	}
 	
 	@Override
 	public void walk() {
-		if(!GameManager.isWin()) {
-			this.setVelocityOnKeyPressed();			
+		if(this.getMap() instanceof MapTerrace) {
+			this.endWalking();
 		}
 		else {
-			if(this.getPositionX() != 230) {
-				super.setVelocity(super.getPositionX() > 250?-1:1, 0);
-			}
-			else if(this.getPositionY() != 0) {
-				super.setVelocity(0, -1);
-			}
+			this.setVelocityOnKeyPressed();						
 		}
 		this.setFacing();
 	}
@@ -212,6 +229,7 @@ public class Player extends AnimatedImage implements Walkable{
 	@Override 
 	public void update() {
     	this.walk();
+    	this.warp();
     	super.update();
 	}
 	
