@@ -8,6 +8,9 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Border;
@@ -15,7 +18,9 @@ import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -33,14 +38,18 @@ public class ControlBar extends HBox{
 	private static Text nPresidential;
 	private static Text availableRoom;
 	private static VBox showMenu;
+	private static VBox rightSide;
 	private static Button menuButton;
 	private static Button buyRoom;
 	private static Button buyRecButton;
 	private static Button continueButton;
+	private static Button statusButton;
 	private static Button exitButton;
-	private static VBox showStatus;
-	private static HBox showTime;
-	private static VBox showButton;
+	private static StackPane showTime;
+	private static HBox showButton;
+	private static GridPane info;
+	private static GridPane showStatus;
+	private static ProgressBar progressbar;
 	
 	public ControlBar() {
 		
@@ -55,20 +64,35 @@ public class ControlBar extends HBox{
 		customer = new Text();
 		time = new Text();
 		day = new Text();
+		
 		nStandard = new Text();
 		nExecutive = new Text();
 		nPresidential = new Text();
 		availableRoom = new Text();
-        showStatus = new VBox(5);
-        showStatus.setPrefWidth(140);
-        showStatus.setPrefHeight(180);
-        showStatus.getChildren().addAll(money, popularity, customer, day, nStandard, nExecutive, nPresidential, availableRoom);
-        showStatus.setBorder(new Border(new BorderStroke(Color.web("#000000"), BorderStrokeStyle.SOLID, new CornerRadii(5), BorderWidths.DEFAULT)));
-    	showStatus.setBackground(new Background(new BackgroundFill(Color.IVORY, null, null)));
-    	getChildren().add(showStatus);
+
+    	info = new GridPane();
+    	info.setVgap(7);
+    	info.setHgap(10);
+    	info.add(new ImageView(Images.ICONMONEY), 0, 0);
+    	info.add(new Label("Money :"), 1, 0);
+    	info.add(money, 2, 0);
+    	info.add(new ImageView(Images.ICONPOPULARITY), 0, 1);
+    	info.add(new Label("Popularity :"), 1, 1);
+    	info.add(popularity, 2, 1);
+    	info.add(new ImageView(Images.ICONCUSTOMER), 0, 2);
+    	info.add(new Label("Customer :"), 1, 2);
+    	info.add(customer, 2, 2);
+    	info.add(new ImageView(Images.ICONDAY), 0, 3);
+    	info.add(new Label("Day :"), 1, 3);
+    	info.add(day, 2, 3);
+    	info.add(new ImageView(Images.ICONROOM), 0, 4);
+    	info.add(new Label("N' Presidential :"), 1, 4);
+    	progressbar = new ProgressBar(0);
+    	info.add(progressbar, 2, 4);
+    	this.getChildren().add(info);
     	
     	//time
-    	showTime = new HBox();
+    	showTime = new StackPane();
     	showTime.setBorder(new Border(new BorderStroke(Color.web("A5A5A3"), BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(5))));
     	showTime.setBackground(new Background(new BackgroundFill(Color.BLACK, new CornerRadii(15), null)));
     	showTime.setAlignment(Pos.CENTER);
@@ -77,15 +101,17 @@ public class ControlBar extends HBox{
     	time.setFont(Font.font("Digital Dismay", 50));
     	time.setFill(Color.WHITE);
     	showTime.getChildren().add(time);
-    	this.getChildren().add(showTime);	  
         
         //right side
-    	showButton = new VBox(10);
+    	showButton = new HBox(10);
     	showButton.setPrefSize(140, 180);
-        menuButton = new Button("Menu");
+        menuButton = new Button("Pay~~");
+        statusButton = new Button("Status");
         exitButton = new Button("Exit");
-        showButton.getChildren().addAll(menuButton, exitButton);
-        this.getChildren().add(showButton);
+        showButton.getChildren().addAll(menuButton, statusButton, exitButton);
+        rightSide = new VBox(10);
+    	rightSide.getChildren().addAll(showTime, showButton);
+    	this.getChildren().add(rightSide);
         
         //Popup Menu
         showMenu = new VBox(10);
@@ -102,6 +128,13 @@ public class ControlBar extends HBox{
         showMenu.setVisible(false);
         GameScene.stackPane.getChildren().add(showMenu);
         
+        //Popup status
+        showStatus = new GridPane();
+        showStatus.setAlignment(Pos.CENTER);
+        showStatus.setStyle("-fx-background-color: rgba(255, 255, 255, 0.5); -fx-boarder-radius: 25px; -fx-background-radius: 25px");
+        showStatus.setMaxSize(250, 150);
+        showStatus.add(new Label("xx"), 0, 0);
+        GameScene.stackPane.getChildren().add(showStatus);
     	
         menuButton.setOnAction(new EventHandler<ActionEvent>() {
     		@Override
@@ -141,7 +174,7 @@ public class ControlBar extends HBox{
  				showMenu.setVisible(false);
     			Audio.MENU.setVolume(1);
     			Audio.MENU.play();
- 			}		
+ 			}
      	});
     	
     	buyRoom.setOnAction(new EventHandler<ActionEvent>() {
@@ -158,15 +191,16 @@ public class ControlBar extends HBox{
 	}
 	
 	public void update() {
-    	money.setText("Money: " + Integer.toString(Player.getMoney()));
-    	popularity.setText("Popularity: " + Integer.toString(GameManager.getPopularity()));
-    	customer.setText("Customer: " + Integer.toString(GameManager.getCustomer()));
+    	money.setText(Integer.toString(Player.getMoney()));
+    	popularity.setText(Integer.toString(GameManager.getPopularity()));
+    	customer.setText(Integer.toString(GameManager.getCustomer()));
     	time.setText(String.format("%02d:%02d", Time.getHour(), Time.getMin()));
-    	day.setText("Day: " + Integer.toString(GameManager.getDay()));
+    	day.setText(Integer.toString(GameManager.getDay()));
     	nStandard.setText("nStandard: " + GameManager.getnStandard());
     	nExecutive.setText("nExecutive: " + GameManager.getnExecutive());
     	nPresidential.setText("nPresidential: " + GameManager.getnPresidential());
     	availableRoom.setText("AvailableRoom: " + GameManager.getAvailableRoom());
+    	progressbar.setProgress(GameManager.getnPresidential()/3.0);
 	}
 
 	public static Button getBuyRoom() {

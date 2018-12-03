@@ -60,6 +60,12 @@ public class Images {
 		
 		public static final Image UPSET = new Image(ClassLoader.getSystemResource("UpSet.png").toString());
 		
+		public static final Image ICONMONEY = new Image(ClassLoader.getSystemResource("IconMoney.png").toString());
+		public static final Image ICONDAY = new Image(ClassLoader.getSystemResource("IconDay.png").toString());
+		public static final Image ICONPOPULARITY = new Image(ClassLoader.getSystemResource("IconPopularity.png").toString());
+		public static final Image ICONCUSTOMER = new Image(ClassLoader.getSystemResource("IconCustomer.png").toString());
+		public static final Image ICONROOM = new Image(ClassLoader.getSystemResource("IconRoom.png").toString());
+		
 		static {
 			for(int i = 0; i < 3; i++) {
 				TEENAGERL[i] = new Image(ClassLoader.getSystemResource("TeenagerL" + i + ".png").toString());
