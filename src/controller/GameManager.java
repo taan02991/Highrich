@@ -42,7 +42,7 @@ public class GameManager {
 	
 	public static void generateMap() {
 		maps.add(new MapWelcome());
-		for(int i = 0; i < 5; i++) {
+		for(int i = 0; i < 3; i++) {
 			maps.add(new MapUpStair(i));
 		}
 		maps.add(new MapTerrace());

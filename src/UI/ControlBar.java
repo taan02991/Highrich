@@ -5,8 +5,10 @@ import controller.GameManager;
 import controller.Time;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -33,23 +35,24 @@ public class ControlBar extends HBox{
 	private static Text customer;
 	private static Text time;
 	private static Text day;
-	private static Text nStandard;
-	private static Text nExecutive;
-	private static Text nPresidential;
-	private static Text availableRoom;
 	private static VBox showMenu;
 	private static VBox rightSide;
 	private static Button menuButton;
 	private static Button buyRoom;
 	private static Button buyRecButton;
 	private static Button continueButton;
+	private static Button continueButtonOnStatus;
 	private static Button statusButton;
 	private static Button exitButton;
 	private static StackPane showTime;
-	private static HBox showButton;
+	private static VBox showButton;
 	private static GridPane info;
 	private static GridPane showStatus;
-	private static ProgressBar progressbar;
+	private static ProgressBar progressStandard;
+	private static ProgressBar progressExecutive;
+	private static ProgressBar progressPresidential;
+	private static ProgressBar progressPresidentialOnStatus;
+	private static ProgressBar progressAvailable;
 	
 	public ControlBar() {
 		
@@ -64,12 +67,6 @@ public class ControlBar extends HBox{
 		customer = new Text();
 		time = new Text();
 		day = new Text();
-		
-		nStandard = new Text();
-		nExecutive = new Text();
-		nPresidential = new Text();
-		availableRoom = new Text();
-
     	info = new GridPane();
     	info.setVgap(7);
     	info.setHgap(10);
@@ -87,8 +84,8 @@ public class ControlBar extends HBox{
     	info.add(day, 2, 3);
     	info.add(new ImageView(Images.ICONROOM), 0, 4);
     	info.add(new Label("N' Presidential :"), 1, 4);
-    	progressbar = new ProgressBar(0);
-    	info.add(progressbar, 2, 4);
+    	progressPresidential = new ProgressBar(0);
+    	info.add(progressPresidential, 2, 4);
     	this.getChildren().add(info);
     	
     	//time
@@ -103,11 +100,14 @@ public class ControlBar extends HBox{
     	showTime.getChildren().add(time);
         
         //right side
-    	showButton = new HBox(10);
+    	showButton = new VBox(10);
     	showButton.setPrefSize(140, 180);
         menuButton = new Button("Pay~~");
+        menuButton.setPrefWidth(170);
         statusButton = new Button("Status");
+        statusButton.setPrefWidth(170);
         exitButton = new Button("Exit");
+        exitButton.setPrefWidth(170);
         showButton.getChildren().addAll(menuButton, statusButton, exitButton);
         rightSide = new VBox(10);
     	rightSide.getChildren().addAll(showTime, showButton);
@@ -132,9 +132,29 @@ public class ControlBar extends HBox{
         showStatus = new GridPane();
         showStatus.setAlignment(Pos.CENTER);
         showStatus.setStyle("-fx-background-color: rgba(255, 255, 255, 0.5); -fx-boarder-radius: 25px; -fx-background-radius: 25px");
-        showStatus.setMaxSize(250, 150);
-        showStatus.add(new Label("xx"), 0, 0);
+        showStatus.setMaxSize(250, 200);
+        showStatus.setVgap(7);
+        showStatus.setHgap(10);
+        continueButtonOnStatus = new Button("Continue");
+        continueButtonOnStatus.setPrefWidth(200);
+        GridPane.setHalignment(continueButtonOnStatus, HPos.CENTER);
+        GridPane.setValignment(continueButtonOnStatus, VPos.CENTER);
+        showStatus.add(continueButtonOnStatus, 0, 0, 2, 1);
+        showStatus.add(new Label("N' Standard :"), 0, 1);
+        progressStandard = new ProgressBar(0);
+        showStatus.add(progressStandard, 1, 1);
+        showStatus.add(new Label("N' Executive :"), 0, 2);
+        progressExecutive =  new ProgressBar(0);
+        showStatus.add(progressExecutive, 1, 2);
+        showStatus.add(new Label("N' Presidential :"), 0, 3);
+        progressPresidentialOnStatus = new ProgressBar(0);
+        showStatus.add(progressPresidentialOnStatus, 1, 3);
+        showStatus.add(new Label("N' Available Room :"), 0, 4);
+        progressAvailable = new ProgressBar(0);
+        showStatus.add(progressAvailable, 1, 4);
+        showStatus.setVisible(false);
         GameScene.stackPane.getChildren().add(showStatus);
+        
     	
         menuButton.setOnAction(new EventHandler<ActionEvent>() {
     		@Override
@@ -146,6 +166,20 @@ public class ControlBar extends HBox{
     		}
         });
        
+        statusButton.setOnAction(e->{
+			GameManager.setGamePausing(true);
+			showStatus.setVisible(true);
+			Audio.MENU.setVolume(1);
+			Audio.MENU.play();
+        });
+        
+        continueButtonOnStatus.setOnAction(e->{
+			GameManager.setGamePausing(false);
+			showStatus.setVisible(false);
+			Audio.MENU.setVolume(1);
+			Audio.MENU.play();
+        });
+        
         exitButton.setOnAction(new EventHandler<ActionEvent>() {
     		@Override
     		public void handle(ActionEvent event) {
@@ -196,11 +230,11 @@ public class ControlBar extends HBox{
     	customer.setText(Integer.toString(GameManager.getCustomer()));
     	time.setText(String.format("%02d:%02d", Time.getHour(), Time.getMin()));
     	day.setText(Integer.toString(GameManager.getDay()));
-    	nStandard.setText("nStandard: " + GameManager.getnStandard());
-    	nExecutive.setText("nExecutive: " + GameManager.getnExecutive());
-    	nPresidential.setText("nPresidential: " + GameManager.getnPresidential());
-    	availableRoom.setText("AvailableRoom: " + GameManager.getAvailableRoom());
-    	progressbar.setProgress(GameManager.getnPresidential()/3.0);
+    	progressPresidential.setProgress((double)GameManager.getnPresidential()/18.0);
+    	progressPresidentialOnStatus.setProgress((double)GameManager.getnPresidential()/18.0);
+    	progressStandard.setProgress((double)GameManager.getnStandard()/18.0);
+    	progressExecutive.setProgress((double)GameManager.getnExecutive()/18.0);
+    	progressAvailable.setProgress((double)GameManager.getAvailableRoom()/18.0);
 	}
 
 	public static Button getBuyRoom() {
