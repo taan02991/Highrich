@@ -9,6 +9,7 @@ import exception.MoneyNotEnoughtException;
 import exception.ReceptionistFullException;
 import exception.RoomIsHighestClassException;
 import exception.StandNotTractorException;
+import exception.WarpToTerraceException;
 import controller.BuyRoom;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
@@ -178,15 +179,38 @@ public class Player extends AnimatedImage implements Walkable{
     	}
 	}
 	
-	public void warp() {
+	private void checkWrapToTerrace() throws WarpToTerraceException {
 		if(GameManager.getMaps().indexOf(this.getMap()) + 1 >= GameManager.getMaps().size()) {
 			if(super.getMap().getWarpUp() != null && super.getMap().getWarpUp().intersects(this)) {
-				// Throw exception here
-				System.out.println("Terrace map is locked until you completed game");
-				this.setPosition(this.getPositionX(), 13);
+				throw new WarpToTerraceException();
+			}
+		}
+	}
+	
+	public void warp() {
+		
+		try{
+			this.checkWrapToTerrace();
+		}catch(WarpToTerraceException e) {
+			System.out.println("Terrace map is locked until you completed game");
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Can't Warp up");
+			alert.setHeaderText("You can't wrap up");
+			alert.setContentText("You can wrap up to terrace when you have maximum presidential room.");
+			alert.show();
+			KeyInput.removeKey("UP");
+			KeyInput.removeKey("DOWN");
+			KeyInput.removeKey("LEFT");
+			KeyInput.removeKey("RIGHT");
+			this.setPosition(this.getPositionX(), 13);
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e1) {
+				e1.printStackTrace();
 			}
 			return;
 		}
+
 		if(super.getMap().getWarpUp() != null && super.getMap().getWarpUp().intersects(this)) {
 			GameManager.setCurrentMap(GameManager.getMaps().get(GameManager.getMaps().indexOf(this.getMap()) + 1));
 			this.setMap(GameManager.getCurrentMap());

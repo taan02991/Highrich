@@ -33,6 +33,8 @@ public class StartScene extends Scene{
 	
 	private void buttonEventHandler() {
 		startButton.setOnMouseClicked( e-> {
+			Audio.MENU.setVolume(1);
+			Audio.MENU.play();
 			Main.gameScene();
 		});
 		startButton.setOnMouseEntered( e-> {
