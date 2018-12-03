@@ -40,7 +40,6 @@ public class BuyRoom extends Thread{
 		ControlBar.getBuyRoom().setDisable(true);
 		ControlBar.getbuyRecButton().setDisable(true);
 		while(this.frameNumber<this.totalFrame) {
-			gc.clearRect(this.x, this.y, 200, 166);
 			gc.drawImage(Images.DustConstruction, this.width, 0, 200, 166, this.x, this.y, 200, 166);
 			this.frameNumber++;
 			width += 200;
@@ -50,6 +49,7 @@ public class BuyRoom extends Thread{
 				e.printStackTrace();
 			}
 		}
+		gc.clearRect(this.x, this.y, 200, 166);
 		this.map.setRoom(this.room.getPosition(), this.level);
 		ControlBar.getBuyRoom().setDisable(false);
 		ControlBar.getbuyRecButton().setDisable(false);

@@ -56,6 +56,8 @@ public class Images {
 		public static final Image TVLEFT = new Image(ClassLoader.getSystemResource("TVLeft.png").toString());
 		public static final Image TVRIGHT = new Image(ClassLoader.getSystemResource("TVRight.png").toString());
 		public static final Image BIGTABLE = new Image(ClassLoader.getSystemResource("BigTable.png").toString());
+		public static final Image BIGTABLERIGHT = new Image(ClassLoader.getSystemResource("BigtableRight.png").toString());
+		public static final Image BIGTABLELEFT = new Image(ClassLoader.getSystemResource("BigtableLeft.png").toString());
 		
 		public static final Image UPSET = new Image(ClassLoader.getSystemResource("UpSet.png").toString());
 		
