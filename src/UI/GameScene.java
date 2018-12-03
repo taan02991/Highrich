@@ -12,6 +12,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.util.Duration;
 
 public class GameScene extends Scene {
@@ -50,6 +51,8 @@ public class GameScene extends Scene {
 		Timeline gameLoop = new Timeline();
         gameLoop.setCycleCount( Timeline.INDEFINITE );
         
+        AudioClip BGM = new AudioClip(ClassLoader.getSystemResource("BGM.mp3").toString());
+        BGM.play();
 
         KeyFrame kf = new KeyFrame(
             Duration.seconds(0.016),                // 60 FPS
