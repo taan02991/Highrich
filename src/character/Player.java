@@ -192,21 +192,21 @@ public class Player extends AnimatedImage implements Walkable{
 			this.checkWrapToTerrace();
 		}catch(WarpToTerraceException e) {
 			System.out.println("Terrace map is locked until you completed game");
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Can't Warp up");
-			alert.setHeaderText("You can't wrap up");
-			alert.setContentText("You can wrap up to terrace when you have maximum presidential room.");
-			alert.show();
+			this.setPosition(this.getPositionX(), 30);
 			KeyInput.removeKey("UP");
 			KeyInput.removeKey("DOWN");
 			KeyInput.removeKey("LEFT");
 			KeyInput.removeKey("RIGHT");
-			this.setPosition(this.getPositionX(), 25);
 			try {
 				Thread.sleep(300);
 			} catch (InterruptedException e1) {
 				e1.printStackTrace();
 			}
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Can't Warp up");
+			alert.setHeaderText("You can't wrap up");
+			alert.setContentText("You can wrap up to terrace when you have maximum presidential room.");
+			alert.show();
 			return;
 		}
 
