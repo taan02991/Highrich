@@ -42,6 +42,7 @@ public class Images {
 		
 		public static final Image[] Receptionist = {new Image(ClassLoader.getSystemResource("Receptionist.png").toString())};
 		
+		public static final Image ICON = new Image(ClassLoader.getSystemResource("Icon.png").toString());
 		public static final Image TREE = new Image(ClassLoader.getSystemResource("Tree.png").toString());
 		public static final Image SOFA = new Image(ClassLoader.getSystemResource("Sofa.png").toString());
 		public static final Image RECEPTIONTABLE = new Image(ClassLoader.getSystemResource("ReceptionTable.png").toString()); 
