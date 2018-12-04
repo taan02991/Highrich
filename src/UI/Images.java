@@ -29,17 +29,16 @@ public class Images {
 		public static final Image[] ADULTU = new Image[3];
 		public static final Image[] ADULTD = new Image[3];
 		
-<<<<<<< HEAD
+
 		public static final Image[] ICONFLOOR = new Image[8];
 		public static final Image[] BACKGROUND = new Image[7];
-=======
+
 		public static final Image[] PROGMETHL = new Image[3];
 		public static final Image[] PROGMETHR = new Image[3];
 		public static final Image[] PROGMETHU = new Image[3];
 		public static final Image[] PROGMETHD = new Image[3];
 		
-		public static final Image[] ICONFLOOR = new Image[7];
->>>>>>> master
+
 		
 		public static final Image[] Receptionist = {new Image(ClassLoader.getSystemResource("Receptionist.png").toString())};
 		

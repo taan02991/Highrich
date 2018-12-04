@@ -107,6 +107,7 @@ public class StartScene extends Scene{
 		startButton.setOnMouseEntered( e-> {
 			startButton.setImage( Images.STARTBUTTONHOVER );
 			root.setCursor( Cursor.HAND );
+			Audio.TAP.play();
 		});
 		startButton.setOnMouseExited( e-> {
 			startButton.setImage( Images.STARTBUTTON );
