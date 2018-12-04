@@ -26,6 +26,7 @@ public class MapTerrace extends Map{
 		for(Rectangle r: super.getStructList()) {
 			r.render(gc);
 		}
+		gc.drawImage(Images.CONGRATULATION, 25, 200);
 	}
 	
 }

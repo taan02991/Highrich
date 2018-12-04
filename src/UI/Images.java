@@ -75,6 +75,7 @@ public class Images {
 		public static final Image ICONROOM = new Image(ClassLoader.getSystemResource("IconRoom.png").toString());
 
 		public static final Image TERRACE = new Image(ClassLoader.getSystemResource("Terrace.png").toString());
+		public static final Image CONGRATULATION = new Image(ClassLoader.getSystemResource("Congratulation.png").toString());
 		public static final Image[] AIRPLANE = {new Image(ClassLoader.getSystemResource("Airplane.png").toString())};
 		public static final Image[] TRANSPARENT = {new Image(ClassLoader.getSystemResource("Transparent.png").toString())};
 		
