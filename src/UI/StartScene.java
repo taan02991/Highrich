@@ -1,6 +1,7 @@
 package UI;
 
 import application.Main;
+import javafx.animation.AnimationTimer;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -8,6 +9,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.AudioClip;
+import javafx.scene.text.Font;
 
 public class StartScene extends Scene{
 
@@ -21,6 +23,8 @@ public class StartScene extends Scene{
 	private int positionYFive = 700;
 	private int positionYSix = 700;
 	private int positionYSeven = -77;
+	private int drawState = 1;
+	private AnimationTimer animationTimer;
 	
 	public StartScene() {
 		
@@ -40,61 +44,73 @@ public class StartScene extends Scene{
 		
 		Audio.BGMSTARTSCENE.play();
 		Audio.BGMSTARTSCENE.setCycleCount(AudioClip.INDEFINITE);
-		
-		Thread Background = new Thread(()->{
-			try {
-				while(this.positionYOne < 19) {
-					this.drawImage(gc);
-					this.positionYOne++;
-					Thread.sleep(2);
-					gc.clearRect(0, 0, 500, 700);
-				}
-				while(this.positionYTwo < 128 ) {
-					this.drawImage(gc);
-					this.positionYTwo++;
-					Thread.sleep(2);
-					gc.clearRect(0, 0, 500, 700);
-				}
-				while(this.positionYThree < 320 ) {
-					this.drawImage(gc);
-					this.positionYThree++;
-					Thread.sleep(2);
-					gc.clearRect(0, 0, 500, 700);
-				}
-				while(this.positionYFour < 339 ) {
-					this.drawImage(gc);
-					this.positionYFour++;
-					Thread.sleep(2);
-					gc.clearRect(0, 0, 500, 700);
-				}
-				while(this.positionYFive > 475 ) {
-					this.drawImage(gc);
-					this.positionYFive--;
-					Thread.sleep(2);
-					gc.clearRect(0, 0, 500, 700);
-				}
-				while(this.positionYSix > 335 ) {
-					this.drawImage(gc);
-					this.positionYSix--;
-					Thread.sleep(1);
-					gc.clearRect(0, 0, 500, 700);
-				}
-				while(this.positionYSeven < 60 ) {
-					this.drawImage(gc);
-					this.positionYSeven++;
-					Thread.sleep(2);
-					gc.clearRect(0, 0, 500, 700);
-				}
-				this.drawImage(gc);
-				startButton.setVisible(true);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		});
-		Background.start();
-		
-		
 		root.getChildren().addAll(canvas, startButton);
+		
+		this.animationTimer = new AnimationTimer() {
+			@Override
+			public void handle(long now) {
+				drawBackground(gc);
+
+			}
+		};
+		this.animationTimer.start();
+	}
+	
+	private void drawBackground(GraphicsContext gc) {
+		if(this.drawState == 1) {
+			gc.clearRect(0, 0, 500, 700);
+			this.drawImage(gc);
+			this.positionYOne += 15;
+			if(this.positionYOne > 19) {
+				this.drawState = 2;
+			}
+		}else if(this.drawState == 2) {
+			gc.clearRect(0, 0, 500, 700);
+			this.drawImage(gc);
+			this.positionYTwo += 15;
+			if(this.positionYTwo > 128) {
+				this.drawState = 3;
+			}
+		}else if(this.drawState == 3) {
+			gc.clearRect(0, 0, 500, 700);
+			this.drawImage(gc);
+			this.positionYThree += 15;
+			if(this.positionYThree > 320) {
+				this.drawState = 4;
+			}
+		}else if(this.drawState == 4) {
+			gc.clearRect(0, 0, 500, 700);
+			this.drawImage(gc);
+			this.positionYFour += 15;
+			if(this.positionYFour > 339) {
+				this.drawState = 5;
+			}
+		}else if(this.drawState == 5) {
+			gc.clearRect(0, 0, 500, 700);
+			this.drawImage(gc);
+			this.positionYFive -= 12;
+			if(this.positionYFive < 475) {
+				this.drawState = 6;
+			}
+		}else if(this.drawState == 6) {
+			gc.clearRect(0, 0, 500, 700);
+			this.drawImage(gc);
+			this.positionYSix -= 12;
+			if(this.positionYSix < 345) {
+				this.drawState = 7;
+			}
+		}else if(this.drawState == 7) {
+			gc.clearRect(0, 0, 500, 700);
+			this.drawImage(gc);
+			this.positionYSeven += 12;
+			if(this.positionYSeven > 60) {
+				this.drawState = 8;
+			}
+		}else {
+			this.startButton.setVisible(true);
+			this.animationTimer.stop();
+		}
+		
 	}
 	
 	private void buttonEventHandler() {
