@@ -70,6 +70,7 @@ public class Images {
 
 		public static final Image TERRACE = new Image(ClassLoader.getSystemResource("Terrace.png").toString());
 		public static final Image[] AIRPLANE = {new Image(ClassLoader.getSystemResource("Airplane.png").toString())};
+		public static final Image[] TRANSPARENT = {new Image(ClassLoader.getSystemResource("Transparent.png").toString())};
 		
 		static {
 			for(int i = 1; i<7; i++) {

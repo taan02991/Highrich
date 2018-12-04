@@ -235,8 +235,13 @@ public class Player extends AnimatedImage implements Walkable{
 		if(this.getPositionX() != 392) {
 			this.setVelocity(1, 0);
 		}
+		else if(this.getPositionY() != 272){
+			this.setVelocity(0, -1);
+		}
 		else {
 			this.setVelocity(0, 0);
+			this.setFrame(Images.TRANSPARENT);
+			MapTerrace.activeAirplane();
 		}
 	}
 	
