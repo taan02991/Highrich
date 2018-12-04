@@ -17,7 +17,6 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		stage = primaryStage;
 		startScene = new StartScene();
-		gameScene = new GameScene();
 		stage.setScene(startScene);
 		stage.show();
 	}
@@ -27,6 +26,7 @@ public class Main extends Application {
 	}
 	
 	public static void gameScene() {
+		gameScene = new GameScene();
 		stage.setScene(gameScene);
 		new Time();
 	}

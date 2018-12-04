@@ -29,12 +29,16 @@ public class Images {
 		public static final Image[] ADULTU = new Image[3];
 		public static final Image[] ADULTD = new Image[3];
 		
+
+		public static final Image[] ICONFLOOR = new Image[8];
+		public static final Image[] BACKGROUND = new Image[7];
+
 		public static final Image[] PROGMETHL = new Image[3];
 		public static final Image[] PROGMETHR = new Image[3];
 		public static final Image[] PROGMETHU = new Image[3];
 		public static final Image[] PROGMETHD = new Image[3];
 		
-		public static final Image[] ICONFLOOR = new Image[7];
+
 		
 		public static final Image[] Receptionist = {new Image(ClassLoader.getSystemResource("Receptionist.png").toString())};
 		
@@ -80,8 +84,12 @@ public class Images {
 		public static final Image[] TRANSPARENT = {new Image(ClassLoader.getSystemResource("Transparent.png").toString())};
 		
 		static {
-			for(int i = 1; i<7; i++) {
+			for(int i = 1; i<8; i++) {
 				ICONFLOOR[i] = new Image(ClassLoader.getSystemResource("IconFloor" + i + ".png").toString());
+			}
+			
+			for(int i = 0; i<7; i++) {
+				BACKGROUND[i] = new Image(ClassLoader.getSystemResource("Background" + i + ".png").toString());
 			}
 			
 			for(int i = 0; i < 3; i++) {
