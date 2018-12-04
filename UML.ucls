@@ -3,272 +3,426 @@
   realizations="true" associations="false" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="character.Receptionist" project="Highrich" 
     file="/Highrich/src/character/Receptionist.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="220" x="1395" y="1937"/>    
+    <position height="171" width="220" x="2052" y="1778"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="UI.Rectangle" project="Highrich" file="/Highrich/src/UI/Rectangle.java" 
+  <class id="2" language="java" name="map.RoomConstruction" project="Highrich" 
+    file="/Highrich/src/map/RoomConstruction.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="156" x="4039" y="816"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="UI.Rectangle" project="Highrich" file="/Highrich/src/UI/Rectangle.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="459" width="180" x="1340" y="-424"/>    
+    <position height="459" width="180" x="1997" y="-583"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <package id="3" language="java" name="exception" project="Highrich" file="/Highrich/src/exception" binary="false" 
+  <class id="4" language="java" name="exception.WarpToTerraceException" project="Highrich" 
+    file="/Highrich/src/exception/WarpToTerraceException.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="168" x="125" y="-583"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="map.RoomExecutive" project="Highrich" file="/Highrich/src/map/RoomExecutive.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="142" x="4235" y="816"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="6" language="java" name="exception" project="Highrich" file="/Highrich/src/exception" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="50" width="101" x="130" y="-424"/>    
+    <position height="50" width="101" x="333" y="-583"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <class id="4" language="java" name="character.ProgMeth" project="Highrich" 
+  <class id="7" language="java" name="character.ProgMeth" project="Highrich" 
     file="/Highrich/src/character/ProgMeth.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="127" x="1228" y="1937"/>    
+    <position height="171" width="127" x="1885" y="1778"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <package id="5" language="java" name="map" project="Highrich" file="/Highrich/src/map" binary="false" 
+  <package id="8" language="java" name="map" project="Highrich" file="/Highrich/src/map" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="50" width="101" x="271" y="-424"/>    
+    <position height="50" width="101" x="474" y="-583"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <package id="6" language="java" name="controller" project="Highrich" file="/Highrich/src/controller" binary="false" 
+  <package id="9" language="java" name="controller" project="Highrich" file="/Highrich/src/controller" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="50" width="101" x="412" y="-424"/>    
+    <position height="50" width="101" x="615" y="-583"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <class id="7" language="java" name="character.Teenager" project="Highrich" 
+  <class id="10" language="java" name="exception.RoomIsHighestClassException" project="Highrich" 
+    file="/Highrich/src/exception/RoomIsHighestClassException.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="198" x="756" y="-583"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="character.Teenager" project="Highrich" 
     file="/Highrich/src/character/Teenager.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="99" x="1516" y="2328"/>    
+    <position height="81" width="99" x="2173" y="2169"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <package id="8" language="java" name="UI" project="Highrich" file="/Highrich/src/UI" binary="false" 
+  <package id="12" language="java" name="UI" project="Highrich" file="/Highrich/src/UI" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="50" width="101" x="553" y="-424"/>    
+    <position height="50" width="101" x="994" y="-583"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <class id="9" language="java" name="UI.GameScene" project="Highrich" file="/Highrich/src/UI/GameScene.java" 
+  <class id="13" language="java" name="UI.GameScene" project="Highrich" file="/Highrich/src/UI/GameScene.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="133" x="694" y="-424"/>    
+    <position height="171" width="133" x="1135" y="-583"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="character.Visitor" project="Highrich" file="/Highrich/src/character/Visitor.java" 
+  <class id="14" language="java" name="character.Visitor" project="Highrich" file="/Highrich/src/character/Visitor.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="351" width="233" x="1655" y="1937"/>    
+    <position height="351" width="233" x="2312" y="1778"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="UI.Audio" project="Highrich" file="/Highrich/src/UI/Audio.java" binary="false" 
+  <class id="15" language="java" name="UI.Audio" project="Highrich" file="/Highrich/src/UI/Audio.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="189" width="165" x="867" y="-424"/>    
+    <position height="189" width="165" x="1308" y="-583"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="controller.BuyRoom" project="Highrich" 
+  <class id="16" language="java" name="controller.BuyRoom" project="Highrich" 
     file="/Highrich/src/controller/BuyRoom.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="261" width="228" x="1072" y="-424"/>    
+    <position height="261" width="228" x="1513" y="-583"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="controller.GameManager" project="Highrich" 
+  <class id="17" language="java" name="controller.GameManager" project="Highrich" 
     file="/Highrich/src/controller/GameManager.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="783" width="176" x="1560" y="-424"/>    
+    <position height="783" width="176" x="1781" y="-583"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <package id="14" language="java" name="application" project="Highrich" file="/Highrich/src/application" binary="false" 
+  <package id="18" language="java" name="application" project="Highrich" file="/Highrich/src/application" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="50" width="101" x="1776" y="-424"/>    
+    <position height="50" width="101" x="2217" y="-583"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <class id="15" language="java" name="character.Player" project="Highrich" file="/Highrich/src/character/Player.java" 
+  <class id="19" language="java" name="character.Player" project="Highrich" file="/Highrich/src/character/Player.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="459" width="261" x="1188" y="1438"/>    
+    <position height="459" width="261" x="1845" y="1279"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="application.Main" project="Highrich" file="/Highrich/src/application/Main.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="120" x="1917" y="-424"/>    
+  <class id="20" language="java" name="map.RoomPresidential" project="Highrich" 
+    file="/Highrich/src/map/RoomPresidential.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="150" x="4417" y="816"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="character.Adult" project="Highrich" file="/Highrich/src/character/Adult.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="87" x="1655" y="2328"/>    
+  <class id="21" language="java" name="map.Room" project="Highrich" file="/Highrich/src/map/Room.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="567" width="213" x="4417" y="-583"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="18" language="java" name="character.Walkable" project="Highrich" 
+  <class id="22" language="java" name="application.Main" project="Highrich" file="/Highrich/src/application/Main.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="120" x="2358" y="-583"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="character.Adult" project="Highrich" file="/Highrich/src/character/Adult.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="87" x="2312" y="2169"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="24" language="java" name="character.Walkable" project="Highrich" 
     file="/Highrich/src/character/Walkable.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="103" x="1228" y="2328"/>    
+    <position height="81" width="103" x="1885" y="2169"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <package id="19" language="java" name="character" project="Highrich" file="/Highrich/src/character" binary="false" 
+  <class id="25" language="java" name="map.MapWelcome" project="Highrich" file="/Highrich/src/map/MapWelcome.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="171" x="4786" y="816"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="26" language="java" name="character" project="Highrich" file="/Highrich/src/character" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="50" width="101" x="2077" y="-424"/>    
+    <position height="50" width="101" x="2518" y="-583"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <class id="20" language="java" name="character.OldMan" project="Highrich" file="/Highrich/src/character/OldMan.java" 
+  <class id="27" language="java" name="map.RoomStandard" project="Highrich" file="/Highrich/src/map/RoomStandard.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="90" x="1782" y="2328"/>    
+    <position height="81" width="139" x="4607" y="816"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="21" language="java" name="UI.Images" project="Highrich" file="/Highrich/src/UI/Images.java" binary="false" 
+  <class id="28" language="java" name="character.OldMan" project="Highrich" file="/Highrich/src/character/OldMan.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="90" x="2439" y="2169"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="UI.Images" project="Highrich" file="/Highrich/src/UI/Images.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="1359" width="184" x="2218" y="-424"/>    
+    <position height="1359" width="184" x="2659" y="-583"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="22" language="java" name="UI.StartScene" project="Highrich" file="/Highrich/src/UI/StartScene.java" 
+  <class id="30" language="java" name="UI.StartScene" project="Highrich" file="/Highrich/src/UI/StartScene.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="351" width="222" x="2442" y="-424"/>    
+    <position height="351" width="222" x="2883" y="-583"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="23" language="java" name="UI.ControlBar" project="Highrich" file="/Highrich/src/UI/ControlBar.java" 
+  <class id="31" language="java" name="UI.ControlBar" project="Highrich" file="/Highrich/src/UI/ControlBar.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="567" width="237" x="2704" y="-424"/>    
+    <position height="567" width="237" x="3145" y="-583"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="24" language="java" name="character.Npc" project="Highrich" file="/Highrich/src/character/Npc.java" 
+  <class id="32" language="java" name="map.MapTerrace" project="Highrich" file="/Highrich/src/map/MapTerrace.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="297" width="361" x="1489" y="1438"/>    
+    <position height="153" width="170" x="4997" y="816"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="25" language="java" name="controller.Time" project="Highrich" file="/Highrich/src/controller/Time.java" 
+  <class id="33" language="java" name="exception.StandNotTractorException" project="Highrich" 
+    file="/Highrich/src/exception/StandNotTractorException.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="188" x="3422" y="-583"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="map.Map" project="Highrich" file="/Highrich/src/map/Map.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="387" width="203" x="4997" y="-583"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="character.Npc" project="Highrich" file="/Highrich/src/character/Npc.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="94" x="2981" y="-424"/>    
+    <position height="297" width="361" x="2146" y="1279"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="26" language="java" name="controller.KeyInput" project="Highrich" 
+  <class id="36" language="java" name="controller.Time" project="Highrich" file="/Highrich/src/controller/Time.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="94" x="3650" y="-583"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="map.MapUpStair" project="Highrich" file="/Highrich/src/map/MapUpStair.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="279" width="186" x="5207" y="816"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="controller.KeyInput" project="Highrich" 
     file="/Highrich/src/controller/KeyInput.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="207" width="161" x="3115" y="-424"/>    
+    <position height="207" width="161" x="3784" y="-583"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="27" language="java" name="UI.AnimatedImage" project="Highrich" file="/Highrich/src/UI/AnimatedImage.java" 
+  <class id="39" language="java" name="exception.ReceptionistFullException" project="Highrich" 
+    file="/Highrich/src/exception/ReceptionistFullException.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="170" x="3985" y="-583"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="UI.AnimatedImage" project="Highrich" file="/Highrich/src/UI/AnimatedImage.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="423" width="304" x="1340" y="975"/>    
+    <position height="423" width="304" x="1997" y="816"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <realization id="28">    
-    <bendpoint x="1197" y="1937"/>    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="18"/>  
-  </realization>  
-  <generalization id="29">    
-    <end type="SOURCE" refId="24"/>    
-    <end type="TARGET" refId="27"/>  
+  <class id="41" language="java" name="exception.MoneyNotEnoughtException" project="Highrich" 
+    file="/Highrich/src/exception/MoneyNotEnoughtException.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="182" x="4195" y="-583"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <generalization id="42">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="14"/>  
   </generalization>  
-  <generalization id="30">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="24"/>  
+  <generalization id="43">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="34"/>  
   </generalization>  
-  <generalization id="31">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="24"/>  
-  </generalization>  
-  <generalization id="32">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="27"/>  
-  </generalization>  
-  <generalization id="33">    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="10"/>  
-  </generalization>  
-  <generalization id="34">    
+  <realization id="44">    
     <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="10"/>  
-  </generalization>  
-  <realization id="35">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="18"/>  
-  </realization>  
-  <realization id="36">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="18"/>  
-  </realization>  
-  <generalization id="37">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="10"/>  
-  </generalization>  
-  <generalization id="38">    
-    <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="24"/>  
+  </realization>  
+  <generalization id="45">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="21"/>  
   </generalization>  
-  <generalization id="39">    
+  <generalization id="46">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="14"/>  
+  </generalization>  
+  <realization id="47">    
+    <bendpoint x="1854" y="1778"/>    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="24"/>  
+  </realization>  
+  <generalization id="48">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="14"/>  
+  </generalization>  
+  <generalization id="49">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="34"/>  
+  </generalization>  
+  <generalization id="50">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="34"/>  
+  </generalization>  
+  <generalization id="51">    
+    <end type="SOURCE" refId="40"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <generalization id="52">    
     <end type="SOURCE" refId="27"/>    
-    <end type="TARGET" refId="2"/>  
+    <end type="TARGET" refId="21"/>  
   </generalization>  
+  <generalization id="53">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="35"/>  
+  </generalization>  
+  <generalization id="54">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="35"/>  
+  </generalization>  
+  <generalization id="55">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="35"/>  
+  </generalization>  
+  <generalization id="56">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="40"/>  
+  </generalization>  
+  <generalization id="57">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="21"/>  
+  </generalization>  
+  <generalization id="58">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="21"/>  
+  </generalization>  
+  <generalization id="59">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="40"/>  
+  </generalization>  
+  <realization id="60">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="24"/>  
+  </realization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
