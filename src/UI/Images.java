@@ -81,14 +81,25 @@ public class Images {
 
 		public static final Image TERRACE = new Image(ClassLoader.getSystemResource("Terrace.png").toString());
 		public static final Image CONGRATULATION = new Image(ClassLoader.getSystemResource("Congratulation.png").toString());
-		public static final Image[] AIRPLANE = {new Image(ClassLoader.getSystemResource("Airplane.png").toString())};
+		public static final Image[] AIRPLANE1 = {new Image(ClassLoader.getSystemResource("Airplane1.png").toString())};
+		
+		public static final Image[] AIRPLANE2 = {new Image(ClassLoader.getSystemResource("Airplane2.png").toString())};
+		public static final Image[] AIRPLANE3 = {new Image(ClassLoader.getSystemResource("Airplane3.png").toString())};
+		public static final Image[] AIRPLANE4 = {new Image(ClassLoader.getSystemResource("Airplane4.png").toString())};
+		public static final Image[] AIRPLANE5 = {new Image(ClassLoader.getSystemResource("Airplane5.png").toString())};
+		public static final Image[] AIRPLANE6 = {new Image(ClassLoader.getSystemResource("Airplane6.png").toString())};
+		public static final Image[] AIRPLANE7 = {new Image(ClassLoader.getSystemResource("Airplane7.png").toString())};
+		public static final Image[] AIRPLANE8 = {new Image(ClassLoader.getSystemResource("Airplane8.png").toString())};
+		public static final Image[] AIRPLANE9 = {new Image(ClassLoader.getSystemResource("Airplane9.png").toString())};
+		public static final Image[] BOMB = {new Image(ClassLoader.getSystemResource("Bomb.png").toString())};
+		public static final Image[] AZURE = {new Image(ClassLoader.getSystemResource("Azure.png").toString())};
+		
 		public static final Image[] TRANSPARENT = {new Image(ClassLoader.getSystemResource("Transparent.png").toString())};
 		
 		static {
 			for(int i = 1; i<8; i++) {
 				ICONFLOOR[i] = new Image(ClassLoader.getSystemResource("IconFloor" + i + ".png").toString());
 			}
-			
 			for(int i = 0; i<7; i++) {
 				BACKGROUND[i] = new Image(ClassLoader.getSystemResource("Background" + i + ".png").toString());
 			}
