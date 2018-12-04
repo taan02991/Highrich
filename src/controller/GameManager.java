@@ -10,7 +10,7 @@ import map.MapUpStair;
 import map.MapWelcome;
 
 public class GameManager {
-	private static final int MAXROOM = 30;
+	private static final int MAXROOM = 18;
 	private static Player player;
 	private static ArrayList<Map> maps;
 	private static Map currentMap;
@@ -49,21 +49,30 @@ public class GameManager {
 	
 	public void update(GraphicsContext gc){
 		
-		if(isWin() || KeyInput.contains("T")) {
+		if(isWin() && maps.size() == 4 || KeyInput.contains("T")) {
 			maps.add(new MapTerrace());
 		}
-		//test add Receptionist
+		
 		gameTick = (gameTick + 1) % 11250;
 		//for test
+		if(KeyInput.contains("ENTER")) {
+			player.buyRoom(gc);
+		}
 		if(KeyInput.contains("X")) {
 			((MapWelcome)maps.get(0)).addVisitor();
+		}
+		if(KeyInput.contains("P")) {
+			((MapWelcome)maps.get(0)).addProgMeth();
 		}
 		
 		if(Time.getHour() < 6 || Time.getHour() > 12) {
 			if(gameTick % (300 - ((MapWelcome)maps.get(0)).getNumberOfReceptionist()*20 + customer*10) == 0) {
-				System.out.println(Math.random()*100000%200);
-				if(Math.random()*100000%200 <= popularity) {
+				int ran = (int) (Math.random()*100000)%200;
+				if(ran <= popularity) {
 					((MapWelcome)maps.get(0)).addVisitor();	
+				}
+				if(ran <= 5) {
+					((MapWelcome)maps.get(0)).addProgMeth();	
 				}
 			}
 		}

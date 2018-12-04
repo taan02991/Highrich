@@ -29,6 +29,11 @@ public class Images {
 		public static final Image[] ADULTU = new Image[3];
 		public static final Image[] ADULTD = new Image[3];
 		
+		public static final Image[] PROGMETHL = new Image[3];
+		public static final Image[] PROGMETHR = new Image[3];
+		public static final Image[] PROGMETHU = new Image[3];
+		public static final Image[] PROGMETHD = new Image[3];
+		
 		public static final Image[] ICONFLOOR = new Image[7];
 		
 		public static final Image[] Receptionist = {new Image(ClassLoader.getSystemResource("Receptionist.png").toString())};
@@ -61,6 +66,7 @@ public class Images {
 		public static final Image BIGTABLELEFT = new Image(ClassLoader.getSystemResource("BigtableLeft.png").toString());
 		
 		public static final Image UPSET = new Image(ClassLoader.getSystemResource("UpSet.png").toString());
+		public static final Image GIVEMEMONEY = new Image(ClassLoader.getSystemResource("GiveMeMoney.png").toString());
 		
 		public static final Image ICONMONEY = new Image(ClassLoader.getSystemResource("IconMoney.png").toString());
 		public static final Image ICONDAY = new Image(ClassLoader.getSystemResource("IconDay.png").toString());
@@ -97,6 +103,11 @@ public class Images {
 				PLAYERR[i] = new Image(ClassLoader.getSystemResource("PLAYERR" + i + ".png").toString());
 				PLAYERU[i] = new Image(ClassLoader.getSystemResource("PLAYERU" + i + ".png").toString());
 				PLAYERD[i] = new Image(ClassLoader.getSystemResource("PLAYERD" + i + ".png").toString());
+				
+				PROGMETHL[i] = new Image(ClassLoader.getSystemResource("ProgMethL" + i + ".png").toString());
+				PROGMETHR[i] = new Image(ClassLoader.getSystemResource("ProgMethR" + i + ".png").toString());
+				PROGMETHU[i] = new Image(ClassLoader.getSystemResource("ProgMethU" + i + ".png").toString());
+				PROGMETHD[i] = new Image(ClassLoader.getSystemResource("ProgMethD" + i + ".png").toString());
 			}
 		}
 

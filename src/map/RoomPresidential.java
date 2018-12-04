@@ -7,7 +7,7 @@ import controller.GameManager;
 public class RoomPresidential extends Room{
 
 	public RoomPresidential(int position, Map map) {
-		super(Images.PRESIDENTIALROOM, position, 0, 0, map);
+		super(Images.PRESIDENTIALROOM, position, 0, 4000, map);
 		Room oldRoom = ((MapUpStair) map).getRoomsList().get(position);
 		super.setAvailable(oldRoom.isAvailable);
 		if(oldRoom.getVisitor() != null) {

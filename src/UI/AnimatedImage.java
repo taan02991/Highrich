@@ -1,9 +1,6 @@
 package UI;
 
-import character.Npc;
-import character.Player;
 import controller.GameManager;
-import controller.KeyInput;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import map.Map;

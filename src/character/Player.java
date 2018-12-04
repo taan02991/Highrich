@@ -34,7 +34,7 @@ public class Player extends AnimatedImage implements Walkable{
 	
 	public Player(Image[] frames, Map map, double positionX, double positionY, double velocityX, double velocityY) {
 		super(frames, map, positionX, positionY, velocityX, velocityY);
-		Money = 200000;
+		Money = 2000000;
 	}
 	
 	public void buyReceptionist() {
@@ -42,7 +42,6 @@ public class Player extends AnimatedImage implements Walkable{
 		try {
 			this.enoughMoney(Receptionist.getCost());
 			mapWelcome.addReceptionist();
-			System.out.println("Add Receptionist" + getMoney());
 		}catch(MoneyNotEnoughtException e) {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Warning Dialog");
@@ -80,7 +79,6 @@ public class Player extends AnimatedImage implements Walkable{
 	
 	public static void addMoney(int m) {
 		Money += m;
-		System.out.println(Money);
 	}
 
 	public static int getMoney() {
