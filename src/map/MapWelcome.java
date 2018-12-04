@@ -5,6 +5,7 @@ import UI.Rectangle;
 import character.Adult;
 import character.Npc;
 import character.OldMan;
+import character.ProgMeth;
 import character.Receptionist;
 import character.Teenager;
 import exception.ReceptionistFullException;
@@ -22,6 +23,15 @@ public class MapWelcome extends Map{
 		super.addStruct(new Rectangle(Images.TREE, 325, 442));
 		super.addStruct(new Rectangle(Images.SOFA, 431, 118));
 		super.addStruct(new Rectangle(Images.RECEPTIONTABLE, 54, 92));
+	}
+	
+	public void addProgMeth() {
+		for(Npc npc: super.getNpcList()) {
+			if(npc instanceof ProgMeth) {
+				return;
+			}
+		}
+		super.getNpcList().add(new ProgMeth());			
 	}
 	
 	public void addVisitor() {

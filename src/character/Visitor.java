@@ -103,7 +103,6 @@ public class Visitor extends Npc implements Walkable{
 			GameManager.setAvailableRoom(GameManager.getAvailableRoom() - 1);
 			GameManager.addPopularity();
 			Player.addMoney(this.room.getFee());
-			this.contactPerson.setBusy(false);
 		}	
 	}
 	
@@ -118,6 +117,7 @@ public class Visitor extends Npc implements Walkable{
 		}
 		else {
 			this.stage = 4;
+			this.contactPerson.setBusy(false);
 			super.setActive(false);
 			this.room.setVisitor(this);
 			if( this.room.getPosition() < 3 ) {
@@ -146,17 +146,18 @@ public class Visitor extends Npc implements Walkable{
 			this.setVelocity(0, -1);
 			this.setFacing("UP");
 		}
-		else if(this.getPositionX() != 200) {
+		else if(this.getPositionX() != 210) {
 			this.setVelocity(-1, 0);
 			this.setFacing("LEFT");
 		}
 		else {
 			this.setVelocity(0, 0);
-			this.showMessage(Images.UPSET, 500);
 			Thread t = new Thread(new Runnable() {
 				@Override
 				public void run() {
 					try {
+						stage = -9999;
+						showMessage(Images.UPSET, 500);
 						Thread.sleep(500);
 						stage = -2;
 					} catch (InterruptedException e) {
