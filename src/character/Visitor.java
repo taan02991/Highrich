@@ -8,7 +8,7 @@ import map.MapUpStair;
 import map.Room;
 
 public class Visitor extends Npc implements Walkable{
-	protected int stage;
+	protected int state;
 	protected int talkTick;
 	protected Receptionist contactPerson;
 	protected Room room;
@@ -16,7 +16,7 @@ public class Visitor extends Npc implements Walkable{
 	public Visitor(Image[] npcL, Image[] npcR, Image[] npcU, Image[] npcD, Map map) {
 		super(npcL, npcR, npcU, npcD, map, 280, 468, 0, 0);
 		super.setFacing("UP");
-		this.stage = 0;
+		this.state = 0;
 		this.talkTick = 0;
 		this.contactPerson = null;
 		this.room = null;
@@ -24,26 +24,26 @@ public class Visitor extends Npc implements Walkable{
 	
 	@Override
 	public void walk() {
-		if(this.stage == 0) {
+		if(this.state == 0) {
 			this.findContactPerson();
 		}
-		else if(this.stage == 1) {
+		else if(this.state == 1) {
 			this.walkToContactPerson();
 		}
-		else if(this.stage == 2) {
+		else if(this.state == 2) {
 			this.talkWithContactPerson();
 		}
-		else if(this.stage == 3) {
+		else if(this.state == 3) {
 			this.walkToWarpUp();
 		}
-		else if(this.stage == 4) {
+		else if(this.state == 4) {
 			this.setActive(true);
 			this.walkAround();
 		}
-		else if(this.stage == -1) {
+		else if(this.state == -1) {
 			this.Upset();
 		}
-		else if(this.stage == -2) {
+		else if(this.state == -2) {
 			this.walkOut();
 		}
 
@@ -55,26 +55,12 @@ public class Visitor extends Npc implements Walkable{
 				if(!((Receptionist) npc).isBusy() && hasRoom()) {
 					this.contactPerson = (Receptionist) npc;
 					this.contactPerson.setBusy(true);
-					stage = 1;
+					state = 1;
 					return;
 				}
 			}
 		}
-		stage = -1;
-	}
-	
-	public void WalkToCheck() {
-		if(this.getPositionY() != 400) {
-			this.setVelocity(0, -1);
-			this.setFacing("UP");
-		}
-		else if(this.getPositionX() != 200) {
-			this.setVelocity(-1, 0);
-			this.setFacing("LEFT");
-		}
-		else {
-			this.stage = -2;
-		}
+		state = -1;
 	}
 	
 	public void walkToContactPerson(){
@@ -89,7 +75,7 @@ public class Visitor extends Npc implements Walkable{
 			}
 			else {
 				super.setVelocity(0, 0);
-				stage = 2;
+				state = 2;
 			}
 		}
 		
@@ -98,7 +84,7 @@ public class Visitor extends Npc implements Walkable{
 	public void talkWithContactPerson() {
 		this.talkTick++;
 		if(talkTick == 100) {
-			this.stage = 3;
+			this.state = 3;
 			GameManager.setCustomer(GameManager.getCustomer() + 1);
 			GameManager.setAvailableRoom(GameManager.getAvailableRoom() - 1);
 			GameManager.addPopularity();
@@ -116,7 +102,7 @@ public class Visitor extends Npc implements Walkable{
 			super.setFacing("UP");
 		}
 		else {
-			this.stage = 4;
+			this.state = 4;
 			this.contactPerson.setBusy(false);
 			super.setActive(false);
 			this.room.setVisitor(this);
@@ -156,10 +142,10 @@ public class Visitor extends Npc implements Walkable{
 				@Override
 				public void run() {
 					try {
-						stage = -9999;
+						state = -9999;
 						showMessage(Images.UPSET, 500);
 						Thread.sleep(500);
-						stage = -2;
+						state = -2;
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}

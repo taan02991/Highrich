@@ -32,7 +32,7 @@ public class God extends Visitor{
 		}
 		this.talkTick++;
 		if(talkTick == 100) {
-			this.stage = 3;
+			this.state = 3;
 			GameManager.setCustomer(GameManager.getCustomer() + 1);
 			GameManager.setAvailableRoom(GameManager.getAvailableRoom() - 1);
 			GameManager.addPopularity();
