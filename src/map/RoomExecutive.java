@@ -11,7 +11,7 @@ public class RoomExecutive extends Room{
 		Room oldRoom = ((MapUpStair) map).getRoomsList().get(position);
 		super.setAvailable(oldRoom.isAvailable);
 		if(oldRoom.getVisitor() != null) {
-			super.setVisitor(oldRoom.getVisitor());
+			this.visitor = oldRoom.getVisitor();
 		}
 		GameManager.setnStandard(GameManager.getnStandard() - 1);
 		GameManager.setnExecutive(GameManager.getnExecutive() + 1);

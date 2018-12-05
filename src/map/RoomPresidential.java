@@ -11,7 +11,7 @@ public class RoomPresidential extends Room{
 		Room oldRoom = ((MapUpStair) map).getRoomsList().get(position);
 		super.setAvailable(oldRoom.isAvailable);
 		if(oldRoom.getVisitor() != null) {
-			super.setVisitor(oldRoom.getVisitor());
+			this.visitor = oldRoom.getVisitor();
 		}
 		GameManager.setnExecutive(GameManager.getnExecutive() - 1);
 		GameManager.setnPresidential(GameManager.getnPresidential() + 1);
