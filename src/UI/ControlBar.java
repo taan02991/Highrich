@@ -263,4 +263,12 @@ public class ControlBar extends HBox{
 		return buyRecButton;
 	}
 	
+	public static void setMenuButton(boolean bool) {
+		menuButton.setDisable(bool);
+	}
+	
+	public static void setStatusButton(boolean bool) {
+		statusButton.setDisable(bool);
+	}
+	
 }

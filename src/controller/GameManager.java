@@ -1,6 +1,8 @@
 package controller;
 
 import java.util.ArrayList;
+
+import UI.ControlBar;
 import UI.Images;
 import character.God;
 import character.Player;
@@ -51,13 +53,19 @@ public class GameManager {
 	}
 	
 	public void update(GraphicsContext gc){
-		if(GameManager.getDay() == 15) {
-			GameManager.setGamePausing(true);
+		if(getDay() >= 15) {
+			setGamePausing(true);
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Game Over");
 			alert.setHeaderText("You are lose");
 			alert.setContentText("You must finish the game in 15 days for win. Click exit button and start the game again if you want :)");
 			alert.show();
+			ControlBar.setMenuButton(true);
+			ControlBar.setStatusButton(true);
+			KeyInput.removeKey("UP");
+			KeyInput.removeKey("DOWN");
+			KeyInput.removeKey("LEFT");
+			KeyInput.removeKey("RIGHT");
 		}
 		
 		//Secret Key
@@ -78,6 +86,8 @@ public class GameManager {
 		}
 		
 		if(isWin() && maps.size() == 4 || KeyInput.contains("T")) {
+			ControlBar.setMenuButton(true);
+			ControlBar.setStatusButton(true);
 			maps.add(new MapTerrace());
 		}
 		
