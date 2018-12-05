@@ -2,6 +2,8 @@ package character;
 
 import UI.Images;
 import controller.GameManager;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class ProgMeth extends Npc implements Walkable{
 	
@@ -11,6 +13,11 @@ public class ProgMeth extends Npc implements Walkable{
 		super(Images.PROGMETHL, Images.PROGMETHR, Images.PROGMETHU, Images.PROGMETHD, GameManager.getMaps().get(0), 178, 468, 0, 0);
 		super.setFacing("UP");
 		this.stage = 0;
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("New Event");
+		alert.setHeaderText("Alian visit your hotel");
+		alert.setContentText("You will be stolen your money by them");
+		alert.show();
 	}
 
 	@Override
