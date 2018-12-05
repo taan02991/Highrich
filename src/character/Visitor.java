@@ -31,7 +31,7 @@ public class Visitor extends Npc implements Walkable{
 			this.walkToContactPerson();
 		}
 		else if(this.stage == 2) {
-			this.talkWithContactPerson();;
+			this.talkWithContactPerson();
 		}
 		else if(this.stage == 3) {
 			this.walkToWarpUp();

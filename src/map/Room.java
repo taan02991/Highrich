@@ -1,8 +1,6 @@
 package map;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import UI.Images;
 import UI.Rectangle;
@@ -20,7 +18,6 @@ public class Room {
 	protected int fee;
 	protected ArrayList<Rectangle> roomStruct;
 	protected Visitor visitor;
-	protected static List<String> comp = Arrays.asList(new String[]{"RoomConstruction", "RoomStandard", "RoomExecutive", "RoomPresidential"});
 	
 	public Room(Image image, int position, int constructionCost, int fee, Map map) {
 		this.roomStruct = new ArrayList<Rectangle>();
@@ -30,7 +27,7 @@ public class Room {
 		this.fee = fee;
 		this.visitor = null;
 		this.map = map;
-		initTractor();
+		this.initTractor();
 	}
 
 	private void initTractor() {
@@ -41,19 +38,30 @@ public class Room {
 		}
 	}
 	
-	public boolean moreThan(String roomType) {
-		String nameL = this.getClass().getName().toString().substring(4);
-		String nameR = roomType;
-		if(comp.indexOf(nameL) >= comp.indexOf(nameR)) {
-			return true;			
-		}
-		else {
-			return false;
-		}
-	}
-	
 	public void addRoomStruct(Rectangle s) {
 		this.roomStruct.add(s);
+	}
+	
+	public void clear() {
+		if(this instanceof RoomConstruction) {
+			return;
+		}
+		this.isAvailable = true;
+		this.visitor = null;			
+	}
+	
+	public void render(GraphicsContext gc){
+		if( this.position < 3 ) {
+			gc.drawImage(this.image, 0, 166*(this.position) );
+		}else{
+			gc.drawImage(this.image, 300, 166*(this.position-3) );
+		}
+		if( !(this instanceof RoomPresidential) ) {
+			this.tractor.render(gc);
+		}
+		for(Rectangle r: roomStruct){
+			r.render(gc);
+		}
 	}
 	
 	public Rectangle getTractor() {
@@ -80,43 +88,17 @@ public class Room {
 		return image;
 	}
 	
-    public void render(GraphicsContext gc){
-    	if( this.position < 3 ) {
-    		gc.drawImage(this.image, 0, 166*(this.position) );
-    	}else{
-    		gc.drawImage(this.image, 300, 166*(this.position-3) );
-    	}
-    	if( !(this instanceof RoomPresidential) ) {
-    		this.tractor.render(gc);
-    	}
-    	for(Rectangle r: roomStruct){
-    		r.render(gc);
-    	}
-    }
-    
-    public void renderDusty(GraphicsContext gc){
-    	if( this.position < 3 ) {
-    		gc.drawImage(Images.PRESIDENTIALROOM, 0, 166*(this.position) );
-    	}else{
-    		gc.drawImage(Images.PRESIDENTIALROOM, 300, 166*(this.position-3) );
-    	}
-    }
-
-
 	public int getConstructionCost() {
 		return constructionCost;
 	}
-
 
 	public int getFee() {
 		return fee;
 	}
 
-
 	public Visitor getVisitor() {
 		return visitor;
 	}
-
 
 	public void setVisitor(Visitor visitor) {
 		this.visitor = visitor;
@@ -124,17 +106,8 @@ public class Room {
 		this.map.addNpc(visitor);
 	}
 
-
 	public ArrayList<Rectangle> getRoomStruct() {
 		return roomStruct;
-	}
-    
-	public void clear() {
-		if(this instanceof RoomConstruction) {
-			return;
-		}
-		this.isAvailable = true;
-		this.visitor = null;			
-	}
+	}    
 		
 }

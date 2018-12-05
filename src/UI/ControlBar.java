@@ -1,6 +1,5 @@
 package UI;
 
-import character.Player;
 import controller.GameManager;
 import controller.Time;
 import javafx.event.ActionEvent;

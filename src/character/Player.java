@@ -41,6 +41,7 @@ public class Player extends AnimatedImage implements Walkable{
 		MapWelcome mapWelcome = ((MapWelcome)GameManager.getMaps().get(0));
 		try {
 			this.enoughMoney(Receptionist.getCost());
+			this.payMoney(Receptionist.getCost());
 			mapWelcome.addReceptionist();
 		}catch(MoneyNotEnoughtException e) {
 			Alert alert = new Alert(AlertType.INFORMATION);

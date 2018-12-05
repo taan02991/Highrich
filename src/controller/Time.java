@@ -1,14 +1,11 @@
 package controller;
 
 public class Time{
-	private static int hour;
-	private static int min;
-	private static int count;
+	private static int hour = 0;
+	private static int min = 0;
+	private static int count = 0;
 	
 	public Time() {
-		hour = 0;
-		min = 0;
-		count = 0;
 		
 		Thread t = new Thread(new Runnable() {
 
