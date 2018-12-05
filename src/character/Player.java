@@ -34,7 +34,7 @@ public class Player extends AnimatedImage implements Walkable{
 	
 	public Player(Image[] frames, Map map, double positionX, double positionY, double velocityX, double velocityY) {
 		super(frames, map, positionX, positionY, velocityX, velocityY);
-		Money = 2000000;
+		Money = 20000;
 	}
 	
 	public void buyReceptionist() {

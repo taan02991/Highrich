@@ -3,6 +3,7 @@ package application;
 import UI.StartScene;
 import controller.Time;
 import UI.GameScene;
+import UI.Images;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -19,6 +20,7 @@ public class Main extends Application {
 		startScene = new StartScene();
 		stage.setTitle("HighRich");
 		stage.setScene(startScene);
+		stage.getIcons().add(Images.ICON);
 		stage.show();
 	}
 	
