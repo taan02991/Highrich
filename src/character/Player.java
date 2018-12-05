@@ -30,7 +30,7 @@ public class Player extends AnimatedImage implements Walkable{
 	private static final Image[] PLAYERR = Images.PLAYERR;
 	private static final Image[] PLAYERU = Images.PLAYERU;
 	private static final Image[] PLAYERD = Images.PLAYERD;
-	private static int Money;
+	private int Money;
 	
 	public Player(Image[] frames, Map map, double positionX, double positionY, double velocityX, double velocityY) {
 		super(frames, map, positionX, positionY, velocityX, velocityY);
@@ -77,12 +77,16 @@ public class Player extends AnimatedImage implements Walkable{
 		throw new StandNotTractorException("map up stair");
 	}
 	
-	public static void addMoney(int m) {
-		Money += m;
+	public void addMoney(int m) {
+		this.Money += m;
+	}
+	
+	public void setMoney(int money) {
+		this.Money = money;
 	}
 
-	public static int getMoney() {
-		return Money;
+	public int getMoney() {
+		return this.Money;
 	}
 
 
@@ -260,5 +264,6 @@ public class Player extends AnimatedImage implements Walkable{
     	this.warp();
     	super.update();
 	}
+	
 	
 }

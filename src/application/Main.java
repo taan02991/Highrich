@@ -17,6 +17,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		stage = primaryStage;
 		startScene = new StartScene();
+		stage.setTitle("HighRich");
 		stage.setScene(startScene);
 		stage.show();
 	}

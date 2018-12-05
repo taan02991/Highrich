@@ -2,6 +2,7 @@ package controller;
 
 import java.util.ArrayList;
 import UI.Images;
+import character.God;
 import character.Player;
 import javafx.scene.canvas.GraphicsContext;
 import map.Map;
@@ -49,12 +50,7 @@ public class GameManager {
 	
 	public void update(GraphicsContext gc){
 		
-		if(isWin() && maps.size() == 4 || KeyInput.contains("T")) {
-			maps.add(new MapTerrace());
-		}
-		
-		gameTick = (gameTick + 1) % 11250;
-		//for test
+		//Secret Key
 		if(KeyInput.contains("ENTER")) {
 			player.buyRoom(gc);
 		}
@@ -64,6 +60,18 @@ public class GameManager {
 		if(KeyInput.contains("P")) {
 			((MapWelcome)maps.get(0)).addProgMeth();
 		}
+		if(KeyInput.contains("G")) {
+			((MapWelcome)maps.get(0)).getNpcList().add(new God((MapWelcome)maps.get(0)));
+		}
+		if(KeyInput.contains("M")) {
+			player.addMoney(100000);
+		}
+		
+		if(isWin() && maps.size() == 4 || KeyInput.contains("T")) {
+			maps.add(new MapTerrace());
+		}
+		
+		gameTick = (gameTick + 1) % 11250;
 		
 		if(Time.getHour() < 6 || Time.getHour() > 12) {
 			if(gameTick % (300 - ((MapWelcome)maps.get(0)).getNumberOfReceptionist()*20 + customer*10) == 0) {

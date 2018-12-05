@@ -43,7 +43,9 @@ public class ProgMeth extends Npc implements Walkable{
 					this.stage = -9999;
 					super.showMessage(Images.GIVEMEMONEY, 2000);
 					Thread.sleep(2000);
-					GameManager.getPlayer().payMoney(1000);
+					GameManager.getPlayer();
+					GameManager.getPlayer();
+					GameManager.getPlayer().setMoney(GameManager.getPlayer().getMoney()/2);;
 					this.stage = 1;
 				} catch (InterruptedException e) {
 					e.printStackTrace();

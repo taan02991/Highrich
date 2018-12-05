@@ -29,7 +29,11 @@ public class Images {
 		public static final Image[] ADULTU = new Image[3];
 		public static final Image[] ADULTD = new Image[3];
 		
-
+		public static final Image[] GODL = new Image[3];
+		public static final Image[] GODR = new Image[3];
+		public static final Image[] GODU = new Image[3];
+		public static final Image[] GODD = new Image[3];
+		
 		public static final Image[] ICONFLOOR = new Image[8];
 		public static final Image[] BACKGROUND = new Image[7];
 
@@ -71,6 +75,7 @@ public class Images {
 		
 		public static final Image UPSET = new Image(ClassLoader.getSystemResource("UpSet.png").toString());
 		public static final Image GIVEMEMONEY = new Image(ClassLoader.getSystemResource("GiveMeMoney.png").toString());
+		public static final Image X10 = new Image(ClassLoader.getSystemResource("X10.png").toString());
 		
 		public static final Image ICONMONEY = new Image(ClassLoader.getSystemResource("IconMoney.png").toString());
 		public static final Image ICONDAY = new Image(ClassLoader.getSystemResource("IconDay.png").toString());
@@ -117,6 +122,11 @@ public class Images {
 				PROGMETHR[i] = new Image(ClassLoader.getSystemResource("ProgMethR" + i + ".png").toString());
 				PROGMETHU[i] = new Image(ClassLoader.getSystemResource("ProgMethU" + i + ".png").toString());
 				PROGMETHD[i] = new Image(ClassLoader.getSystemResource("ProgMethD" + i + ".png").toString());
+				
+				GODL[i] = new Image(ClassLoader.getSystemResource("GodL" + i + ".png").toString());
+				GODR[i] = new Image(ClassLoader.getSystemResource("GodR" + i + ".png").toString());
+				GODU[i] = new Image(ClassLoader.getSystemResource("GodU" + i + ".png").toString());
+				GODD[i] = new Image(ClassLoader.getSystemResource("GodD" + i + ".png").toString());
 			}
 		}
 

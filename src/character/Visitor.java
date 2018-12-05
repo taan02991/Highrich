@@ -8,10 +8,10 @@ import map.MapUpStair;
 import map.Room;
 
 public class Visitor extends Npc implements Walkable{
-	private int stage;
-	private int talkTick;
-	private Receptionist contactPerson;
-	private Room room;
+	protected int stage;
+	protected int talkTick;
+	protected Receptionist contactPerson;
+	protected Room room;
 	
 	public Visitor(Image[] npcL, Image[] npcR, Image[] npcU, Image[] npcD, Map map) {
 		super(npcL, npcR, npcU, npcD, map, 280, 468, 0, 0);
@@ -49,7 +49,7 @@ public class Visitor extends Npc implements Walkable{
 
 	}
 	
-	private void findContactPerson(){
+	public void findContactPerson(){
 		for(Npc npc: super.getMap().getNpcList()) {
 			if(npc instanceof Receptionist) {
 				if(!((Receptionist) npc).isBusy() && hasRoom()) {
@@ -77,7 +77,7 @@ public class Visitor extends Npc implements Walkable{
 		}
 	}
 	
-	private void walkToContactPerson(){
+	public void walkToContactPerson(){
 		if(this.contactPerson != null) {
 			if(this.contactPerson.getPositionY() != this.getPositionY()) {
 				super.setVelocity(0, -1);
@@ -95,18 +95,18 @@ public class Visitor extends Npc implements Walkable{
 		
 	}
 	
-	private void talkWithContactPerson() {
+	public void talkWithContactPerson() {
 		this.talkTick++;
 		if(talkTick == 100) {
 			this.stage = 3;
 			GameManager.setCustomer(GameManager.getCustomer() + 1);
 			GameManager.setAvailableRoom(GameManager.getAvailableRoom() - 1);
 			GameManager.addPopularity();
-			Player.addMoney(this.room.getFee());
+			GameManager.getPlayer().addMoney(this.room.getFee());
 		}	
 	}
 	
-	private void walkToWarpUp() {
+	public void walkToWarpUp() {
 		if(super.getPositionX() != 204) {
 			super.setVelocity(1, 0);
 			super.setFacing("RIGHT");
@@ -141,7 +141,7 @@ public class Visitor extends Npc implements Walkable{
 		}
 	}
 	
-	private void Upset() {
+	public void Upset() {
 		if(this.getPositionY() != 400) {
 			this.setVelocity(0, -1);
 			this.setFacing("UP");
@@ -170,7 +170,7 @@ public class Visitor extends Npc implements Walkable{
 		}
 	}
 	
-	private void walkOut() {
+	public void walkOut() {
 		if(this.getPositionY() != 458) {
 			this.setVelocity(0, 1);
 			this.setFacing("DOWN");
@@ -181,7 +181,7 @@ public class Visitor extends Npc implements Walkable{
 		}
 	}
 	
-	private boolean hasRoom() {
+	public boolean hasRoom() {
 		for(Map map: GameManager.getMaps()) {
 			if(map instanceof MapUpStair) {
 				for(Room r: ((MapUpStair) map).getRoomsList()) {

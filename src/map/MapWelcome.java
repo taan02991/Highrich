@@ -3,6 +3,7 @@ package map;
 import UI.Images;
 import UI.Rectangle;
 import character.Adult;
+import character.God;
 import character.Npc;
 import character.OldMan;
 import character.ProgMeth;
@@ -36,13 +37,16 @@ public class MapWelcome extends Map{
 	
 	public void addVisitor() {
 		int random = (int) (Math.random()*1000);
-		if(random % 3 == 0) {
+		if(random < 80) {
+			super.getNpcList().add(new God(this));
+		}
+		else if(random % 3 == 0) {
 			super.getNpcList().add(new Teenager(this));			
 		}
 		else if(random % 3 == 1) {
 			super.getNpcList().add(new Adult(this));
 		}
-		else {
+		else{
 			super.getNpcList().add(new OldMan(this));
 		}
 	}

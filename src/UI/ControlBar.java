@@ -231,7 +231,7 @@ public class ControlBar extends HBox{
 	}
 	
 	public void update() {
-    	money.setText(Integer.toString(Player.getMoney()));
+    	money.setText(Integer.toString(GameManager.getPlayer().getMoney()));
     	popularity.setText(Integer.toString(GameManager.getPopularity()));
     	customer.setText(Integer.toString(GameManager.getCustomer()));
     	time.setText(String.format("%02d:%02d", Time.getHour(), Time.getMin()));
