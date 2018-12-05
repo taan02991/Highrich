@@ -32,9 +32,9 @@ public class Room {
 
 	private void initTractor() {
 		if( this.position < 3 ) {
-			this.tractor = new Rectangle(Images.TRACTOR, 78, 166*(this.position) + 65);
+			this.tractor = new Rectangle(Images.TRACTOR, 81, 166*(this.position) + 72);
 		}else {
-			this.tractor = new Rectangle(Images.TRACTOR, 378, 166*(this.position-3) + 65);
+			this.tractor = new Rectangle(Images.TRACTOR, 381, 166*(this.position-3) + 72);
 		}
 	}
 	
