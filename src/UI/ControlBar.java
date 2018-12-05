@@ -55,6 +55,7 @@ public class ControlBar extends HBox{
 	private static ProgressBar progressPresidential;
 	private static ProgressBar progressPresidentialOnStatus;
 	private static ProgressBar progressAvailable;
+	private static ProgressBar progressReceptionist;
 	private static ImageView currentFloor;
 	
 	public ControlBar() {
@@ -158,6 +159,9 @@ public class ControlBar extends HBox{
         showStatus.add(new Label("N' Available Room :"), 0, 5);
         progressAvailable = new ProgressBar(0);
         showStatus.add(progressAvailable, 1, 5);
+        showStatus.add(new Label("N' Receptionist :"), 0, 6);
+        progressReceptionist = new ProgressBar(0);
+        showStatus.add(progressReceptionist, 1, 6);
         showStatus.setVisible(false);
         GameScene.stackPane.getChildren().add(showStatus);
         
@@ -243,6 +247,7 @@ public class ControlBar extends HBox{
     	progressStandard.setProgress((double)GameManager.getnStandard()/18.0);
     	progressExecutive.setProgress((double)GameManager.getnExecutive()/18.0);
     	progressAvailable.setProgress((double)GameManager.getAvailableRoom()/18.0);
+    	progressReceptionist.setProgress((double)((MapWelcome)GameManager.getMaps().get(0)).getNumberOfReceptionist()/MapWelcome.MAXRECEPTIONIST);
     	if(GameManager.getCurrentMap() instanceof MapWelcome) {
     		currentFloor.setImage(Images.ICONFLOOR[1]);
     	}else if(GameManager.getCurrentMap() instanceof MapUpStair) {
