@@ -41,7 +41,7 @@ public class Player extends AnimatedImage implements Walkable{
 		MapWelcome mapWelcome = ((MapWelcome)GameManager.getMaps().get(0));
 		try {
 			this.enoughMoney(Receptionist.getCost());
-			this.payMoney(Receptionist.getCost());
+			this.setMoney(this.getMoney() - Receptionist.getCost());
 			mapWelcome.addReceptionist();
 		}catch(MoneyNotEnoughtException e) {
 			Alert alert = new Alert(AlertType.INFORMATION);
@@ -89,13 +89,6 @@ public class Player extends AnimatedImage implements Walkable{
 	public int getMoney() {
 		return this.Money;
 	}
-
-
-	public void payMoney(int o) {
-		if( Money - o > 0 ) {
-			Money -= o;
-		}
-	}
 	
 	public void buyRoom(GraphicsContext gc){		
 		try {
@@ -107,20 +100,20 @@ public class Player extends AnimatedImage implements Walkable{
 						if( room instanceof RoomConstruction) {
 							//check have enough money for throw exception
 							this.enoughMoney(room.getConstructionCost());
-							payMoney(room.getConstructionCost());
+							this.setMoney(this.getMoney() - room.getConstructionCost());
 							new BuyRoom(super.getMap(), room, 1, gc);
 							return;
 						}else if( room instanceof RoomStandard) {
 							//check have enough money for throw exception
 							this.enoughMoney(room.getConstructionCost());
-							payMoney(room.getConstructionCost());
+							this.setMoney(this.getMoney() - room.getConstructionCost());
 							new BuyRoom(super.getMap(), room, 2, gc);
 							return;
 							
 						}else if( room instanceof RoomExecutive) {
 							//check have enough money for throw exception
 							this.enoughMoney(room.getConstructionCost());
-							payMoney(room.getConstructionCost());
+							this.setMoney(this.getMoney() - room.getConstructionCost());
 							new BuyRoom(super.getMap(), room, 3, gc);
 							return;
 							
