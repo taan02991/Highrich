@@ -7,12 +7,12 @@ import javafx.scene.control.Alert.AlertType;
 
 public class ProgMeth extends Npc implements Walkable{
 	
-	private int stage;
+	private int state;
 
 	public ProgMeth() {
 		super(Images.PROGMETHL, Images.PROGMETHR, Images.PROGMETHU, Images.PROGMETHD, GameManager.getMaps().get(0), 178, 468, 0, 0);
 		super.setFacing("UP");
-		this.stage = 0;
+		this.state = 0;
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("New Event");
 		alert.setHeaderText("Alian visit your hotel");
@@ -22,11 +22,11 @@ public class ProgMeth extends Npc implements Walkable{
 
 	@Override
 	public void walk() {
-		if(this.stage == 0) {
+		if(this.state == 0) {
 			this.walktoCounter();
 		}
 		
-		else if(this.stage == 1) {
+		else if(this.state == 1) {
 			this.walkOut();
 		}
 		
@@ -47,13 +47,13 @@ public class ProgMeth extends Npc implements Walkable{
 			super.setFacing("UP");
 			Thread t = new Thread(() -> {
 				try {
-					this.stage = -9999;
+					this.state = -9999;
 					super.showMessage(Images.GIVEMEMONEY, 2000);
 					Thread.sleep(2000);
 					GameManager.getPlayer();
 					GameManager.getPlayer();
 					GameManager.getPlayer().setMoney(GameManager.getPlayer().getMoney()/2);;
-					this.stage = 1;
+					this.state = 1;
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
