@@ -4,7 +4,7 @@ import java.beans.EventHandler;
 
 import UI.Images;
 import controller.GameManager;
-import javafx.application.Platform;
+import controller.KeyInput;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DialogEvent;
 import javafx.scene.control.Alert.AlertType;
@@ -22,6 +22,10 @@ public class ProgMeth extends Npc implements Walkable{
 		alert.setHeaderText("Alian visit your hotel");
 		alert.setContentText("You will be stolen your money by them");
 		alert.show();
+		KeyInput.removeKey("UP");
+		KeyInput.removeKey("DOWN");
+		KeyInput.removeKey("LEFT");
+		KeyInput.removeKey("RIGHT");
 	}
 
 	@Override

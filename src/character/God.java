@@ -2,6 +2,7 @@ package character;
 
 import UI.Images;
 import controller.GameManager;
+import controller.KeyInput;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import map.Map;
@@ -15,6 +16,10 @@ public class God extends Visitor{
 		alert.setHeaderText("God visit your hotel");
 		alert.setContentText("You will receive massive of money from the god");
 		alert.show();
+		KeyInput.removeKey("UP");
+		KeyInput.removeKey("DOWN");
+		KeyInput.removeKey("LEFT");
+		KeyInput.removeKey("RIGHT");
 	}
 	
 	@Override

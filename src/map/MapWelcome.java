@@ -13,7 +13,7 @@ import exception.ReceptionistFullException;
 import javafx.scene.canvas.GraphicsContext;
 
 public class MapWelcome extends Map{
-	private static final int MAXRECEPTIONIST = 8;
+	public static final int MAXRECEPTIONIST = 8;
 	private int numberOfReceptionist;
 	
 	public MapWelcome(){

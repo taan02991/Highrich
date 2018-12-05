@@ -92,10 +92,4 @@ public class Rectangle
 		return image;
 	}
 	
-	
-    
-    
-    
-    
-    
 }

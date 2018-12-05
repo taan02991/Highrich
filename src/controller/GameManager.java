@@ -5,6 +5,8 @@ import UI.Images;
 import character.God;
 import character.Player;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import map.Map;
 import map.MapTerrace;
 import map.MapUpStair;
@@ -49,6 +51,14 @@ public class GameManager {
 	}
 	
 	public void update(GraphicsContext gc){
+		if(GameManager.getDay() == 15) {
+			GameManager.setGamePausing(true);
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Game Over");
+			alert.setHeaderText("You are lose");
+			alert.setContentText("You must finish the game in 15 days for win. Click exit button and start the game again if you want :)");
+			alert.show();
+		}
 		
 		//Secret Key
 		if(KeyInput.contains("ENTER")) {
