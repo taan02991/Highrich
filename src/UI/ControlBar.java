@@ -2,6 +2,7 @@ package UI;
 
 import controller.GameManager;
 import controller.Time;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
@@ -189,6 +190,8 @@ public class ControlBar extends HBox{
     		@Override
     		public void handle(ActionEvent event) {
     			Stage stage = (Stage) exitButton.getScene().getWindow();
+                Platform.exit();
+                System.exit(0);
     		    stage.close();
     			Audio.MENU.setVolume(1);
     			Audio.MENU.play();

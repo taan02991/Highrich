@@ -87,7 +87,6 @@ public class Images {
 		public static final Image TERRACE = new Image(ClassLoader.getSystemResource("Terrace.png").toString());
 		public static final Image CONGRATULATION = new Image(ClassLoader.getSystemResource("Congratulation.png").toString());
 		public static final Image[] AIRPLANE1 = {new Image(ClassLoader.getSystemResource("Airplane1.png").toString())};
-		
 		public static final Image[] AIRPLANE2 = {new Image(ClassLoader.getSystemResource("Airplane2.png").toString())};
 		public static final Image[] AIRPLANE3 = {new Image(ClassLoader.getSystemResource("Airplane3.png").toString())};
 		public static final Image[] AIRPLANE4 = {new Image(ClassLoader.getSystemResource("Airplane4.png").toString())};
