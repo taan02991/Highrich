@@ -1,12 +1,10 @@
 package character;
 
-import java.beans.EventHandler;
 
 import UI.Images;
 import controller.GameManager;
 import controller.KeyInput;
 import javafx.scene.control.Alert;
-import javafx.scene.control.DialogEvent;
 import javafx.scene.control.Alert.AlertType;
 
 public class ProgMeth extends Npc implements Walkable{

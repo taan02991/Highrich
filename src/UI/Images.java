@@ -4,10 +4,10 @@ import javafx.scene.image.Image;
 
 public class Images {
 
-		public static final Image STARTBACKGROUND = new Image(ClassLoader.getSystemResource("StartScene.png").toString());
-		public static final Image STARTBUTTON = new Image(ClassLoader.getSystemResource("StartButton.png").toString());
-		public static final Image STARTBUTTONHOVER = new Image(ClassLoader.getSystemResource("StartButtonHover.png").toString());
-		public static final Image FLOOR = new Image(ClassLoader.getSystemResource("floor.png").toString());
+		public static final Image STARTBACKGROUND = new Image(ClassLoader.getSystemResourceAsStream("images/StartScene.png"));
+		public static final Image STARTBUTTON = new Image(ClassLoader.getSystemResourceAsStream("images/StartButton.png"));
+		public static final Image STARTBUTTONHOVER = new Image(ClassLoader.getSystemResourceAsStream("images/StartButtonHover.png"));
+		public static final Image FLOOR = new Image(ClassLoader.getSystemResourceAsStream("images/Floor.png"));
 		
 		public static final Image[] PLAYERL = new Image[3];
 		public static final Image[] PLAYERR = new Image[3];
@@ -44,100 +44,100 @@ public class Images {
 		
 
 		
-		public static final Image[] Receptionist = {new Image(ClassLoader.getSystemResource("Receptionist.png").toString())};
+		public static final Image[] Receptionist = {new Image(ClassLoader.getSystemResourceAsStream("images/Receptionist.png"))};
 		
-		public static final Image ICON = new Image(ClassLoader.getSystemResource("Icon.png").toString());
-		public static final Image TREE = new Image(ClassLoader.getSystemResource("Tree.png").toString());
-		public static final Image SOFA = new Image(ClassLoader.getSystemResource("Sofa.png").toString());
-		public static final Image RECEPTIONTABLE = new Image(ClassLoader.getSystemResource("ReceptionTable.png").toString()); 
-		public static final Image WARPUP = new Image(ClassLoader.getSystemResource("WarpUp.png").toString());
-		public static final Image WARPDOWN = new Image(ClassLoader.getSystemResource("WarpDown.png").toString());
+		public static final Image ICON = new Image(ClassLoader.getSystemResourceAsStream("images/Icon.png"));
+		public static final Image TREE = new Image(ClassLoader.getSystemResourceAsStream("images/Tree.png"));
+		public static final Image SOFA = new Image(ClassLoader.getSystemResourceAsStream("images/Sofa.png"));
+		public static final Image RECEPTIONTABLE = new Image(ClassLoader.getSystemResourceAsStream("images/ReceptionTable.png")); 
+		public static final Image WARPUP = new Image(ClassLoader.getSystemResourceAsStream("images/WarpUp.png"));
+		public static final Image WARPDOWN = new Image(ClassLoader.getSystemResourceAsStream("images/WarpDown.png"));
 		
-		public static final Image TRACTOR = new Image(ClassLoader.getSystemResource("Tractor.png").toString());
-		public static final Image DustConstruction = new Image(ClassLoader.getSystemResource("DustConstruction.png").toString());
+		public static final Image TRACTOR = new Image(ClassLoader.getSystemResourceAsStream("images/Tractor.png"));
+		public static final Image DustConstruction = new Image(ClassLoader.getSystemResourceAsStream("images/DustConstruction.png"));
 		
-		public static final Image CONSTRUCTIONROOM = new Image(ClassLoader.getSystemResource("ConstructionRoom.png").toString());
-		public static final Image STANDARDROOM = new Image(ClassLoader.getSystemResource("StandardRoom.png").toString());
-		public static final Image EXECUTIVEROOM = new Image(ClassLoader.getSystemResource("ExecutiveRoom.png").toString());
-		public static final Image PRESIDENTIALROOM = new Image(ClassLoader.getSystemResource("PresidentialRoom.png").toString());
+		public static final Image CONSTRUCTIONROOM = new Image(ClassLoader.getSystemResourceAsStream("images/ConstructionRoom.png"));
+		public static final Image STANDARDROOM = new Image(ClassLoader.getSystemResourceAsStream("images/StandardRoom.png"));
+		public static final Image EXECUTIVEROOM = new Image(ClassLoader.getSystemResourceAsStream("images/ExecutiveRoom.png"));
+		public static final Image PRESIDENTIALROOM = new Image(ClassLoader.getSystemResourceAsStream("images/PresidentialRoom.png"));
 		
-		public static final Image HORIZONTALWALL = new Image(ClassLoader.getSystemResource("HorizontalWall.png").toString());
-		public static final Image VERTICALWALL = new Image(ClassLoader.getSystemResource("VerticalWall.png").toString());
-		public static final Image VERTICALWALLONDOOR = new Image(ClassLoader.getSystemResource("VerticalWallOnDoor.png").toString());
+		public static final Image HORIZONTALWALL = new Image(ClassLoader.getSystemResourceAsStream("images/HorizontalWall.png"));
+		public static final Image VERTICALWALL = new Image(ClassLoader.getSystemResourceAsStream("images/VerticalWall.png"));
+		public static final Image VERTICALWALLONDOOR = new Image(ClassLoader.getSystemResourceAsStream("images/VerticalWallOnDoor.png"));
 
-		public static final Image TOILETLEFT = new Image(ClassLoader.getSystemResource("ToiletLeft.png").toString());
-		public static final Image TOILETRIGHT = new Image(ClassLoader.getSystemResource("ToiletRight.png").toString());
-		public static final Image BEDLEFT = new Image(ClassLoader.getSystemResource("BedLeft.png").toString());
-		public static final Image BEDRIGHT = new Image(ClassLoader.getSystemResource("BedRight.png").toString());
-		public static final Image TVLEFT = new Image(ClassLoader.getSystemResource("TVLeft.png").toString());
-		public static final Image TVRIGHT = new Image(ClassLoader.getSystemResource("TVRight.png").toString());
-		public static final Image BIGTABLERIGHT = new Image(ClassLoader.getSystemResource("BigtableRight.png").toString());
-		public static final Image BIGTABLELEFT = new Image(ClassLoader.getSystemResource("BigtableLeft.png").toString());
+		public static final Image TOILETLEFT = new Image(ClassLoader.getSystemResourceAsStream("images/ToiletLeft.png"));
+		public static final Image TOILETRIGHT = new Image(ClassLoader.getSystemResourceAsStream("images/ToiletRight.png"));
+		public static final Image BEDLEFT = new Image(ClassLoader.getSystemResourceAsStream("images/BedLeft.png"));
+		public static final Image BEDRIGHT = new Image(ClassLoader.getSystemResourceAsStream("images/BedRight.png"));
+		public static final Image TVLEFT = new Image(ClassLoader.getSystemResourceAsStream("images/TVLeft.png"));
+		public static final Image TVRIGHT = new Image(ClassLoader.getSystemResourceAsStream("images/TVRight.png"));
+		public static final Image BIGTABLERIGHT = new Image(ClassLoader.getSystemResourceAsStream("images/BigtableRight.png"));
+		public static final Image BIGTABLELEFT = new Image(ClassLoader.getSystemResourceAsStream("images/BigtableLeft.png"));
 		
-		public static final Image UPSET = new Image(ClassLoader.getSystemResource("UpSet.png").toString());
-		public static final Image GIVEMEMONEY = new Image(ClassLoader.getSystemResource("GiveMeMoney.png").toString());
-		public static final Image X10 = new Image(ClassLoader.getSystemResource("X10.png").toString());
+		public static final Image UPSET = new Image(ClassLoader.getSystemResourceAsStream("images/UpSet.png"));
+		public static final Image GIVEMEMONEY = new Image(ClassLoader.getSystemResourceAsStream("images/GiveMeMoney.png"));
+		public static final Image X10 = new Image(ClassLoader.getSystemResourceAsStream("images/X10.png"));
 		
-		public static final Image ICONMONEY = new Image(ClassLoader.getSystemResource("IconMoney.png").toString());
-		public static final Image ICONDAY = new Image(ClassLoader.getSystemResource("IconDay.png").toString());
-		public static final Image ICONPOPULARITY = new Image(ClassLoader.getSystemResource("IconPopularity.png").toString());
-		public static final Image ICONCUSTOMER = new Image(ClassLoader.getSystemResource("IconCustomer.png").toString());
-		public static final Image ICONROOM = new Image(ClassLoader.getSystemResource("IconRoom.png").toString());
+		public static final Image ICONMONEY = new Image(ClassLoader.getSystemResourceAsStream("images/IconMoney.png"));
+		public static final Image ICONDAY = new Image(ClassLoader.getSystemResourceAsStream("images/IconDay.png"));
+		public static final Image ICONPOPULARITY = new Image(ClassLoader.getSystemResourceAsStream("images/IconPopularity.png"));
+		public static final Image ICONCUSTOMER = new Image(ClassLoader.getSystemResourceAsStream("images/IconCustomer.png"));
+		public static final Image ICONROOM = new Image(ClassLoader.getSystemResourceAsStream("images/IconRoom.png"));
 
-		public static final Image TERRACE = new Image(ClassLoader.getSystemResource("Terrace.png").toString());
-		public static final Image CONGRATULATION = new Image(ClassLoader.getSystemResource("Congratulation.png").toString());
-		public static final Image[] AIRPLANE1 = {new Image(ClassLoader.getSystemResource("Airplane1.png").toString())};
-		public static final Image[] AIRPLANE2 = {new Image(ClassLoader.getSystemResource("Airplane2.png").toString())};
-		public static final Image[] AIRPLANE3 = {new Image(ClassLoader.getSystemResource("Airplane3.png").toString())};
-		public static final Image[] AIRPLANE4 = {new Image(ClassLoader.getSystemResource("Airplane4.png").toString())};
-		public static final Image[] AIRPLANE5 = {new Image(ClassLoader.getSystemResource("Airplane5.png").toString())};
-		public static final Image[] AIRPLANE6 = {new Image(ClassLoader.getSystemResource("Airplane6.png").toString())};
-		public static final Image[] AIRPLANE7 = {new Image(ClassLoader.getSystemResource("Airplane7.png").toString())};
-		public static final Image[] AIRPLANE8 = {new Image(ClassLoader.getSystemResource("Airplane8.png").toString())};
-		public static final Image[] AIRPLANE9 = {new Image(ClassLoader.getSystemResource("Airplane9.png").toString())};
-		public static final Image[] BOMB = {new Image(ClassLoader.getSystemResource("Bomb.png").toString())};
-		public static final Image[] AZURE = {new Image(ClassLoader.getSystemResource("Azure.png").toString())};
+		public static final Image TERRACE = new Image(ClassLoader.getSystemResourceAsStream("images/Terrace.png"));
+		public static final Image CONGRATULATION = new Image(ClassLoader.getSystemResourceAsStream("images/Congratulation.png"));
+		public static final Image[] AIRPLANE1 = {new Image(ClassLoader.getSystemResourceAsStream("images/Airplane1.png"))};
+		public static final Image[] AIRPLANE2 = {new Image(ClassLoader.getSystemResourceAsStream("images/Airplane2.png"))};
+		public static final Image[] AIRPLANE3 = {new Image(ClassLoader.getSystemResourceAsStream("images/Airplane3.png"))};
+		public static final Image[] AIRPLANE4 = {new Image(ClassLoader.getSystemResourceAsStream("images/Airplane4.png"))};
+		public static final Image[] AIRPLANE5 = {new Image(ClassLoader.getSystemResourceAsStream("images/Airplane5.png"))};
+		public static final Image[] AIRPLANE6 = {new Image(ClassLoader.getSystemResourceAsStream("images/Airplane6.png"))};
+		public static final Image[] AIRPLANE7 = {new Image(ClassLoader.getSystemResourceAsStream("images/Airplane7.png"))};
+		public static final Image[] AIRPLANE8 = {new Image(ClassLoader.getSystemResourceAsStream("images/Airplane8.png"))};
+		public static final Image[] AIRPLANE9 = {new Image(ClassLoader.getSystemResourceAsStream("images/Airplane9.png"))};
+		public static final Image[] BOMB = {new Image(ClassLoader.getSystemResourceAsStream("images/Bomb.png"))};
+		public static final Image[] AZURE = {new Image(ClassLoader.getSystemResourceAsStream("images/Azure.png"))};
 		
-		public static final Image[] TRANSPARENT = {new Image(ClassLoader.getSystemResource("Transparent.png").toString())};
+		public static final Image[] TRANSPARENT = {new Image(ClassLoader.getSystemResourceAsStream("images/Transparent.png"))};
 		
 		static {
 			for(int i = 1; i<8; i++) {
-				ICONFLOOR[i] = new Image(ClassLoader.getSystemResource("IconFloor" + i + ".png").toString());
+				ICONFLOOR[i] = new Image(ClassLoader.getSystemResourceAsStream("images/IconFloor" + i + ".png"));
 			}
 			for(int i = 0; i<7; i++) {
-				BACKGROUND[i] = new Image(ClassLoader.getSystemResource("Background" + i + ".png").toString());
+				BACKGROUND[i] = new Image(ClassLoader.getSystemResourceAsStream("images/Background" + i + ".png"));
 			}
 			
 			for(int i = 0; i < 3; i++) {
-				TEENAGERL[i] = new Image(ClassLoader.getSystemResource("TeenagerL" + i + ".png").toString());
-				TEENAGERR[i] = new Image(ClassLoader.getSystemResource("TeenagerR" + i + ".png").toString());
-				TEENAGERU[i] = new Image(ClassLoader.getSystemResource("TeenagerU" + i + ".png").toString());
-				TEENAGERD[i] = new Image(ClassLoader.getSystemResource("TeenagerD" + i + ".png").toString());		
+				TEENAGERL[i] = new Image(ClassLoader.getSystemResourceAsStream("images/TeenagerL" + i + ".png"));
+				TEENAGERR[i] = new Image(ClassLoader.getSystemResourceAsStream("images/TeenagerR" + i + ".png"));
+				TEENAGERU[i] = new Image(ClassLoader.getSystemResourceAsStream("images/TeenagerU" + i + ".png"));
+				TEENAGERD[i] = new Image(ClassLoader.getSystemResourceAsStream("images/TeenagerD" + i + ".png"));		
 				
-				OLDMANL[i] = new Image(ClassLoader.getSystemResource("OLDMANL" + i + ".png").toString());
-				OLDMANR[i] = new Image(ClassLoader.getSystemResource("OLDMANR" + i + ".png").toString());
-				OLDMANU[i] = new Image(ClassLoader.getSystemResource("OLDMANU" + i + ".png").toString());
-				OLDMAND[i] = new Image(ClassLoader.getSystemResource("OLDMAND" + i + ".png").toString());
+				OLDMANL[i] = new Image(ClassLoader.getSystemResourceAsStream("images/OldManL" + i + ".png"));
+				OLDMANR[i] = new Image(ClassLoader.getSystemResourceAsStream("images/OldManR" + i + ".png"));
+				OLDMANU[i] = new Image(ClassLoader.getSystemResourceAsStream("images/OldManU" + i + ".png"));
+				OLDMAND[i] = new Image(ClassLoader.getSystemResourceAsStream("images/OldManD" + i + ".png"));
 				
-				ADULTL[i] = new Image(ClassLoader.getSystemResource("ADULTL" + i + ".png").toString());
-				ADULTR[i] = new Image(ClassLoader.getSystemResource("ADULTR" + i + ".png").toString());
-				ADULTU[i] = new Image(ClassLoader.getSystemResource("ADULTU" + i + ".png").toString());
-				ADULTD[i] = new Image(ClassLoader.getSystemResource("ADULTD" + i + ".png").toString());
+				ADULTL[i] = new Image(ClassLoader.getSystemResourceAsStream("images/AdultL" + i + ".png"));
+				ADULTR[i] = new Image(ClassLoader.getSystemResourceAsStream("images/AdultR" + i + ".png"));
+				ADULTU[i] = new Image(ClassLoader.getSystemResourceAsStream("images/AdultU" + i + ".png"));
+				ADULTD[i] = new Image(ClassLoader.getSystemResourceAsStream("images/AdultD" + i + ".png"));
 				
-				PLAYERL[i] = new Image(ClassLoader.getSystemResource("PLAYERL" + i + ".png").toString());
-				PLAYERR[i] = new Image(ClassLoader.getSystemResource("PLAYERR" + i + ".png").toString());
-				PLAYERU[i] = new Image(ClassLoader.getSystemResource("PLAYERU" + i + ".png").toString());
-				PLAYERD[i] = new Image(ClassLoader.getSystemResource("PLAYERD" + i + ".png").toString());
+				PLAYERL[i] = new Image(ClassLoader.getSystemResourceAsStream("images/PlayerL" + i + ".png"));
+				PLAYERR[i] = new Image(ClassLoader.getSystemResourceAsStream("images/PlayerR" + i + ".png"));
+				PLAYERU[i] = new Image(ClassLoader.getSystemResourceAsStream("images/PlayerU" + i + ".png"));
+				PLAYERD[i] = new Image(ClassLoader.getSystemResourceAsStream("images/PlayerD" + i + ".png"));
 				
-				PROGMETHL[i] = new Image(ClassLoader.getSystemResource("ProgMethL" + i + ".png").toString());
-				PROGMETHR[i] = new Image(ClassLoader.getSystemResource("ProgMethR" + i + ".png").toString());
-				PROGMETHU[i] = new Image(ClassLoader.getSystemResource("ProgMethU" + i + ".png").toString());
-				PROGMETHD[i] = new Image(ClassLoader.getSystemResource("ProgMethD" + i + ".png").toString());
+				PROGMETHL[i] = new Image(ClassLoader.getSystemResourceAsStream("images/ProgMethL" + i + ".png"));
+				PROGMETHR[i] = new Image(ClassLoader.getSystemResourceAsStream("images/ProgMethR" + i + ".png"));
+				PROGMETHU[i] = new Image(ClassLoader.getSystemResourceAsStream("images/ProgMethU" + i + ".png"));
+				PROGMETHD[i] = new Image(ClassLoader.getSystemResourceAsStream("images/ProgMethD" + i + ".png"));
 				
-				GODL[i] = new Image(ClassLoader.getSystemResource("GodL" + i + ".png").toString());
-				GODR[i] = new Image(ClassLoader.getSystemResource("GodR" + i + ".png").toString());
-				GODU[i] = new Image(ClassLoader.getSystemResource("GodU" + i + ".png").toString());
-				GODD[i] = new Image(ClassLoader.getSystemResource("GodD" + i + ".png").toString());
+				GODL[i] = new Image(ClassLoader.getSystemResourceAsStream("images/GodL" + i + ".png"));
+				GODR[i] = new Image(ClassLoader.getSystemResourceAsStream("images/GodR" + i + ".png"));
+				GODU[i] = new Image(ClassLoader.getSystemResourceAsStream("images/GodU" + i + ".png"));
+				GODD[i] = new Image(ClassLoader.getSystemResourceAsStream("images/GodD" + i + ".png"));
 			}
 		}
 

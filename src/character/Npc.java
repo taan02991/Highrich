@@ -1,7 +1,6 @@
 package character;
 
 import UI.AnimatedImage;
-import UI.Images;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import map.Map;
