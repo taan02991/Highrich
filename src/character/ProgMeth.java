@@ -1,6 +1,5 @@
 package character;
 
-
 import UI.Images;
 import controller.GameManager;
 import controller.KeyInput;
