@@ -99,7 +99,8 @@ public class ControlBar extends HBox{
     	showTime.setAlignment(Pos.CENTER);
     	showTime.setPrefWidth(170);
     	showTime.setMaxHeight(95);
-    	time.setFont(Font.font("Digital Dismay", 50));
+    	final Font TIMEFONT = Font.loadFont(ClassLoader.getSystemResourceAsStream("Digital Dismay.otf"), 50);
+    	time.setFont(TIMEFONT);
     	time.setFill(Color.WHITE);
     	showTime.getChildren().add(time);
         
