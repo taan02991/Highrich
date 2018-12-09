@@ -38,7 +38,7 @@ public class StartScene extends Scene{
 		startButton.setLayoutX(138);
 		startButton.setLayoutY(251);
 		startButton.setImage( Images.STARTBUTTON );
-		startButton.setVisible(true);
+		startButton.setVisible(false);
 		buttonEventHandler();
 		
 		Audio.BGMSTARTSCENE.play();
