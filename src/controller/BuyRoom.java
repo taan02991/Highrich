@@ -50,6 +50,7 @@ public class BuyRoom extends Thread{
 				e.printStackTrace();
 			}
 		}
+		GameManager.getPlayer().setPosition(this.x+84, this.y+67);
 		gc.clearRect(this.x, this.y, 200, 166);
 		((MapUpStair) this.map).setRoom(this.room.getPosition(), this.level);
 		ControlBar.getBuyRoom().setDisable(false);
